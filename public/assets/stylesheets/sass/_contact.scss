@@ -1,0 +1,106 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.contact {
+    // display: flex;
+    // text-align: center;
+    // justify-content: center;
+    // height: 50vh;
+    // flex-basis: 100%;
+    position: relative;
+
+    h1 {
+        font-size: xx-large;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 0;
+        padding: 5rem 0;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+
+        form {
+            width: 70%;
+        }
+
+        .container {
+            // display: flex;
+            text-align: center;
+            // flex-basis: 80%;
+            // justify-content: space-between;
+
+            .form-group {
+                display: flex;
+                justify-content: space-between;
+                padding: 1rem 0;
+
+                label {
+                    text-transform: uppercase;
+                    margin: 0.3rem 0;
+                    color: v.$color-primary;
+                }
+
+                input, select, textarea {
+                    // background-color: rgba($color: v.$color-primary, $alpha: 0.5);
+                    background-color: rgba($color: #000, $alpha: 1);
+                    // background-color: #000;
+                    color: v.$color-primary;
+                    border-radius: 0.4rem;
+                    padding: 1rem;
+                    border: 0.2rem solid rgb(176, 174, 174);
+                }
+
+                .form-item-group {
+                    flex-basis: 48%;
+                    display: flex;
+                    flex-direction: column;
+                    text-align: left;
+
+                    .form-photo {
+                        display: flex;
+                        justify-content: space-around;
+                        // padding: 0 50%;
+                        background-color: rgba($color: #000, $alpha: 1);
+                        // background-color: #000;
+                        color: v.$color-primary;
+                        border-radius: 0.4rem;
+                        // padding: 1rem;
+                        border: 0.2rem solid rgb(176, 174, 174);
+                        
+                        * {
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            input[type="submit"] {
+                text-align: center;
+                @include m.box;
+                text-transform: uppercase;
+                color: #fff;
+                padding: 2rem 8rem;
+                margin: 3rem 0;
+                cursor: pointer;
+                font-size: x-large;
+            }
+        }
+    }
+
+    .resetPwd {
+        position: absolute;
+        top: 55%;
+        right: 15%;
+        bottom: 0;
+        left: 50%;
+
+        p {
+            a {
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}

@@ -1,0 +1,333 @@
+@use "reset";
+@use "contact";
+@use "resetMail";
+@use "carousel";
+@use "mixins" as m;
+@use "variables" as v;
+
+body {
+    // background-color: v.$color-background;
+    background: url("../../img/background-carbone.webp");
+    background-size: contain;
+    background-attachment: fixed;
+    // margin: 0 6rem;
+    // padding: 0 6rem;
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background-color: rgba($color: #000000, $alpha: 0.6);
+        padding: 5rem 5rem;
+
+        .company {
+            color: v.$color-primary;
+            display: flex;
+            flex-basis: 30%;
+            // display: flex;
+            // text-align: left;
+
+            // h1 {
+            //     margin: 0;
+            // }
+
+            .logo {
+                img {
+                    width: 100%;
+                }
+            }
+
+            // p {
+            //     text-align: left;
+            //     margin: 0;
+            // }
+        }
+
+        .rightMenu {
+            flex-basis: 30%;
+            align-items: center;
+
+            .authentification {
+                display: flex;
+                justify-content: right;
+                color: #fff;
+
+                ul {
+                    text-align: right;
+
+                    p {
+                        margin: 0;
+                    }
+
+                    li {
+                        list-style: none;
+                        display: inline-flex;
+                        justify-content: space-between;
+
+                        a {
+                            color: #fff;
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+
+            .links {
+                display: flex;
+                filter: v.$color-svg;
+                justify-content: right;
+                // background-color: rgba(0,0,0,0.8);
+
+                // @include m.icons-shadow;
+
+                .mail {
+                    width: 45px;
+                    height: 45px;
+                    background: url("../../icons/envelope.svg");
+                    background-repeat: no-repeat;
+                }
+
+                .phone {
+                    width: 40px;
+                    height: 40px;
+                    margin: 0 2rem;
+                    background: url("../../icons/phone.svg");
+                    background-repeat: no-repeat;
+                    // box-shadow: v.$color-shadow-icons;
+                }
+
+                .facebook {
+                    width: 40px;
+                    height: 40px;
+                    background: url("../../icons/facebook.svg");
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+    }
+
+    main {
+        background-color: rgba($color: #000000, $alpha: 0.6);
+        color: #fff;
+        padding: 0 5rem;
+
+        .view {
+            background: url("../../img/Lamborghini.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            // margin: 2rem 0;
+            color: #fff;
+        }
+
+        .txtView {
+            text-align: center;
+            padding: 2rem 0rem;
+            font-size: 200%;
+            max-height: 100rem;
+            // height: 40rem;
+        }
+
+        .txt {
+            padding: 3rem;
+            margin: 5rem 20rem;
+            background-color: rgba($color: #000000, $alpha: 0.5);
+            border-radius: 2rem;
+
+            // &:hover {
+            //     color: v.$color-primary;
+            // }
+        }
+
+        .ceo {
+            display: flex;
+            justify-content: center;
+            // background-color: #000;
+            margin: 2rem 5rem;
+
+            .txtCeo {
+                flex-basis: 80%;
+                color: #fff;
+            }
+
+            .pictCeo {
+                flex-basis: 20%;
+                background: no-repeat url("../../img/image.svg");
+                background-size: contain;
+                background-position: right;
+                filter: v.$color-svg;
+
+                img {
+                    width: 100px;
+                }
+            }
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-evenly;
+            text-align: center;
+            color: #fff;
+            font-size: 2rem;
+            // height: 62rem;
+            margin: 0;
+
+            * {
+                list-style-type: none;
+                margin: 1rem 0;
+
+                hr {
+                    height: 0.3rem;
+                    border: none;
+                    background-color: v.$color-primary;
+                }
+            }
+
+            .firstServices {
+                flex-basis: 25%;
+                @include m.box;
+
+                // ul {
+                //     margin: none;
+                // }
+            }
+
+            .secondServices {
+                flex-basis: 25%;
+                @include m.box;
+            }
+
+            .thirdServices {
+                flex-basis: 25%;
+                @include m.box;
+            }
+        }
+
+        .prices {
+            @include m.box;
+            margin: 10rem;
+            padding: 3rem 0;
+            font-size: 4rem;
+            text-align: center;
+            text-transform: uppercase;
+
+            * {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+
+        .reviews {
+            margin: 0 5rem;
+            text-align: center;
+        }
+
+        .pictures {
+            // display: flex;
+            .picture {
+                display: flex;
+                text-align: center;
+                justify-content: space-evenly;
+                margin: 10rem 0;
+                
+
+                .before {
+                    flex-basis: 45%;
+
+                    .imgBefore {
+                        img {
+                            width: 100%;
+                            border-radius: 2rem;
+                        }
+                    }
+                }
+
+                .after {
+                    flex-basis: 45%;
+
+                    .imgAfter {
+                        position: relative;
+
+                        img {
+                            width: 100%;
+                            border-radius: 2rem;
+                        }
+
+                        .txtAfter {
+                            position: absolute;
+                            top: 88%;
+                            right: 0;
+                            bottom: 0;
+                            left: 0;
+                            background-color: rgba($color: #000000, $alpha: 0.5);
+
+                            p {
+                                // margin: 0.5rem;
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .infosSociety {
+            display: flex;
+            justify-content: space-evenly;
+            @include m.box;
+            // margin: 0 5rem;
+            padding: 7rem 10rem;
+
+            .society {
+                flex-basis: 50%;
+                font-size: 3rem;
+
+                p {
+                    text-shadow: 1px 2px 20px #262635, -1px -2px 20px #262635;
+                    margin: 1.5rem 0;
+                }
+
+                #nameSociety {
+                    font-size: 4rem;
+                    text-transform: uppercase;
+                }
+            }
+
+            .map {
+                flex-basis: 50%;
+                box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
+
+                iframe {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            // #questionSociety {
+            //     text-transform: uppercase;
+            //     text-align: center;
+            //     font-size: 4rem;
+            // }
+        }
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        padding: 5rem 0;
+        background-color: rgba($color: #000000, $alpha: 0.6);
+
+        * {
+            color: #fff;
+            text-decoration: none;
+            font-size: 3rem;
+        }
+
+        .copyright {
+            display: flex;
+        }
+    }
+}

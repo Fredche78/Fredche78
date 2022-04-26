@@ -1,0 +1,11 @@
+@use "variables" as v;
+
+// @mixin icons-shadow {
+//     box-shadow: 3px 6px 20px $shadow, -2px -4px 25px $shadow;
+// }
+
+@mixin box {
+    background-color: v.$color-secondary;
+    border: 0.5rem solid v.$color-primary;
+    border-radius: 2rem;
+}
