@@ -7,12 +7,44 @@ $dsn = "mysql:host=localhost;dbname=sbpolish;
 charset=utf8mb4";
 $db = new PDO($dsn, "root", "");
 
-$queryReviews = $db->query("SELECT * FROM reviews");
+$queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC");
 $reviews = $queryReviews->fetchAll();
 
-$queryPhotos = $db->query("SELECT * FROM photos_cars");
+$queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC");
 $photos = $queryPhotos->fetchAll();
 
+$queryServices = $db->query("SELECT 
+type_services.type AS 'colonnes', 
+GROUP_CONCAT(services.name SEPARATOR '<br>') AS 'services' 
+FROM type_services
+INNER JOIN type_services_link
+ON type_services.id = type_services_link.type_services_id
+INNER JOIN services
+ON type_services_link.services_id = services.id
+GROUP BY type_services.type;");
+$services = $queryServices->fetchAll();
+
+// $serviceList = 0;
+// var_dump($services);
+// $i=0;
+// foreach ($services as $services) {
+//     // foreach ($services as $service) {
+//     //     $servicesList = explode(",", $service);
+//     // }
+
+//     // $i++;
+//     $servicesList[$i] = explode(",", $services["services"]);
+// }
+// var_dump($servicesList);
+// var_dump($servicesList[0]);
+
+// var_dump($servicesList[1]);
+// var_dump($servicesList[2]);
+// var_dump($servicesList[3]);
+// var_dump($servicesList);
+// var_dump($services);
+// $servicesList2 = explode(",", $services["services"][0]);
+// var_dump($servicesList2);
 
 include("../templates/header.php")
 ?>
@@ -34,110 +66,23 @@ include("../templates/header.php")
 </div>
 
 <div class="services">
-    <div class="firstServices">
-        <h3>Intérieur</h3>
-        <hr>
-        <ul>
-            <li>
-                Aspirations textiles et cuirs
-            </li>
-            <li>
-                Aspirations moquettes
-            </li>
-            <li>
-                Traitement des plastiques
-            </li>
-            <li>
-                Pédalier
-            </li>
-            <li>
-                Rails de siège
-            </li>
-            <li>
-                Nettoyage des vitres
-            </li>
-            <li>
-                Rétroviseur intérieur
-            </li>
-            <li>
-                Miroir de courtoisie
-            </li>
-            <li>
-                Affichages et compteurs
-            </li>
-            <li>
-                Désodorisation
-            </li>
-            <li>
-                Ciel de toit
-            </li>
-            <li>
-                Sièges & banquette
-            </li>
-        </ul>
-    </div>
-    <div class="secondServices">
-        <h3>Extérieur</h3>
-        <hr>
-        <ul>
-            <li>
-                Carrosserie
-            </li>
-            <li>
-                Optiques
-            </li>
-            <li>
-                Seuil de coffre
-            </li>
-            <li>
-                Seuils de portes
-            </li>
-            <li>
-                Rétroviseurs
-            </li>
-            <li>
-                Trappe à essence
-            </li>
-            <li>
-                Jantes, étriers
-            </li>
-            <li>
-                Baie de pare brise
-            </li>
-            <li>
-                Soubassement
-            </li>
-            <li>
-                Passage de roues
-            </li>
-        </ul>
-    </div>
-    <div class="thirdServices">
-        <h3>Options et services annexes</h3>
-        <hr>
-        <ul>
-            <li>
-                Soin du cuir
-            </li>
-            <li>
-                Soin plafonnier
-            </li>
-            <li>
-                Cire de protection
-            </li>
-            <li>
-                Traitement céramique
-            </li>
-            <li>
-                Nettoyage moteur
-            </li>
-            <li>
-                Traitement Hydrophobe des vitres
-            </li>
-        </ul>
-    </div>
-</div>
 
+    <?php
+    foreach ($services as $service) {
+    ?>
+        <div class="service">
+            <h3><?= $service["colonnes"] ?></h3>
+            <hr>
+            <div class="listServices">
+                <?= $service["services"] ?>
+                <!-- <?= $serviceList ?> -->
+            </div>
+        </div>
+    <?php
+    }
+    ?>
+
+</div>
 
 <div class="prices">
     <a href="prices.php">
@@ -181,7 +126,7 @@ include("../templates/header.php")
             <div class="before">
                 <p>Avant</p>
                 <div class="imgBefore">
-                    <img src="assets/img/photos/<?= $data["img_before"] ?>" alt="Avant nettoyage">
+                    <img src="assets/img/photos/travaux/<?= $data["img_before"] ?>" alt="Avant nettoyage">
                 </div>
                 <div class="txtBefore">
                     <p>
@@ -192,7 +137,7 @@ include("../templates/header.php")
             <div class="after">
                 <p>Après</p>
                 <div class="imgAfter">
-                    <img src="assets/img/photos/<?= $data["img_after"] ?>" alt="Après nettoyage">
+                    <img src="assets/img/photos/travaux/<?= $data["img_after"] ?>" alt="Après nettoyage">
                     <div class="txtAfter">
                         <p>
                             <?= $data["txt_after"] ?>

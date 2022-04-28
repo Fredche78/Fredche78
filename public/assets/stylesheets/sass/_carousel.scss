@@ -8,10 +8,14 @@
     margin: auto;
     display: flex;
     align-items: center;
+
+    span {
+        color: #fff;
+    }
 }
 
-#precedent,
-#suivant {
+.precedent,
+.suivant {
     cursor: pointer;
     transition: opacity 0.3s ease;
     opacity: 0;
@@ -20,17 +24,39 @@
     color: rgba(220, 220, 220, 0.8);
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
+
+    &:hover {
+        opacity: 1;
+    }
 }
 
-#precedent {
+.precedent {
     left: 0;
 }
 
-#suivant {
+.suivant {
     right: 0;
 }
 
-#slider:hover #precedent,
-#slider:hover #suivant {
-    opacity: 1;
+// .carousel:hover .precedent,
+// .carousel:hover .suivant {
+//     opacity: 1;
+// }
+
+.carousel {
+    display: flex;
+    font-size: medium;
+}
+
+.deleteReview {
+    font-weight: bolder;
+    background-color: #7d0606;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    // margin: 3px;
+
+    &:hover {
+        background-color: #c91f1f
+    }
 }

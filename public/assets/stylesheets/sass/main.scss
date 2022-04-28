@@ -1,6 +1,7 @@
 @use "reset";
 @use "contact";
 @use "resetMail";
+@use "admin";
 @use "carousel";
 @use "mixins" as m;
 @use "variables" as v;
@@ -185,7 +186,7 @@ body {
                 }
             }
 
-            .firstServices {
+            .service {
                 flex-basis: 25%;
                 @include m.box;
 
@@ -194,15 +195,15 @@ body {
                 // }
             }
 
-            .secondServices {
-                flex-basis: 25%;
-                @include m.box;
-            }
+            // .secondService {
+            //     flex-basis: 25%;
+            //     @include m.box;
+            // }
 
-            .thirdServices {
-                flex-basis: 25%;
-                @include m.box;
-            }
+            // .thirdService {
+            //     flex-basis: 25%;
+            //     @include m.box;
+            // }
         }
 
         .prices {

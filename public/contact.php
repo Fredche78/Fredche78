@@ -29,21 +29,30 @@ if (!empty($_POST)) {
     $name = $_FILES["photo"]["name"];
     $size = $_FILES["photo"]["size"];
 
+    // var_dump($tmpName);
+    // var_dump($name);
+    // var_dump($size);
+
     $tmpName2 = $_FILES["photo2"]["tmp_name"];
     $name2 = $_FILES["photo2"]["name"];
     $size2 = $_FILES["photo2"]["size"];
+
+    // var_dump($tmpName2);
+    // var_dump($name2);
+    // var_dump($size2);
 
     $tmpName3 = $_FILES["photo3"]["tmp_name"];
     $name3 = $_FILES["photo3"]["name"];
     $size3 = $_FILES["photo3"]["size"];
 
-    $uploadPath = "assets/img/photos/" . $name; // . $photo fonctionne aussi
-    $uploadPath2 = "assets/img/photos/" . $name2; // . $photo fonctionne aussi
-    $uploadPath3 = "assets/img/photos/" . $name3; // . $photo fonctionne aussi
+    $uploadPath = "assets/img/photos/devis/" . $name; // . $photo fonctionne aussi
+    $uploadPath2 = "assets/img/photos/devis/" . $name2; // . $photo fonctionne aussi
+    $uploadPath3 = "assets/img/photos/devis/" . $name3; // . $photo fonctionne aussi
 
 
     //Initialisation d'un tableau d'erreur
     $errors = [];
+    ///////////////////////// A comprendre ou à revoir////////////////////////////////////////////
     $errorsFiles = $_FILES["photo"]["error"];
     // var_dump($errors);
 
@@ -51,7 +60,7 @@ if (!empty($_POST)) {
     $extension = strtolower(end($tabExtension));
     $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
     // $allowedTypes = array("image/jpeg", "image/png", "image/jpg", "image/bmp");
-    $maxSize = 900000;
+    $maxSize = 2000000;
 
     // Validation de l'email
 
@@ -78,9 +87,9 @@ if (!empty($_POST)) {
         move_uploaded_file($tmpName2, $uploadPath2);
         move_uploaded_file($tmpName3, $uploadPath3);
         // $photoOld = trim(strip_tags($_FILES["photo"]["name"]));
-        rename("assets/img/photos/$photoOld", "assets/img/photos/$photo");
-        rename("assets/img/photos/$photoOld2", "assets/img/photos/$photo2");
-        rename("assets/img/photos/$photoOld3", "assets/img/photos/$photo3");
+        rename("assets/img/photos/devis/$photoOld", "assets/img/photos/devis/$photo");
+        rename("assets/img/photos/devis/$photoOld2", "assets/img/photos/devis/$photo2");
+        rename("assets/img/photos/devis/$photoOld3", "assets/img/photos/devis/$photo3");
 
         echo "Image enregistrée";
     } else {

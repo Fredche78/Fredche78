@@ -77,3 +77,112 @@ CREATE TABLE contacts (
     message TEXT
     
 );
+
+CREATE TABLE services (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50)
+);
+
+INSERT INTO services
+(name)
+VALUES
+("Aspirations textiles et cuirs"),
+("Aspirations moquettes"),
+("Traitement des plastiques"),
+("Pédalier"),
+("Rails de siège"),
+("Nettoyage des vitres"),
+("Rétroviseur Intérieur"),
+("Miroir de courtoisie"),
+("Affichages et compteurs"),
+("Désodorisation"),
+("Ciel de toit"),
+("Sièges et banquette"),
+("Carrosserie"),
+("Optiques"),
+("Seuil de coffre"),
+("Seuil de portes"),
+("Rétroviseurs"),
+("Trappe à essence"),
+("Jantes, étriers"),
+("Baie de pare brise"),
+("Soubassement"),
+("Passage de roues"),
+("Soin du cuir"),
+("Soin plafonnier"),
+("Cire de protection"),
+("Traitement céramique"),
+("Nettoyage moteur"),
+("Traitement Hydrophobe des vitres");
+
+CREATE TABLE type_services (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    type VARCHAR(50)
+);
+
+INSERT INTO type_services
+(type)
+VALUES
+("Intérieur"),
+("Exterieur"),
+("Options et services annexes");
+
+CREATE TABLE type_services_link (
+    services_id INT,
+    type_Services_id INT,
+    PRIMARY KEY (services_id, type_services_id),
+    FOREIGN KEY (services_id) REFERENCES services(id),
+    FOREIGN KEY (type_services_id) REFERENCES type_services(id)
+);
+
+INSERT INTO type_services_link
+(type_services_id, services_id)
+VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(1, 10),
+(1, 11),
+(1, 12),
+(2, 13),
+(2, 14),
+(2, 15),
+(2, 16),
+(2, 17),
+(2, 18),
+(2, 19),
+(2, 20),
+(2, 21),
+(2, 22),
+(3, 23),
+(3, 24),
+(3, 25),
+(3, 26),
+(3, 27),
+(3, 28);
+
+-- Obtenir la liste des services par colonne
+SELECT type_services.type AS "Nom de la colonne", services.name AS "Services" 
+FROM type_services
+INNER JOIN type_services_link
+ON type_services.id = type_services_link.type_services_id
+INNER JOIN services
+ON type_services_link.services_id = services.id
+
+
+-- Afficher pour chaque colonne la liste des services (sans doublon)
+SELECT 
+    type_services.type AS "colonnes", 
+    GROUP_CONCAT(services.name SEPARATOR ", ") AS "services" 
+FROM type_services
+INNER JOIN type_services_link
+ON type_services.id = type_services_link.type_services_id
+INNER JOIN services
+ON type_services_link.services_id = services.id
+GROUP BY type_services.type;

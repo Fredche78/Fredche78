@@ -105,6 +105,25 @@ body {
   font-size: x-large;
 }
 
+.addReview {
+  display: flex;
+  justify-content: center;
+  padding: 2% 0;
+}
+.addReview .form-admin-group {
+  display: flex;
+  justify-content: space-between;
+}
+.addReview .form-admin-group .form-admin-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.addWorks {
+  display: flex;
+  justify-content: center;
+}
+
 /*
 * Carroussel Review
 */
@@ -115,9 +134,12 @@ body {
   display: flex;
   align-items: center;
 }
+#carousel span {
+  color: #fff;
+}
 
-#precedent,
-#suivant {
+.precedent,
+.suivant {
   cursor: pointer;
   transition: opacity 0.3s ease;
   opacity: 0;
@@ -127,18 +149,33 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   padding: 10px;
 }
+.precedent:hover,
+.suivant:hover {
+  opacity: 1;
+}
 
-#precedent {
+.precedent {
   left: 0;
 }
 
-#suivant {
+.suivant {
   right: 0;
 }
 
-#slider:hover #precedent,
-#slider:hover #suivant {
-  opacity: 1;
+.carousel {
+  display: flex;
+  font-size: medium;
+}
+
+.deleteReview {
+  font-weight: bolder;
+  background-color: #7d0606;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.deleteReview:hover {
+  background-color: #c91f1f;
 }
 
 body {
@@ -271,19 +308,7 @@ body main .services * hr {
   border: none;
   background-color: #F6AB36;
 }
-body main .services .firstServices {
-  flex-basis: 25%;
-  background-color: #707070;
-  border: 0.5rem solid #F6AB36;
-  border-radius: 2rem;
-}
-body main .services .secondServices {
-  flex-basis: 25%;
-  background-color: #707070;
-  border: 0.5rem solid #F6AB36;
-  border-radius: 2rem;
-}
-body main .services .thirdServices {
+body main .services .service {
   flex-basis: 25%;
   background-color: #707070;
   border: 0.5rem solid #F6AB36;
