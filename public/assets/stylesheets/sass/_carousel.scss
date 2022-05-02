@@ -47,16 +47,3 @@
     display: flex;
     font-size: medium;
 }
-
-.deleteReview {
-    font-weight: bolder;
-    background-color: #7d0606;
-    color: #fff;
-    border: 1px solid #fff;
-    cursor: pointer;
-    // margin: 3px;
-
-    &:hover {
-        background-color: #c91f1f
-    }
-}

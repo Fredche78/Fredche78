@@ -80,7 +80,7 @@ CREATE TABLE contacts (
 
 CREATE TABLE services (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(50)
+    name VARCHAR(50) NOT NULL
 );
 
 INSERT INTO services
@@ -117,7 +117,7 @@ VALUES
 
 CREATE TABLE type_services (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    type VARCHAR(50)
+    type VARCHAR(50) NOT NULL
 );
 
 INSERT INTO type_services

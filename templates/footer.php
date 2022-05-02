@@ -1,18 +1,32 @@
 </main>
     <footer>
+
         <div class="copyright">
-            2022<img src="assets/icons/copyright.svg" alt="Copyright" width="20px" height="20px">- 
+            2022<img src="assets/icons/copyright.svg" alt="Copyright" width="20px" height="20px">
         </div>
+
+        <div> - 
+        </div>
+
         <div class="legal">
-            <a href="legal.php">Mentions légales</a>-
+            <a href="legal.php?page=mentions">Mentions légales</a>
         </div>
+
+        <div> - 
+        </div>
+
         <div class="protect">
-            <a href="protect.php">Protection de la vie privée</a>- 
+            <a href="legal.php?page=protect">Protection de la vie privée</a>
         </div>
+
+        <div> - 
+        </div>
+
         <div class="cookies">
-            <a href="cookies.php">Cookies
+            <a href="legal.php?page=cookies">Cookies
             </a>
         </div>
+
     </footer>
 
     <!-- <script src="https://kit.fontawesome.com/6b8692a053.js" crossorigin="anonymous"></script> -->

@@ -1,5 +1,18 @@
 $color-background: #000;
-$color-primary: #F6AB36;
+$color-primary: #f6ab36;
 $color-secondary: #707070;
 $color-svg: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
+$color-background-label: rgba($color: #000, $alpha: 0.5);
+$color-btn-off-green: #aad992;
+$color-btn-off-red: #b70d0d;
+$color-btn-green: #276d10;
+
+$color-table-column: rgba($color: #000, $alpha: 0.8);
+$color-table-even: rgba($color: #a06402, $alpha: 0.6);
+$color-table-odd: rgba($color: #000, $alpha: 0.7);
+
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
 // $color-shadow-icons: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;

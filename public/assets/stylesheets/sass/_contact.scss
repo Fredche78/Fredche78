@@ -71,6 +71,15 @@
                         
                         * {
                             cursor: pointer;
+
+                            &:active {
+                                color: v.$color-secondary;
+                                background-color: #000;
+                            }
+                        }
+
+                        #test {
+                            color: #fff;
                         }
                     }
                 }

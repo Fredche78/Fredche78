@@ -9,3 +9,26 @@
     border: 0.5rem solid v.$color-primary;
     border-radius: 2rem;
 }
+
+@mixin placeholder {
+    max-width: 90%;
+    background-color: #828481;
+    font-weight: bolder;
+    padding: 2% 0;
+    border: 1px solid #fff;
+    border-radius: 0.4rem;
+    resize: none;
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        max-width: 100%
+    }
+}
+
+@mixin btn-submit {
+    background-color: v.$color-btn-off-green;
+    font-weight: bolder;
+    text-transform: uppercase;
+    padding: 0 3%;
+    border: 2px solid #fff;
+    border-radius: 0.5rem;
+}

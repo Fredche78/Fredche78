@@ -1,6 +1,5 @@
 <?php
 
-
 //Connexion à la base d'avis
 
 $dsn = "mysql:host=localhost;dbname=sbpolish;
@@ -27,6 +26,20 @@ $services = $queryServices->fetchAll();
 // $serviceList = 0;
 // var_dump($services);
 // $i=0;
+// foreach ($services as $service) {
+//     $i++;
+//     $servicesList = $servicesList ."". $i;
+//     $servicesList = explode(",", $services["services"]);
+// }
+
+// $servicesList1 = $services[0];
+// $servicesList2 = $services[1];
+// $servicesList3 = $services[2];
+// var_dump($services[0]);
+// $servicesList1 = $services[0];
+// $servicesList1 = explode(",", $servicesList1);
+// $servicesList2 = explode(",", $services[1]);
+// $servicesList3 = explode(",", $services[2]);
 // foreach ($services as $services) {
 //     // foreach ($services as $service) {
 //     //     $servicesList = explode(",", $service);
@@ -36,7 +49,7 @@ $services = $queryServices->fetchAll();
 //     $servicesList[$i] = explode(",", $services["services"]);
 // }
 // var_dump($servicesList);
-// var_dump($servicesList[0]);
+// var_dump($servicesList1);
 
 // var_dump($servicesList[1]);
 // var_dump($servicesList[2]);
@@ -45,6 +58,7 @@ $services = $queryServices->fetchAll();
 // var_dump($services);
 // $servicesList2 = explode(",", $services["services"][0]);
 // var_dump($servicesList2);
+// var_dump($services[0]);
 
 include("../templates/header.php")
 ?>
@@ -123,27 +137,57 @@ include("../templates/header.php")
     foreach ($photos as $data) {
     ?>
         <div class="picture">
+
             <div class="before">
+
                 <p>Avant</p>
+
                 <div class="imgBefore">
+
                     <img src="assets/img/photos/travaux/<?= $data["img_before"] ?>" alt="Avant nettoyage">
+
+                    <?php
+                    if (!empty($data["txt_before"])) {
+                    ?>
+                        <div class="txtBefore">
+
+                            <p>
+                                <?= $data["txt_before"] ?>
+                            </p>
+
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                 </div>
-                <div class="txtBefore">
-                    <p>
-                        <?= $data["txt_before"] ?>
-                    </p>
-                </div>
+
             </div>
+
             <div class="after">
+
                 <p>Après</p>
+
                 <div class="imgAfter">
+
                     <img src="assets/img/photos/travaux/<?= $data["img_after"] ?>" alt="Après nettoyage">
-                    <div class="txtAfter">
-                        <p>
-                            <?= $data["txt_after"] ?>
-                        </p>
-                    </div>
+
+                    <?php
+                    if (!empty($data["txt_after"])) {
+                    ?>
+                        <div class="txtAfter">
+
+                            <p>
+                                <?= $data["txt_after"] ?>
+                            </p>
+
+                        </div>
+                    <?php
+                    }
+                    ?>
+
                 </div>
+
             </div>
         </div>
     <?php

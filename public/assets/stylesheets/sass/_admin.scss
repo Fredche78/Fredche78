@@ -1,20 +1,286 @@
-.addReview {
-    display: flex;
-    justify-content: center;
-    padding: 2% 0;
+@use "variables" as v;
+@use "mixins" as m;
 
-    .form-admin-group {
-        display: flex;
-        justify-content: space-between;
+.backoffice {
+    background-color: rgba($color: #fff, $alpha: 0.1);
+    .container {
+        .servicesAdmin {
 
-        .form-admin-item {
-            display: flex;
-            flex-direction: column;
+            h2 {
+                text-align: center;
+                text-transform: uppercase;
+            }
+            // .services {
+            //     // background-color: azure;
+            //     // border: 3px solid #fff;
+            //     // display: inline;
+            //     // .service {
+            //     //     border: 5px solid #fff;
+            //     // }
+            // }
+
+            .addServices {
+                background-color: #000;
+                border: 1px solid #fff;
+                padding: 2% 0;
+
+                form {
+                    // display: flex;
+                    width: 100%;
+
+                    .form-admin-group {
+                        display: flex;
+                        padding: 2% 5%;
+
+                        @media screen and (max-width: v.$md-breakpoint) {
+                            display: block;
+                            padding: 1% 4%;
+                        }
+
+                        .form-admin-item {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+
+                            // label {
+                            //     // padding-bottom: 5%;
+
+                            //     @media screen and (max-width: v.$md-breakpoint) {
+                            //         padding: 0 0 0.6rem 0;
+                            //     }
+                            // }
+
+                            input,
+                            select,
+                            textarea {
+                                display: flex;
+                                @include m.placeholder;
+
+                                @media screen and (max-width: v.$md-breakpoint) {
+                                    margin-bottom: 2rem;
+                                }
+                            }
+                        }
+
+                        .btn-submit {
+                            @include m.btn-submit;
+
+                            @media screen and (max-width: v.$md-breakpoint) {
+                                width: 100%;
+                                margin-top: 1rem;
+                                padding: 2rem 0;
+                            }
+
+                            &:hover {
+                                background-color: v.$color-btn-green;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .reviewsAdmin {
+            h2 {
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .viewReviews {
+                .carousel {
+                    display: flex;
+                    margin: 1% 10%;
+
+                    .reviewAdmin {
+                        // display: flex;
+                        width: 100%;
+                    }
+
+                    // .deleteReview {
+                    //     // display: flex;
+                    //     // justify-content: right;
+                    // }
+                }
+            }
+
+            .addReviews {
+                background-color: #000;
+                border: 1px solid #fff;
+                padding: 2% 0;
+
+                form {
+                    width: 100%;
+
+                    .form-admin-group {
+                        display: flex;
+                        padding: 2% 5%;
+
+                        @media screen and (max-width: v.$md-breakpoint) {
+                            display: block;
+                            padding: 1% 4%;
+                        }
+
+                        .form-admin-item {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100%;
+                            // justify-content: center;
+                            // width: 80%;
+                            // margin: 0 1%;
+
+                            label {
+                                // padding: 3% 0;
+
+                                @media screen and (max-width: v.$md-breakpoint) {
+                                    padding: 0 0 0.6rem 0;
+                                }
+                            }
+
+                            input,
+                            textarea {
+                                @include m.placeholder;
+                                display: flex;
+
+                                @media screen and (max-width: v.$md-breakpoint) {
+                                    margin-bottom: 2rem;
+                                }
+                            }
+                        }
+
+                        .btn-submit {
+                            @include m.btn-submit;
+
+                            @media screen and (max-width: v.$md-breakpoint) {
+                                width: 100%;
+                                margin-top: 1rem;
+                                padding: 2rem 0;
+                            }
+
+                            &:hover {
+                                background-color: v.$color-btn-green;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .photoVehicules {
+            .pictures {
+                .picture {
+                    background-color: #c91f1f;
+                    border: 3px solid #fff;
+                    // .before {
+                    //     .imgBefore {
+                    //     }
+                    //     .txtBefore {
+                    //     }
+                    // }
+                    // .after {
+                    //     .imgAfter {
+                    //     }
+                    //     .txtAfter {
+                    //     }
+                    // }
+                }
+            }
         }
     }
 }
 
 .addWorks {
+
+    background-color: #000;
+    border: 1px solid #fff;
+    padding: 2% 0;
+
+    form {
+        width: 100%;
+
+        .form-admin-group {
+            display: flex;
+
+            padding: 2% 5%;
+            // margin: 1% 1%;
+            // border: 2px solid #fff;
+            @media screen and (max-width: v.$md-breakpoint) {
+                display: block;
+                padding: 1% 4%;
+            }
+
+            .form-admin-item {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                // label {
+                //     display: flex;
+                //     background-color: v.$color-background-label;
+                //     ////////////////////////////////////////////////////////////////////background-color: v.$color-background-label;
+                // }
+                input {
+                    display: flex;
+                    @include m.placeholder;
+                    // width: 30rem;
+                    // background-color: #276d10;
+                    // border: 2px solid #fff;
+                    @media screen and (max-width: v.$md-breakpoint) {
+                        margin-bottom: 2rem;
+                    }
+                }
+
+                input[type=file] {
+                    cursor: pointer;
+                    // display: flex;
+                    // justify-content: center;
+                    padding-left: 5.5rem;
+                    // content: none;
+
+                    // button {
+                    //     cursor: pointer;
+                    // }
+
+                    &:active {
+                        color: #c91f1f;
+                        background-color: #000;
+                    }
+                }
+            }
+        }
+
+        .btn-submit {
+            @include m.btn-submit;
+            padding: 2rem 3rem;
+            // margin: 0 5%;
+            width: 100%;
+
+            @media screen and (max-width: v.$md-breakpoint) {
+                width: 100%;
+                margin-top: 1rem;
+                padding: 2rem 0;
+            }
+
+            &:hover {
+                background-color: v.$color-btn-green;
+            }
+        }
+    }
+}
+
+.btn-delete {
     display: flex;
-    justify-content: center;
+    font-weight: bolder;
+    font-size: xx-large;
+    // margin: 50%;
+    // padding: 100%;
+    justify-content: right;
+    background-color: v.$color-btn-green;
+    color: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    // margin: 3px;
+
+    &:hover {
+        background-color: #c91f1f;
+    }
 }

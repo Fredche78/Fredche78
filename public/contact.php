@@ -1,6 +1,5 @@
 <?php
 
-
 if (!empty($_POST)) {
     // Le formulaire a été soumis
     $firstname = trim(strip_tags($_POST["firstname"])); // Ici firstname = au name dans le formulaire
@@ -18,12 +17,9 @@ if (!empty($_POST)) {
     // $photo3 = trim(strip_tags($_POST["photo3"]));
     $message = trim(strip_tags($_POST["message"]));
 
-    // var_dump($photoOld);
-    // var_dump($photoOld2);
-    // var_dump($photoOld3);
-
-    // var_dump($email);
-
+    // if (!empty($_FILES["photo"]["name"])) {
+        // var_dump($photoOld); 
+    // }
 
     $tmpName = $_FILES["photo"]["tmp_name"];
     $name = $_FILES["photo"]["name"];
@@ -75,9 +71,9 @@ if (!empty($_POST)) {
 
     /////////////////////////////////////////////////////////////////////////////////
     if (in_array($extension, $allowedTypes) && $size <= $maxSize && $errorsFiles == 0) {
-        $uniqueName = uniqid("", true);
-        $uniqueName2 = uniqid("", true);
-        $uniqueName3 = uniqid("", true);
+        $uniqueName = md5($name);
+        $uniqueName2 = md5($name2);
+        $uniqueName3 = md5($name3);
 
         $photo = $uniqueName . "." . $extension;
         $photo2 = $uniqueName2 . "." . $extension;
@@ -131,7 +127,7 @@ if (!empty($_POST)) {
             // echo "message envoyé";
             // sleep(5);
         } else {
-            $message = "Erreur de bdd";
+            $messageError = "Erreur de bdd";
         }
     }
 }
@@ -192,6 +188,7 @@ include("../templates/header.php")
                         <div class="form-photo">
                             <label for="inputPhoto">Photo 1</label>
                             <input type="file" id="inputPhoto" name="photo" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo) ? $photo : "" ?>" style="display: none;">
+                            <!-- <p id="test"><?=$photoOld?></p> -->
                             <!--  multiple="multiple" -->
                             <label for="inputPhoto2">Photo 2</label>
                             <input type="file" id="inputPhoto2" name="photo2" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo2) ? $photo2 : "" ?>" style="display: none;">

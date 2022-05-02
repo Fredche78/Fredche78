@@ -4,11 +4,13 @@
 
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 
 body {
   font-size: 1.6rem;
   margin: 0;
+  padding: 0;
 }
 
 .contact {
@@ -39,11 +41,11 @@ body {
 .contact .form .container .form-group label {
   text-transform: uppercase;
   margin: 0.3rem 0;
-  color: #F6AB36;
+  color: #f6ab36;
 }
 .contact .form .container .form-group input, .contact .form .container .form-group select, .contact .form .container .form-group textarea {
   background-color: black;
-  color: #F6AB36;
+  color: #f6ab36;
   border-radius: 0.4rem;
   padding: 1rem;
   border: 0.2rem solid #b0aeae;
@@ -58,17 +60,24 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: black;
-  color: #F6AB36;
+  color: #f6ab36;
   border-radius: 0.4rem;
   border: 0.2rem solid #b0aeae;
 }
 .contact .form .container .form-group .form-item-group .form-photo * {
   cursor: pointer;
 }
+.contact .form .container .form-group .form-item-group .form-photo *:active {
+  color: #707070;
+  background-color: #000;
+}
+.contact .form .container .form-group .form-item-group .form-photo #test {
+  color: #fff;
+}
 .contact .form .container input[type=submit] {
   text-align: center;
   background-color: #707070;
-  border: 0.5rem solid #F6AB36;
+  border: 0.5rem solid #f6ab36;
   border-radius: 2rem;
   text-transform: uppercase;
   color: #fff;
@@ -105,23 +114,396 @@ body {
   font-size: x-large;
 }
 
-.addReview {
-  display: flex;
-  justify-content: center;
+.backoffice {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.backoffice .container .servicesAdmin h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.backoffice .container .servicesAdmin .addServices {
+  background-color: #000;
+  border: 1px solid #fff;
   padding: 2% 0;
 }
-.addReview .form-admin-group {
-  display: flex;
-  justify-content: space-between;
+.backoffice .container .servicesAdmin .addServices form {
+  width: 100%;
 }
-.addReview .form-admin-group .form-admin-item {
+.backoffice .container .servicesAdmin .addServices form .form-admin-group {
+  display: flex;
+  padding: 2% 5%;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .servicesAdmin .addServices form .form-admin-group {
+    display: block;
+    padding: 1% 4%;
+  }
+}
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item {
   display: flex;
   flex-direction: column;
+  width: 100%;
+}
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+  display: flex;
+  max-width: 90%;
+  background-color: #828481;
+  font-weight: bolder;
+  padding: 2% 0;
+  border: 1px solid #fff;
+  border-radius: 0.4rem;
+  resize: none;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+    margin-bottom: 2rem;
+  }
+}
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit {
+  background-color: #aad992;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding: 0 3%;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 2rem 0;
+  }
+}
+.backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit:hover {
+  background-color: #276d10;
+}
+.backoffice .container .reviewsAdmin h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.backoffice .container .reviewsAdmin .viewReviews .carousel {
+  display: flex;
+  margin: 1% 10%;
+}
+.backoffice .container .reviewsAdmin .viewReviews .carousel .reviewAdmin {
+  width: 100%;
+}
+.backoffice .container .reviewsAdmin .addReviews {
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 2% 0;
+}
+.backoffice .container .reviewsAdmin .addReviews form {
+  width: 100%;
+}
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group {
+  display: flex;
+  padding: 2% 5%;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group {
+    display: block;
+    padding: 1% 4%;
+  }
+}
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item label {
+    padding: 0 0 0.6rem 0;
+  }
+}
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+  max-width: 90%;
+  background-color: #828481;
+  font-weight: bolder;
+  padding: 2% 0;
+  border: 1px solid #fff;
+  border-radius: 0.4rem;
+  resize: none;
+  display: flex;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+    margin-bottom: 2rem;
+  }
+}
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
+  background-color: #aad992;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding: 0 3%;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 2rem 0;
+  }
+}
+.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit:hover {
+  background-color: #276d10;
+}
+.backoffice .container .photoVehicules .pictures .picture {
+  background-color: #c91f1f;
+  border: 3px solid #fff;
 }
 
 .addWorks {
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 2% 0;
+}
+.addWorks form {
+  width: 100%;
+}
+.addWorks form .form-admin-group {
+  display: flex;
+  padding: 2% 5%;
+}
+@media screen and (max-width: 768px) {
+  .addWorks form .form-admin-group {
+    display: block;
+    padding: 1% 4%;
+  }
+}
+.addWorks form .form-admin-group .form-admin-item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.addWorks form .form-admin-group .form-admin-item input {
+  display: flex;
+  max-width: 90%;
+  background-color: #828481;
+  font-weight: bolder;
+  padding: 2% 0;
+  border: 1px solid #fff;
+  border-radius: 0.4rem;
+  resize: none;
+}
+@media screen and (max-width: 768px) {
+  .addWorks form .form-admin-group .form-admin-item input {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .addWorks form .form-admin-group .form-admin-item input {
+    margin-bottom: 2rem;
+  }
+}
+.addWorks form .form-admin-group .form-admin-item input[type=file] {
+  cursor: pointer;
+  padding-left: 5.5rem;
+}
+.addWorks form .form-admin-group .form-admin-item input[type=file]:active {
+  color: #c91f1f;
+  background-color: #000;
+}
+.addWorks form .btn-submit {
+  background-color: #aad992;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding: 0 3%;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+  padding: 2rem 3rem;
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  .addWorks form .btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 2rem 0;
+  }
+}
+.addWorks form .btn-submit:hover {
+  background-color: #276d10;
+}
+
+.btn-delete {
+  display: flex;
+  font-weight: bolder;
+  font-size: xx-large;
+  justify-content: right;
+  background-color: #276d10;
+  color: #fff;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.btn-delete:hover {
+  background-color: #c91f1f;
+}
+
+.requests h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.requests .listRequests table {
+  width: 100%;
+}
+@media screen and (max-width: 992px) {
+  .requests .listRequests table {
+    display: flex;
+  }
+}
+.requests .listRequests table thead tr th {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  padding: 1.5rem 0;
+}
+@media screen and (max-width: 992px) {
+  .requests .listRequests table thead tr th {
+    display: flex;
+    padding: 1rem 0;
+  }
+}
+@media screen and (max-width: 992px) {
+  .requests .listRequests table tbody {
+    display: flex;
+    width: 100%;
+  }
+}
+.requests .listRequests table tbody tr:nth-child(odd) {
+  background-color: rgba(160, 100, 2, 0.6);
+}
+.requests .listRequests table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+@media screen and (max-width: 992px) {
+  .requests .listRequests table tbody tr {
+    width: 100%;
+  }
+}
+.requests .listRequests table tbody td {
+  padding: 1rem 0;
+}
+@media screen and (max-width: 992px) {
+  .requests .listRequests table tbody td {
+    display: flex;
+  }
+}
+.requests .listRequests table,
+.requests .listRequests th,
+.requests .listRequests td {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+.requests .listRequests table a,
+.requests .listRequests th a,
+.requests .listRequests td a {
+  color: #276d10;
+  text-shadow: 2px 2px 2px #000;
+  text-transform: uppercase;
+}
+
+.quote h1 {
+  text-transform: uppercase;
+  text-align: center;
+}
+.quote .viewQuote {
+  display: flex;
+}
+.quote .viewQuote .contact {
+  display: flex;
+  flex-basis: 30%;
+  border: 2px solid #fff;
+  padding: 3rem;
+}
+.quote .viewQuote .contact .rows .row {
+  padding: 0.3rem 0;
+}
+.quote .viewQuote .contact .rows .row span {
+  text-transform: uppercase;
+}
+.quote .viewQuote .contact .rows .delete {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+}
+.quote .viewQuote .message {
+  flex-basis: 70%;
+}
+.quote .viewQuote .message h2 {
+  text-align: center;
+  border: 2px solid #fff;
+  margin: 0 1rem;
+}
+.quote .viewQuote .message .viewMessage {
+  border: 2px solid #fff;
+  margin: 1rem;
+  padding: 2%;
+}
+.quote .photos {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+.quote .photos .photo {
+  flex-basis: 30%;
+}
+.quote .photos .photo img {
+  width: 100%;
+}
+.quote .photos .photo .download {
   display: flex;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #fff;
+}
+.quote .photos .photo .download a {
+  text-decoration: none;
+}
+.quote .photos .photo .download a p {
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.back {
+  display: flex;
+  justify-content: right;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.back a {
+  color: #fff;
+  background-color: #000;
+  text-transform: uppercase;
+  padding: 2rem;
+}
+
+.legalRules {
+  display: flex;
+  justify-content: center;
+  padding: 5%;
+  font-size: x-large;
 }
 
 /*
@@ -167,18 +549,9 @@ body {
   font-size: medium;
 }
 
-.deleteReview {
-  font-weight: bolder;
-  background-color: #7d0606;
-  color: #fff;
-  border: 1px solid #fff;
-  cursor: pointer;
-}
-.deleteReview:hover {
-  background-color: #c91f1f;
-}
-
 body {
+  position: relative;
+  min-height: 100%;
   background: url("../../img/background-carbone.webp");
   background-size: contain;
   background-attachment: fixed;
@@ -189,19 +562,18 @@ body header {
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
-  padding: 5rem 5rem;
+  padding: 3rem 5rem;
 }
 body header .company {
-  color: #F6AB36;
+  color: #f6ab36;
   display: flex;
   flex-basis: 30%;
 }
 body header .company .logo img {
-  width: 100%;
+  max-width: 100%;
 }
 body header .rightMenu {
   flex-basis: 30%;
-  align-items: center;
 }
 body header .rightMenu .authentification {
   display: flex;
@@ -248,6 +620,7 @@ body header .rightMenu .links .facebook {
   background-repeat: no-repeat;
 }
 body main {
+  min-height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
   padding: 0 5rem;
@@ -263,8 +636,7 @@ body main .view {
 body main .txtView {
   text-align: center;
   padding: 2rem 0rem;
-  font-size: 200%;
-  max-height: 100rem;
+  font-size: 160%;
 }
 body main .txt {
   padding: 3rem;
@@ -275,7 +647,7 @@ body main .txt {
 body main .ceo {
   display: flex;
   justify-content: center;
-  margin: 2rem 5rem;
+  margin: 5rem 5rem;
 }
 body main .ceo .txtCeo {
   flex-basis: 80%;
@@ -306,21 +678,21 @@ body main .services * {
 body main .services * hr {
   height: 0.3rem;
   border: none;
-  background-color: #F6AB36;
+  background-color: #f6ab36;
 }
 body main .services .service {
   flex-basis: 25%;
   background-color: #707070;
-  border: 0.5rem solid #F6AB36;
+  border: 0.5rem solid #f6ab36;
   border-radius: 2rem;
 }
 body main .prices {
   background-color: #707070;
-  border: 0.5rem solid #F6AB36;
+  border: 0.5rem solid #f6ab36;
   border-radius: 2rem;
   margin: 10rem;
   padding: 3rem 0;
-  font-size: 4rem;
+  font-size: 2.5rem;
   text-align: center;
   text-transform: uppercase;
 }
@@ -329,21 +701,39 @@ body main .prices * {
   text-decoration: none;
 }
 body main .reviews {
-  margin: 0 5rem;
   text-align: center;
+}
+body main .reviews .carousel {
+  display: flex;
+  justify-content: center;
 }
 body main .pictures .picture {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
-  margin: 10rem 0;
+  margin: 7rem 0;
 }
 body main .pictures .picture .before {
   flex-basis: 45%;
 }
+body main .pictures .picture .before .imgBefore {
+  position: relative;
+}
 body main .pictures .picture .before .imgBefore img {
   width: 100%;
   border-radius: 2rem;
+}
+body main .pictures .picture .before .txtBefore {
+  position: absolute;
+  top: 89%;
+  right: 0;
+  bottom: 0.5%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 2rem 2rem;
+}
+body main .pictures .picture .before .txtBefore p {
+  font-size: 2rem;
 }
 body main .pictures .picture .after {
   flex-basis: 45%;
@@ -357,11 +747,12 @@ body main .pictures .picture .after .imgAfter img {
 }
 body main .pictures .picture .after .imgAfter .txtAfter {
   position: absolute;
-  top: 88%;
+  top: 89%;
   right: 0;
-  bottom: 0;
+  bottom: 0.5%;
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0 0 2rem 2rem;
 }
 body main .pictures .picture .after .imgAfter .txtAfter p {
   font-size: 2rem;
@@ -370,7 +761,7 @@ body main .infosSociety {
   display: flex;
   justify-content: space-evenly;
   background-color: #707070;
-  border: 0.5rem solid #F6AB36;
+  border: 0.5rem solid #f6ab36;
   border-radius: 2rem;
   padding: 7rem 10rem;
 }
@@ -397,14 +788,18 @@ body main .infosSociety .map iframe {
 }
 body footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
   padding: 5rem 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0 20%;
 }
 body footer * {
   color: #fff;
   text-decoration: none;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 body footer .copyright {
   display: flex;

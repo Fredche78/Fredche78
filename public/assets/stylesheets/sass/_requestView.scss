@@ -1,0 +1,96 @@
+@use "variables" as v;
+
+.quote {
+    h1 {
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .viewQuote {
+        display: flex;
+
+        .contact {
+            display: flex;
+            flex-basis: 30%;
+            border: 2px solid #fff;
+            padding: 3rem;
+
+            .rows {
+                
+                .row {
+                    padding: 0.3rem 0;
+
+                    span {
+                        text-transform: uppercase;
+                    }
+                }
+
+                .delete {
+                    display: flex;
+                    width: 100%;
+                    justify-content: right;
+                }
+            }
+        }
+
+        .message {
+            flex-basis: 70%;
+
+            h2 {
+                text-align: center;
+                border: 2px solid #fff;
+                margin: 0 1rem;
+            }
+
+            .viewMessage {
+                border: 2px solid #fff;
+                margin: 1rem;
+                padding: 2%;
+            }
+        }
+    }
+
+    .photos {
+        display: flex;
+        justify-content: space-between;
+        margin: 2rem 0;
+
+        .photo {
+            flex-basis: 30%;
+
+            img {
+                width: 100%;
+            }
+
+            .download {
+                display: flex;
+                justify-content: center;
+                background-color: v.$color-background-label;
+                border: 1px solid #fff;
+
+                a {
+                    text-decoration: none;
+
+                    p {
+                        text-transform: uppercase;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.back {
+    display: flex;
+    justify-content: right;
+    padding: 2rem;
+    background-color: v.$color-background-label;
+
+    a {
+        color: #fff;
+        background-color: #000;
+        text-transform: uppercase;
+        padding: 2rem;
+    }
+}
