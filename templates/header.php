@@ -15,7 +15,9 @@ session_start();
 </head>
 
 <body>
+
     <header>
+
         <div class="company">
             <div class="logo">
                 <a href="./">
@@ -24,6 +26,7 @@ session_start();
             </div>
             <!-- <p>Depuis 2014</p> -->
         </div>
+
         <div class="rightMenu">
             <div class="authentification">
                 <nav>
@@ -32,23 +35,28 @@ session_start();
                         // On teste en complément l'adresse ip de l'utilisateur pour valider que la session appartient bien à l'utilisateur 
                         if (isset($_SESSION["user"]) && ($_SESSION["user_ip"] === $_SERVER["REMOTE_ADDR"])) {
                         ?>
-                            <p>Bienvenue: <?= ($_SESSION["user"] ." ". $_SESSION["userName"])?></p>
-                            
+                            <p>Bienvenue: <?= ($_SESSION["user"] ." ". $_SESSION["userName"])?>
+                            </p>
+
                             <li>
-                                <a href="my_account.php">Mon compte</a>
+                                <a href="my_account.php">Mon compte
+                                </a>
                             </li>
                             -
                             <li>
-                                <a href="logout.php">Déconnexion</a>
+                                <a href="logout.php">Déconnexion
+                                </a>
                             </li>
                         <?php
                         } else {
                         ?>
                             <li>
-                                <a href="create_account.php">Création du compte</a>
+                                <a href="create_account.php">Création du compte
+                                </a>
                             </li>
                             <li>
-                                <a href="login.php">Connexion</a>
+                                <a href="login.php">Connexion
+                                </a>
                             </li>
                         <?php
                         }
@@ -56,6 +64,7 @@ session_start();
                     </ul>
                 </nav>
             </div>
+
             <div class="links">
                 <a href="mailto:sbpolish@outlook.fr">
                     <div class="mail">
@@ -72,8 +81,8 @@ session_start();
                     </div>
                 </a>
             </div>
-
         </div>
+
     </header>
 
     <main>

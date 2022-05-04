@@ -2,12 +2,6 @@
 @use "mixins" as m;
 
 .contact {
-    // display: flex;
-    // text-align: center;
-    // justify-content: center;
-    // height: 50vh;
-    // flex-basis: 100%;
-    position: relative;
 
     h1 {
         font-size: xx-large;
@@ -15,6 +9,11 @@
         text-align: center;
         margin: 0;
         padding: 5rem 0;
+    }
+
+    #errorLogin {
+        // margin: 0;
+        text-align: center;
     }
 
     .form {
@@ -42,7 +41,9 @@
                     color: v.$color-primary;
                 }
 
-                input, select, textarea {
+                input,
+                select,
+                textarea {
                     // background-color: rgba($color: v.$color-primary, $alpha: 0.5);
                     background-color: rgba($color: #000, $alpha: 1);
                     // background-color: #000;
@@ -58,6 +59,10 @@
                     flex-direction: column;
                     text-align: left;
 
+                    .errorsTxt {
+                        color: v.$color-danger;
+                    }
+
                     .form-photo {
                         display: flex;
                         justify-content: space-around;
@@ -68,7 +73,7 @@
                         border-radius: 0.4rem;
                         // padding: 1rem;
                         border: 0.2rem solid rgb(176, 174, 174);
-                        
+
                         * {
                             cursor: pointer;
 
@@ -94,22 +99,24 @@
                 margin: 3rem 0;
                 cursor: pointer;
                 font-size: x-large;
+
+                &:hover {
+                    // background-color: #3f3d3d;
+                    background-color: #637b54;
+                }
             }
         }
     }
+}
 
-    .resetPwd {
-        position: absolute;
-        top: 55%;
-        right: 15%;
-        bottom: 0;
-        left: 50%;
+#resetPwd {
+    padding: 0.7rem;
+    margin: 0;
 
-        p {
-            a {
-                text-decoration: none;
-                color: #fff;
-            }
+        a {
+            // text-decoration: none;
+            color: #fff;
+            text-transform: uppercase;
         }
-    }
+
 }

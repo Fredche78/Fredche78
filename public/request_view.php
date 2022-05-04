@@ -6,7 +6,8 @@ if (isset($_GET["id"])) {
     $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
     $queryRequests = $db->query("SELECT * FROM contacts
                                     WHERE id = {$_GET['id']}");
-    $request = $queryRequests->fetch();
+    $request = $queryRequests->fetch(PDO::FETCH_ASSOC);
+    // var_dump($request);
 }
 
 ////////////////////DELETE/////////////////////////

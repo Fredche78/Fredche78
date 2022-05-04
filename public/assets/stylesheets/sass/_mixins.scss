@@ -5,8 +5,9 @@
 // }
 
 @mixin box {
-    background-color: v.$color-secondary;
-    border: 0.5rem solid v.$color-primary;
+    // background-color: v.$color-secondary;
+    background-color: #40423f;
+    border: 0.4rem solid v.$color-primary;
     border-radius: 2rem;
 }
 

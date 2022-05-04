@@ -64,19 +64,31 @@ include("../templates/header.php")
 ?>
 
 <div class="view">
+
     <div class="txtView">
-        <h2 class="txt one">Nettoyage professionnel de votre véhicule</h2>
-        <h2 class="txt two">Particuliers et Professionnels</h2>
-        <h2 class="txt three">Prestation à domicile ou dans nos locaux</h2>
+
+        <h2 class="txtHome">Nettoyage professionnel de votre véhicule</h2>
+
+        <h2 class="txtHome">Particuliers et Professionnels</h2>
+
+        <h2 class="txtHome">Prestation à domicile ou dans nos locaux</h2>
+
     </div>
+
 </div>
 
 <div class="ceo">
+
     <div class="txtCeo">
+
         <p>Professionnel du nettoyage et passionné par l'automobile, contactez-moi et nous établirons ensemble un devis gratuit pour votre véhicule.</p>
+
     </div>
+
     <div class="pictCeo">
+
     </div>
+
 </div>
 
 <div class="services">
@@ -84,13 +96,15 @@ include("../templates/header.php")
     <?php
     foreach ($services as $service) {
     ?>
-        <div class="service">
+        <div class="servicesView">
+
             <h3><?= $service["colonnes"] ?></h3>
             <hr>
+
             <div class="listServices">
                 <?= $service["services"] ?>
-                <!-- <?= $serviceList ?> -->
             </div>
+
         </div>
     <?php
     }
@@ -99,15 +113,23 @@ include("../templates/header.php")
 </div>
 
 <div class="prices">
+
     <a href="prices.php">
+
         <p>Détails de nos tarifs et de nos prestations</p>
+
         <div class="selections">
+
             <div class="citadine">
 
             </div>
+
         </div>
+
         <p>Votre tarif sur-mesure</p>
+
     </a>
+
 </div>
 
 
@@ -115,32 +137,37 @@ include("../templates/header.php")
 
     <h2>Les avis de nos clients</h2>
 
-    <?php
-    foreach ($reviews as $data) {
-    ?>
-        <div class="carousel <?= $data["id"] ?>">
-            <p><?= $data["client"] . " - " . $data["review"] ?></p>
-        </div>
-    <?php
-    }
-    ?>
-    <div id="precedent" onclick="ChangeSlide(-1)">
+    <div class="reviewsView">
+
+        <?php
+        foreach ($reviews as $data) {
+        ?>
+            <div class="carousel <?= $data["id"] ?>">
+                <p><?= $data["client"] . " - " . $data["review"] ?></p>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+    <!-- <div id="precedent" onclick="ChangeSlide(-1)">
         < </div>
             <div id="suivant" onclick="ChangeSlide(1)"> >
             </div>
 
-    </div>
+    </div> -->
 </div>
 
 <div class="pictures">
+
     <?php
     foreach ($photos as $data) {
     ?>
-        <div class="picture">
+        <div class="picturesView">
 
             <div class="before">
 
-                <p>Avant</p>
+                <h2>Avant</h2>
 
                 <div class="imgBefore">
 
@@ -166,7 +193,7 @@ include("../templates/header.php")
 
             <div class="after">
 
-                <p>Après</p>
+                <h2>Après</h2>
 
                 <div class="imgAfter">
 
@@ -189,27 +216,31 @@ include("../templates/header.php")
                 </div>
 
             </div>
+
         </div>
     <?php
     }
     ?>
 </div>
 
-
-
 <div class="infosSociety">
+
     <div class="society">
+
         <p id="nameSociety">S.B Polish</p>
         <p id="addressSociety">91 Rue Henry Durre<br />59174 La Sentinelle</p>
         <p id="phoneSociety">Tel: 06.62.49.20.49</p>
         <p id="openingSociety">Horaires: lundi au vendredi de 9h - 18h<br />Samedi 9h - 12h sur demande</p>
     </div>
+
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10184.254916045364!2d3.4853949946899414!3d50.34671671927941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2ec4549a81cdd%3A0x37c41f301b0a3967!2s91%20Rue%20Henri%20Durre%2C%2059174%20La%20Sentinelle!5e0!3m2!1sfr!2sfr!4v1650474732181!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10184.254916045364!2d3.4853949946899414!3d50.34671671927941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2ec4549a81cdd%3A0x37c41f301b0a3967!2s91%20Rue%20Henri%20Durre%2C%2059174%20La%20Sentinelle!5e0!3m2!1sfr!2sfr!4v1650474732181!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
     </div>
+
     <!-- <div class="question">
-                <p id="questionSociety">Vous avez des questions ? N'hésitez pas à nous contacter.</p>
-            </div> -->
+            <p id="questionSociety">Vous avez des questions ? N'hésitez pas à nous contacter.</p>
+        </div> -->
 </div>
 
 <?php

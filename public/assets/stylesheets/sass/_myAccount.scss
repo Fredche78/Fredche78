@@ -1,0 +1,51 @@
+.myAccount {
+    display: flex;
+    // width: 100%;
+    justify-content: center;
+
+    .account {
+        text-align: center;
+        width: 60%;
+
+        .viewAccount {
+            display: flex;
+            margin: 5rem 0;
+
+            .items-account {
+                flex-basis: 50%;
+
+                .item-view {
+                    margin: 1.5rem;
+                }
+
+            }
+
+            .items-account-address {
+                flex-basis: 50%;
+
+                h3 {
+                    margin: 2rem 0 1rem 0;
+                }
+
+
+                .address-account {
+                    .address {
+                        display: flex;
+                        justify-content: center;
+
+                        label,
+                        input,
+                        select {
+                            display: flex;
+                            width: 100%;
+                        }
+
+                        label {
+                            margin: 1.8rem 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

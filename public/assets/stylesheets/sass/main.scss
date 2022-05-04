@@ -1,153 +1,63 @@
 @use "reset";
+@use "header";
+@use "footer";
 @use "contact";
 @use "resetMail";
 @use "admin";
 @use "request";
 @use "requestView";
 @use "legal";
+@use "myAccount";
 @use "carousel";
 @use "mixins" as m;
 @use "variables" as v;
 
 body {
     position: relative;
+    // min-height: 100vh;
     // background-color: v.$color-background;
-    min-height: 100%;
     background: url("../../img/background-carbone.webp");
+    // linear-gradient(to top, transparent, 15%, #ff0000)
     background-size: contain;
     background-attachment: fixed;
     // font-size: 2rem;
     // margin: 0 6rem;
     // padding: 0 6rem;
 
-    header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        background-color: rgba($color: #000000, $alpha: 0.6);
-        padding: 3rem 5rem;
-
-        .company {
-            color: v.$color-primary;
-            display: flex;
-            flex-basis: 30%;
-            // display: flex;
-            // text-align: left;
-
-            // h1 {
-            //     margin: 0;
-            // }
-
-            .logo {
-                img {
-                    // min-width: 50px;
-                    max-width: 100%;
-                }
-            }
-
-            // p {
-            //     text-align: left;
-            //     margin: 0;
-            // }
-        }
-
-        .rightMenu {
-            flex-basis: 30%;
-            // align-items: center;
-
-            .authentification {
-                display: flex;
-                justify-content: right;
-                color: #fff;
-
-                ul {
-                    text-align: right;
-
-                    p {
-                        margin: 0;
-                    }
-
-                    li {
-                        list-style: none;
-                        display: inline-flex;
-                        justify-content: space-between;
-
-                        a {
-                            color: #fff;
-                            text-decoration: none;
-                        }
-                    }
-                }
-            }
-
-            .links {
-                display: flex;
-                filter: v.$color-svg;
-                justify-content: right;
-                // background-color: rgba(0,0,0,0.8);
-
-                // @include m.icons-shadow;
-
-                .mail {
-                    width: 45px;
-                    height: 45px;
-                    background: url("../../icons/envelope.svg");
-                    background-repeat: no-repeat;
-                }
-
-                .phone {
-                    width: 40px;
-                    height: 40px;
-                    margin: 0 2rem;
-                    background: url("../../icons/phone.svg");
-                    background-repeat: no-repeat;
-                    // box-shadow: v.$color-shadow-icons;
-                }
-
-                .facebook {
-                    width: 40px;
-                    height: 40px;
-                    background: url("../../icons/facebook.svg");
-                    background-repeat: no-repeat;
-                }
-            }
-        }
-    }
-
     main {
-        min-height: 100%;
+        height: 100%;
+        position: relative;
         background-color: rgba($color: #000000, $alpha: 0.6);
         color: #fff;
-        padding: 0 5rem;
+        // padding: 0 4rem;
 
         .view {
             background: url("../../img/Lamborghini.jpg");
-            background-size: cover;
+            background-size: 90%;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             // margin: 2rem 0;
             color: #fff;
-        }
 
-        .txtView {
-            text-align: center;
-            padding: 2rem 0rem;
-            font-size: 160%;
-            // max-height: 90rem;
-            // height: 40rem;
-        }
+            .txtView {
+                text-align: center;
+                padding: 1.5rem 0rem;
+                font-size: 130%;
+                // max-height: 90rem;
+                // height: 40rem;
 
-        .txt {
-            padding: 3rem;
-            margin: 5rem 20rem;
-            background-color: rgba($color: #000000, $alpha: 0.5);
-            border-radius: 2rem;
-
-            // &:hover {
-            //     color: v.$color-primary;
-            // }
+                .txtHome {
+                    padding: 3rem;
+                    margin: 5rem 20rem;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
+                    border-radius: 2rem;
+        
+                    // &:hover {
+                    //     color: v.$color-primary;
+                    // }
+                }
+            }
         }
 
         .ceo {
@@ -180,11 +90,11 @@ body {
             text-align: center;
             color: #fff;
             font-size: 2rem;
-            // height: 62rem;
             margin: 0;
 
-            * {
-                list-style-type: none;
+            .servicesView {
+                flex-basis: 25%;
+                @include m.box;
                 margin: 1rem 0;
 
                 hr {
@@ -192,26 +102,11 @@ body {
                     border: none;
                     background-color: v.$color-primary;
                 }
+
+                .listServices {
+                    margin: 4rem 0;
+                }
             }
-
-            .service {
-                flex-basis: 25%;
-                @include m.box;
-
-                // ul {
-                //     margin: none;
-                // }
-            }
-
-            // .secondService {
-            //     flex-basis: 25%;
-            //     @include m.box;
-            // }
-
-            // .thirdService {
-            //     flex-basis: 25%;
-            //     @include m.box;
-            // }
         }
 
         .prices {
@@ -229,26 +124,22 @@ body {
         }
 
         .reviews {
-            // display: flex;
-            // justify-content: center;
-            // margin: 0 5rem;
             text-align: center;
 
-            .carousel {
-                display: flex;
-                justify-content: center;
+            .reviewsView {
+                text-align: center;
+
             }
         }
 
         .pictures {
             // display: flex;
-            .picture {
+            .picturesView {
                 display: flex;
                 text-align: center;
                 justify-content: space-evenly;
                 margin: 7rem 0;
                 
-
                 .before {
                     flex-basis: 45%;
 
@@ -259,20 +150,20 @@ body {
                             width: 100%;
                             border-radius: 2rem;
                         }
-                    }
 
-                    .txtBefore {
-                        position: absolute;
-                        top: 89%;
-                        right: 0;
-                        bottom: 0.5%;
-                        left: 0;
-                        background-color: rgba($color: #000000, $alpha: 0.5);
-                        border-radius: 0 0 2rem 2rem;
-
-                        p {
-                            // margin: 0.5rem;
-                            font-size: 2rem;
+                        .txtBefore {
+                            position: absolute;
+                            top: 89%;
+                            right: 0;
+                            bottom: 0.5%;
+                            left: 0;
+                            background-color: rgba($color: #000000, $alpha: 0.5);
+                            border-radius: 0 0 2rem 2rem;
+    
+                            p {
+                                // margin: 0.5rem;
+                                font-size: 2rem;
+                            }
                         }
                     }
                 }
@@ -286,22 +177,22 @@ body {
                         img {
                             width: 100%;
                             border-radius: 2rem;
-                        }
 
-                        .txtAfter {
-                            position: absolute;
-                            top: 89%;
-                            right: 0;
-                            bottom: 0.5%;
-                            left: 0;
-                            background-color: rgba($color: #000000, $alpha: 0.5);
-                            border-radius: 0 0 2rem 2rem;
-
-                            p {
-                                // margin: 0.5rem;
-                                font-size: 2rem;
+                            .txtAfter {
+                                position: absolute;
+                                top: 89%;
+                                right: 0;
+                                bottom: 0.5%;
+                                left: 0;
+                                background-color: rgba($color: #000000, $alpha: 0.5);
+                                border-radius: 0 0 2rem 2rem;
+    
+                                p {
+                                    // margin: 0.5rem;
+                                    font-size: 2rem;
+                                }
                             }
-                        }
+                        }  
                     }
                 }
             }
@@ -311,11 +202,11 @@ body {
             display: flex;
             justify-content: space-evenly;
             @include m.box;
-            // margin: 0 5rem;
-            padding: 7rem 10rem;
+            margin: 0 5rem;
+            padding: 5rem;
 
             .society {
-                flex-basis: 50%;
+                flex-basis: 45%;
                 font-size: 3rem;
 
                 p {
@@ -330,7 +221,7 @@ body {
             }
 
             .map {
-                flex-basis: 50%;
+                flex-basis: 45%;
                 box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
 
                 iframe {
@@ -339,34 +230,6 @@ body {
                     height: 100%;
                 }
             }
-
-            // #questionSociety {
-            //     text-transform: uppercase;
-            //     text-align: center;
-            //     font-size: 4rem;
-            // }
-        }
-    }
-
-    footer {
-        display: flex;
-        justify-content: space-evenly;
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding: 5rem 0;
-        margin: 0 20%;
-        // background-color: rgba($color: #000000, $alpha: 0.6);
-
-        * {
-            color: #fff;
-            text-decoration: none;
-            font-size: 2.5rem;
-        }
-
-        .copyright {
-            display: flex;
         }
     }
 }

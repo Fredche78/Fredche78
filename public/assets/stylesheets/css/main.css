@@ -4,7 +4,6 @@
 
 html {
   font-size: 62.5%;
-  height: 100%;
 }
 
 body {
@@ -13,15 +12,100 @@ body {
   padding: 0;
 }
 
-.contact {
-  position: relative;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3rem 5rem;
 }
+header .company {
+  color: #f6ab36;
+  display: flex;
+  flex-basis: 30%;
+}
+header .company .logo img {
+  max-width: 100%;
+}
+header .rightMenu {
+  flex-basis: 30%;
+}
+header .rightMenu .authentification {
+  display: flex;
+  justify-content: right;
+  color: #fff;
+}
+header .rightMenu .authentification ul {
+  text-align: right;
+}
+header .rightMenu .authentification ul p {
+  margin: 0;
+}
+header .rightMenu .authentification ul li {
+  list-style: none;
+  display: inline-flex;
+  justify-content: space-between;
+}
+header .rightMenu .authentification ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+header .rightMenu .links {
+  display: flex;
+  filter: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
+  justify-content: right;
+}
+header .rightMenu .links .mail {
+  width: 45px;
+  height: 45px;
+  background: url("../../icons/envelope.svg");
+  background-repeat: no-repeat;
+}
+header .rightMenu .links .phone {
+  width: 40px;
+  height: 40px;
+  margin: 0 2rem;
+  background: url("../../icons/phone.svg");
+  background-repeat: no-repeat;
+}
+header .rightMenu .links .facebook {
+  width: 40px;
+  height: 40px;
+  background: url("../../icons/facebook.svg");
+  background-repeat: no-repeat;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+footer .footerView {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 5rem 0;
+  margin: 0 20%;
+}
+footer .footerView div, footer .footerView div > a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2.5rem;
+}
+footer .footerView .copyright {
+  display: flex;
+}
+
 .contact h1 {
   font-size: xx-large;
   text-transform: uppercase;
   text-align: center;
   margin: 0;
   padding: 5rem 0;
+}
+.contact #errorLogin {
+  text-align: center;
 }
 .contact .form {
   display: flex;
@@ -43,7 +127,9 @@ body {
   margin: 0.3rem 0;
   color: #f6ab36;
 }
-.contact .form .container .form-group input, .contact .form .container .form-group select, .contact .form .container .form-group textarea {
+.contact .form .container .form-group input,
+.contact .form .container .form-group select,
+.contact .form .container .form-group textarea {
   background-color: black;
   color: #f6ab36;
   border-radius: 0.4rem;
@@ -55,6 +141,9 @@ body {
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+.contact .form .container .form-group .form-item-group .errorsTxt {
+  color: #f10e0e;
 }
 .contact .form .container .form-group .form-item-group .form-photo {
   display: flex;
@@ -76,8 +165,8 @@ body {
 }
 .contact .form .container input[type=submit] {
   text-align: center;
-  background-color: #707070;
-  border: 0.5rem solid #f6ab36;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
   text-transform: uppercase;
   color: #fff;
@@ -86,16 +175,17 @@ body {
   cursor: pointer;
   font-size: x-large;
 }
-.contact .resetPwd {
-  position: absolute;
-  top: 55%;
-  right: 15%;
-  bottom: 0;
-  left: 50%;
+.contact .form .container input[type=submit]:hover {
+  background-color: #637b54;
 }
-.contact .resetPwd p a {
-  text-decoration: none;
+
+#resetPwd {
+  padding: 0.7rem;
+  margin: 0;
+}
+#resetPwd a {
   color: #fff;
+  text-transform: uppercase;
 }
 
 .resetMail {
@@ -114,39 +204,36 @@ body {
   font-size: x-large;
 }
 
-.backoffice {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-.backoffice .container .servicesAdmin h2 {
+.backoffice .administration .servicesAdmin h2 {
   text-align: center;
   text-transform: uppercase;
 }
-.backoffice .container .servicesAdmin .addServices {
+.backoffice .administration .servicesAdmin .addServices {
   background-color: #000;
   border: 1px solid #fff;
   padding: 2% 0;
 }
-.backoffice .container .servicesAdmin .addServices form {
+.backoffice .administration .servicesAdmin .addServices form {
   width: 100%;
 }
-.backoffice .container .servicesAdmin .addServices form .form-admin-group {
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group {
   display: flex;
   padding: 2% 5%;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .servicesAdmin .addServices form .form-admin-group {
+  .backoffice .administration .servicesAdmin .addServices form .form-admin-group {
     display: block;
     padding: 1% 4%;
   }
 }
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item {
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
   display: flex;
   max-width: 90%;
   background-color: #828481;
@@ -157,20 +244,20 @@ body {
   resize: none;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
     max-width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
     margin-bottom: 2rem;
   }
 }
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit {
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit {
   background-color: #aad992;
   font-weight: bolder;
   text-transform: uppercase;
@@ -179,56 +266,57 @@ body {
   border-radius: 0.5rem;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit {
+  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit {
     width: 100%;
     margin-top: 1rem;
     padding: 2rem 0;
   }
 }
-.backoffice .container .servicesAdmin .addServices form .form-admin-group .btn-submit:hover {
+.backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit:hover {
   background-color: #276d10;
 }
-.backoffice .container .reviewsAdmin h2 {
+.backoffice .administration .reviewsAdmin h2 {
   text-align: center;
   text-transform: uppercase;
 }
-.backoffice .container .reviewsAdmin .viewReviews .carousel {
+.backoffice .administration .reviewsAdmin .viewReviews .carousel {
   display: flex;
   margin: 1% 10%;
 }
-.backoffice .container .reviewsAdmin .viewReviews .carousel .reviewAdmin {
+.backoffice .administration .reviewsAdmin .viewReviews .carousel .reviewAdmin {
+  display: flex;
   width: 100%;
 }
-.backoffice .container .reviewsAdmin .addReviews {
+.backoffice .administration .reviewsAdmin .addReviews {
   background-color: #000;
   border: 1px solid #fff;
   padding: 2% 0;
 }
-.backoffice .container .reviewsAdmin .addReviews form {
+.backoffice .administration .reviewsAdmin .addReviews form {
   width: 100%;
 }
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group {
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group {
   display: flex;
   padding: 2% 5%;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group {
+  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group {
     display: block;
     padding: 1% 4%;
   }
 }
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item {
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item label {
+  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item label {
     padding: 0 0 0.6rem 0;
   }
 }
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
   max-width: 90%;
   background-color: #828481;
   font-weight: bolder;
@@ -239,18 +327,18 @@ body {
   display: flex;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
     max-width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
+  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
     margin-bottom: 2rem;
   }
 }
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
   background-color: #aad992;
   font-weight: bolder;
   text-transform: uppercase;
@@ -259,16 +347,16 @@ body {
   border-radius: 0.5rem;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
+  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
     width: 100%;
     margin-top: 1rem;
     padding: 2rem 0;
   }
 }
-.backoffice .container .reviewsAdmin .addReviews form .form-admin-group .btn-submit:hover {
+.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit:hover {
   background-color: #276d10;
 }
-.backoffice .container .photoVehicules .pictures .picture {
+.backoffice .administration .photoVehicules .pictures .picture {
   background-color: #c91f1f;
   border: 3px solid #fff;
 }
@@ -506,6 +594,44 @@ body {
   font-size: x-large;
 }
 
+.myAccount {
+  display: flex;
+  justify-content: center;
+}
+.myAccount .account {
+  text-align: center;
+  width: 60%;
+}
+.myAccount .account .viewAccount {
+  display: flex;
+  margin: 5rem 0;
+}
+.myAccount .account .viewAccount .items-account {
+  flex-basis: 50%;
+}
+.myAccount .account .viewAccount .items-account .item-view {
+  margin: 1.5rem;
+}
+.myAccount .account .viewAccount .items-account-address {
+  flex-basis: 50%;
+}
+.myAccount .account .viewAccount .items-account-address h3 {
+  margin: 2rem 0 1rem 0;
+}
+.myAccount .account .viewAccount .items-account-address .address-account .address {
+  display: flex;
+  justify-content: center;
+}
+.myAccount .account .viewAccount .items-account-address .address-account .address label,
+.myAccount .account .viewAccount .items-account-address .address-account .address input,
+.myAccount .account .viewAccount .items-account-address .address-account .address select {
+  display: flex;
+  width: 100%;
+}
+.myAccount .account .viewAccount .items-account-address .address-account .address label {
+  margin: 1.8rem 0;
+}
+
 /*
 * Carroussel Review
 */
@@ -551,94 +677,30 @@ body {
 
 body {
   position: relative;
-  min-height: 100%;
   background: url("../../img/background-carbone.webp");
   background-size: contain;
   background-attachment: fixed;
 }
-body header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 3rem 5rem;
-}
-body header .company {
-  color: #f6ab36;
-  display: flex;
-  flex-basis: 30%;
-}
-body header .company .logo img {
-  max-width: 100%;
-}
-body header .rightMenu {
-  flex-basis: 30%;
-}
-body header .rightMenu .authentification {
-  display: flex;
-  justify-content: right;
-  color: #fff;
-}
-body header .rightMenu .authentification ul {
-  text-align: right;
-}
-body header .rightMenu .authentification ul p {
-  margin: 0;
-}
-body header .rightMenu .authentification ul li {
-  list-style: none;
-  display: inline-flex;
-  justify-content: space-between;
-}
-body header .rightMenu .authentification ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-body header .rightMenu .links {
-  display: flex;
-  filter: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
-  justify-content: right;
-}
-body header .rightMenu .links .mail {
-  width: 45px;
-  height: 45px;
-  background: url("../../icons/envelope.svg");
-  background-repeat: no-repeat;
-}
-body header .rightMenu .links .phone {
-  width: 40px;
-  height: 40px;
-  margin: 0 2rem;
-  background: url("../../icons/phone.svg");
-  background-repeat: no-repeat;
-}
-body header .rightMenu .links .facebook {
-  width: 40px;
-  height: 40px;
-  background: url("../../icons/facebook.svg");
-  background-repeat: no-repeat;
-}
 body main {
-  min-height: 100%;
+  height: 100%;
+  position: relative;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  padding: 0 5rem;
 }
 body main .view {
   background: url("../../img/Lamborghini.jpg");
-  background-size: cover;
+  background-size: 90%;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #fff;
 }
-body main .txtView {
+body main .view .txtView {
   text-align: center;
-  padding: 2rem 0rem;
-  font-size: 160%;
+  padding: 1.5rem 0rem;
+  font-size: 130%;
 }
-body main .txt {
+body main .view .txtView .txtHome {
   padding: 3rem;
   margin: 5rem 20rem;
   background-color: rgba(0, 0, 0, 0.5);
@@ -671,24 +733,24 @@ body main .services {
   font-size: 2rem;
   margin: 0;
 }
-body main .services * {
-  list-style-type: none;
+body main .services .servicesView {
+  flex-basis: 25%;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
   margin: 1rem 0;
 }
-body main .services * hr {
+body main .services .servicesView hr {
   height: 0.3rem;
   border: none;
   background-color: #f6ab36;
 }
-body main .services .service {
-  flex-basis: 25%;
-  background-color: #707070;
-  border: 0.5rem solid #f6ab36;
-  border-radius: 2rem;
+body main .services .servicesView .listServices {
+  margin: 4rem 0;
 }
 body main .prices {
-  background-color: #707070;
-  border: 0.5rem solid #f6ab36;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
   margin: 10rem;
   padding: 3rem 0;
@@ -703,27 +765,26 @@ body main .prices * {
 body main .reviews {
   text-align: center;
 }
-body main .reviews .carousel {
-  display: flex;
-  justify-content: center;
+body main .reviews .reviewsView {
+  text-align: center;
 }
-body main .pictures .picture {
+body main .pictures .picturesView {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
   margin: 7rem 0;
 }
-body main .pictures .picture .before {
+body main .pictures .picturesView .before {
   flex-basis: 45%;
 }
-body main .pictures .picture .before .imgBefore {
+body main .pictures .picturesView .before .imgBefore {
   position: relative;
 }
-body main .pictures .picture .before .imgBefore img {
+body main .pictures .picturesView .before .imgBefore img {
   width: 100%;
   border-radius: 2rem;
 }
-body main .pictures .picture .before .txtBefore {
+body main .pictures .picturesView .before .imgBefore .txtBefore {
   position: absolute;
   top: 89%;
   right: 0;
@@ -732,20 +793,20 @@ body main .pictures .picture .before .txtBefore {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 2rem 2rem;
 }
-body main .pictures .picture .before .txtBefore p {
+body main .pictures .picturesView .before .imgBefore .txtBefore p {
   font-size: 2rem;
 }
-body main .pictures .picture .after {
+body main .pictures .picturesView .after {
   flex-basis: 45%;
 }
-body main .pictures .picture .after .imgAfter {
+body main .pictures .picturesView .after .imgAfter {
   position: relative;
 }
-body main .pictures .picture .after .imgAfter img {
+body main .pictures .picturesView .after .imgAfter img {
   width: 100%;
   border-radius: 2rem;
 }
-body main .pictures .picture .after .imgAfter .txtAfter {
+body main .pictures .picturesView .after .imgAfter img .txtAfter {
   position: absolute;
   top: 89%;
   right: 0;
@@ -754,19 +815,20 @@ body main .pictures .picture .after .imgAfter .txtAfter {
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 2rem 2rem;
 }
-body main .pictures .picture .after .imgAfter .txtAfter p {
+body main .pictures .picturesView .after .imgAfter img .txtAfter p {
   font-size: 2rem;
 }
 body main .infosSociety {
   display: flex;
   justify-content: space-evenly;
-  background-color: #707070;
-  border: 0.5rem solid #f6ab36;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
-  padding: 7rem 10rem;
+  margin: 0 5rem;
+  padding: 5rem;
 }
 body main .infosSociety .society {
-  flex-basis: 50%;
+  flex-basis: 45%;
   font-size: 3rem;
 }
 body main .infosSociety .society p {
@@ -778,31 +840,13 @@ body main .infosSociety .society #nameSociety {
   text-transform: uppercase;
 }
 body main .infosSociety .map {
-  flex-basis: 50%;
+  flex-basis: 45%;
   box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
 }
 body main .infosSociety .map iframe {
   display: flex;
   width: 100%;
   height: 100%;
-}
-body footer {
-  display: flex;
-  justify-content: space-evenly;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 5rem 0;
-  margin: 0 20%;
-}
-body footer * {
-  color: #fff;
-  text-decoration: none;
-  font-size: 2.5rem;
-}
-body footer .copyright {
-  display: flex;
 }
 
 /*# sourceMappingURL=main.css.map */

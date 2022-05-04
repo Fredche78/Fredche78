@@ -15,24 +15,46 @@ if (isset($_GET["token"])) {
     }
 
     if (isset($_POST["password"])) {
+        // if (!empty($_POST)) {
         // Le formulaire est envoyé et un mot de passe est disponible
         // N'oubliez pas de valider la consistance du mot de passe comme dans create_account.php
         $password = trim(strip_tags($_POST["password"]));
-        // Cryptage du mot de passe
+        $retypePassword = trim(strip_tags($_POST["retypePassword"]));
+
+        $errors = [];
+        
+        if ($password !== $retypePassword) {
+            $errors["retypePassword"] = "Les mots de passe ne sont pas identiques";
+        }
+
+        $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
+        $lowercase = preg_match("/[a-z]/", $password);
+        $number = preg_match("/[0-9]/", $password);
+        $haveSpace = preg_match("/ /", $password);
+
+        if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
+            $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
+        }
+
+         // Cryptage du mot de passe
         $password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Requète SQL de mise à jour du mot de passe
-        $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");
-        $query->bindParam(":password", $password);
-        $query->bindParam(":email", $result["email"]);
+        if (empty($errors)) {
 
-        if ($query->execute()) {
-            // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+            // Requète SQL de mise à jour du mot de passe
+            $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");
+            $query->bindParam(":password", $password);
+            $query->bindParam(":email", $result["email"]);
 
-            header("Location: ./login.php");
+            if ($query->execute()) {
+                // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+                header("Location: ./login.php");
+            } else {
+                $message = "Erreur de bdd";
+            }
         }
     }
-    // var_dump($result);
+
 } else {
     header("Location: ./");
 }
@@ -45,14 +67,58 @@ include("../templates/header.php")
 
     <h1>Choississez votre nouveau mot de passe</h1>
 
-    <form action="" method="post">
-        <div class="form-group">
-            <label for="inputPassword">Nouveau mot de passe</label>
-            <input type="password" name="password" id="inputPassword">
-        </div>
+    <div class="form">
 
-        <input type="submit" value="Envoyer">
-    </form>
+        <form action="" method="post">
+
+            <div class="container">
+
+                <div class="form-group">
+
+                    <div class="form-item-group">
+
+                        <label for="inputPassword">Nouveau mot de passe</label>
+                        <input type="password" name="password" id="inputPassword">
+
+                        <?php
+                        if (isset($errors["password"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["password"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="form-item-group">
+
+                        <label for="inputRetypePassword">Confirmer nouveau mot de passe</label>
+                        <input type="password" name="retypePassword" id="inputRetypePassword">
+
+                        <?php
+                        if (isset($errors["retypePassword"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["retypePassword"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
+                </div>
+
+                <input type="submit" value="Envoyer">
+
+            </div>
+
+        </form>
+
+    </div>
+
 </div>
 
 <?php

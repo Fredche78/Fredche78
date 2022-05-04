@@ -1,36 +1,45 @@
-</main>
-    <footer>
+        </main>
 
-        <div class="copyright">
-            2022<img src="assets/icons/copyright.svg" alt="Copyright" width="20px" height="20px">
-        </div>
+        <footer>
 
-        <div> - 
-        </div>
+            <div class="footerView">
 
-        <div class="legal">
-            <a href="legal.php?page=mentions">Mentions légales</a>
-        </div>
+                <div class="copyright">
+                    2022<img src="assets/icons/copyright.svg" alt="Copyright" width="20px" height="20px">
+                </div>
 
-        <div> - 
-        </div>
+                <div> -
+                </div>
 
-        <div class="protect">
-            <a href="legal.php?page=protect">Protection de la vie privée</a>
-        </div>
+                <div class="legal">
+                    <a href="legal.php?page=mentions">Mentions légales
+                    </a>
+                </div>
 
-        <div> - 
-        </div>
+                <div> -
+                </div>
 
-        <div class="cookies">
-            <a href="legal.php?page=cookies">Cookies
-            </a>
-        </div>
+                <div class="protect">
+                    <a href="legal.php?page=protect">Protection de la vie privée
+                    </a>
+                </div>
 
-    </footer>
+                <div> -
+                </div>
 
-    <!-- <script src="https://kit.fontawesome.com/6b8692a053.js" crossorigin="anonymous"></script> -->
-    <script src="js/carousel.js"></script>
-</body>
+                <div class="cookies">
+                    <a href="legal.php?page=cookies">Cookies
+                    </a>
+                </div>
 
-</html>
+            </div>
+
+        </footer>
+
+        <!-- <script src="https://kit.fontawesome.com/6b8692a053.js" crossorigin="anonymous"></script> -->
+        <script src="js/carousel.js">
+        </script>
+
+        </body>
+
+        </html>

@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     $firstname = trim(strip_tags($_POST["firstname"])); // Ici firstname = au name dans le formulaire
     $lastname = trim(strip_tags($_POST["lastname"]));
     $email = trim(strip_tags($_POST["email"]));
-    $emailConfirm = trim(strip_tags($_POST["emailConfirm"]));
+    $retypeEmail = trim(strip_tags($_POST["retypeEmail"]));
     $password = trim(strip_tags($_POST["password"]));
     $retypePassword = trim(strip_tags($_POST["retypePassword"]));
     $address = trim(strip_tags($_POST["address"]));
@@ -15,81 +15,82 @@ if (!empty($_POST)) {
     $phone = trim(strip_tags($_POST["phone"]));
     $vehicule = trim(strip_tags($_POST["vehicule"]));
 
-
     //Initialisation d'un tableau d'erreur
     $errors = [];
+
+    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    $queryUsersMail = $db->query("SELECT email FROM users");
+    $usersMail = $queryUsersMail->fetchAll();
+
+    foreach ($usersMail as $userMail) {
+        if ($userMail["email"] === $email) {
+            $errors["emailBdd"] = "Un compte avec cet E-mail existe déjà";
+        }
+    }
 
     // Validation de l'email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors["email"] = "L'email n'est pas valide";
     }
 
-    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
-    // $query = $db->prepare("SELECT email FROM users WHERE email=:email");
-    // $query->execute();
-    // $test = $query->fetch();
+    // Comparer les emails
+    if ($email != $retypeEmail) {
+        $errors["retypeEmail"] = "Les emails ne sont pas identiques";
+    }
 
-    // if ($email === $test) {
-    //     
-?><p>L'utilisateur existe déjà</p><?php
-                                    // }
+    // Validation du mot de passe
+    if ($password != $retypePassword) {
+        $errors["retypePassword"] = "Les mots de passe ne sont pas identiques";
+    }
 
-// Validation du mot de passe
+    /**
+     * 
+     *  1/ Validation de la taille du mot de passe
+     *  2/ Validation de la présence d'au moins une majuscule, une minuscule et un chiffre
+     *  Pour ce faire nous allons utiliser des expressions régulières
+     *  En PHP l'utilisation des expressions régulières se fait avec la fonction preg_match
+     *  Par exemple :
+     *  - Rechercher une lettre majuscule n'importe où dans la chaine : [A-Z]
+     *  - Correspond à la chaine toto : toto
+     *  - Commence par toto : ^toto
+     *  - Termine par toto : toto$
+     *  - Contient toto : ^toto$
+     *  - Contient trois lettres majuscules : [A-Z]{3}
+     *  - Commence par http ou https : ^(http|https)
+     *  - Contient un caractère spécial : [^A-Za-z-9] // ^ ici veut dire différent de
+     */
 
-if ($password != $retypePassword) {
-    $errors["retypePassword"] = "Les mots de passe ne sont pas identiques";
-}
+    $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
+    $lowercase = preg_match("/[a-z]/", $password);
+    $number = preg_match("/[0-9]/", $password);
+    $haveSpace = preg_match("/ /", $password);
 
-/**
-* 
-*  1/ Validation de la taille du mot de passe
-*  2/ Validation de la présence d'au moins une majuscule, une minuscule et un chiffre
-*  Pour ce faire nous allons utiliser des expressions régulières
-*  En PHP l'utilisation des expressions régulières se fait avec la fonction preg_match
-*  Par exemple :
-*  - Rechercher une lettre majuscule n'importe où dans la chaine : [A-Z]
-*  - Correspond à la chaine toto : toto
-*  - Commence par toto : ^toto
-*  - Termine par toto : toto$
-*  - Contient toto : ^toto$
-*  - Contient trois lettres majuscules : [A-Z]{3}
-*  - Commence par http ou https : ^(http|https)
-*  - Contient un caractère spécial : [^A-Za-z-9] // ^ ici veut dire différent de
-*/
+    if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
+        $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
+    }
 
-$uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
-$lowercase = preg_match("/[a-z]/", $password);
-$number = preg_match("/[0-9]/", $password);
-$haveSpace = preg_match("/ /", $password);
+    // Si pas d'erreur -> insertion de l'utilisateur en BDD
+    if (empty($errors)) {
 
-if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
-    $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
-}
+        // Cryptage du mot de passe -> BCRYPT par défaut mais possibilité d'utiliser du ARGON2 (pas d'insertion du mot de passe sans cryptage)
+        $password = password_hash($password, PASSWORD_DEFAULT);
 
-// Si pas d'erreur -> insertion de l'utilisateur en BDD
-if (empty($errors)) {
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+        $query = $db->prepare("INSERT INTO users (firstname, lastname, email, password, address, city, postcode, state, phone, vehicule) VALUES (:firstname, :lastname, :email, :password, :address, :city, :postcode, :state, :phone, :vehicule)");
 
-// Cryptage du mot de passe -> BCRYPT par défaut mais possibilité d'utiliser du ARGON2 (pas d'insertion du mot de passe sans cryptage)
-$password = password_hash($password, PASSWORD_DEFAULT);
+        $query->bindParam(":firstname", $firstname);
+        $query->bindParam(":lastname", $lastname);
+        $query->bindParam(":email", $email);
+        $query->bindParam(":password", $password);
+        $query->bindParam(":address", $address);
+        $query->bindParam(":city", $city);
+        $query->bindParam(":postcode", $postcode);
+        $query->bindParam(":state", $state);
+        $query->bindParam(":phone", $phone);
+        $query->bindParam(":vehicule", $vehicule);
 
-$query = $db->prepare("INSERT INTO users (firstname, lastname, email, password, address, city, postcode, state, phone, vehicule) VALUES (:firstname, :lastname, :email, :password, :address, :city, :postcode, :state, :phone, :vehicule)");
+        if ($query->execute()) {
 
-$query->bindParam(":firstname", $firstname);
-$query->bindParam(":lastname", $lastname);
-$query->bindParam(":email", $email);
-$query->bindParam(":password", $password);
-$query->bindParam(":address", $address);
-$query->bindParam(":city", $city);
-$query->bindParam(":postcode", $postcode);
-$query->bindParam(":state", $state);
-$query->bindParam(":phone", $phone);
-$query->bindParam(":vehicule", $vehicule);
-
-    if ($query->execute()) {
-
-        header("Location: login.php");
-
+            header("Location: login.php");
         } else {
 
             $message = "Erreur de bdd";
@@ -110,53 +111,79 @@ include("../templates/header.php")
                 <div class="form-group">
                     <div class="form-item-group">
                         <label for="inputFirstname">Prénom *</label>
-                        <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>">
+                        <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>" required>
                     </div>
                     <div class="form-item-group">
                         <label for="inputLastname">Nom *</label>
-                        <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>">
+                        <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>" required>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="form-item-group">
                         <label for="inputEmail">E-mail *</label>
-                        <input type="email" id="inputEmail" name="email" value="<?= isset($email) ? $email : "" ?>">
+                        <input type="email" id="inputEmail" name="email" value="<?= isset($email) ? $email : "" ?>" required>
+
                         <?php
                         if (isset($errors["email"])) {
                         ?>
-                            <p><?= $errors["email"] ?></p>
+                            <p class="errorsTxt"><?= $errors["email"] ?>
+                            </p>
                         <?php
                         }
                         ?>
+                        
+                        <?php
+                        if (isset($errors["emailBdd"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["emailBdd"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+
                     </div>
+
                     <div class="form-item-group">
-                        <label for="inputEmailConfirm">Confirmer E-mail *</label>
-                        <input type="email" name="emailConfirm" id="inputEmailConfirm" value="<?= isset($emailConfirm) ? $emailConfirm : "" ?>" required />
+                        <label for="inputRetypeEmail">Confirmer E-mail *</label>
+                        <input type="email" name="retypeEmail" id="inputRetypeEmail" value="<?= isset($retypeEmail) ? $retypeEmail : "" ?>" required />
+
+                        <?php
+                        if (isset($errors["retypeEmail"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["retypeEmail"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+
                     </div>
+
                 </div>
 
                 <div class="form-group">
                     <div class="form-item-group">
                         <label for="inputPassword">Mot de passe *</label>
                         <input type="password" name="password" id="inputPassword" value="<?= isset($password) ? $password : "" ?>">
-                    </div>
 
-                    <?php
-                    if (isset($errors["password"])) {
-                    ?>
-                        <p><?= $errors["password"] ?></p>
-                    <?php
-                    }
-                    ?>
+                        <?php
+                        if (isset($errors["password"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["password"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
+
+                    </div>
 
                     <div class="form-item-group">
                         <label for="inputRetypePassword">Confirmer mot de passe *</label>
-                        <input type="password" name="retypePassword" id="inputRetypePassword" value="<?= isset($retryPassword) ? $retryPassword : "" ?>">
+                        <input type="password" name="retypePassword" id="inputRetypePassword" value="<?= isset($retypePassword) ? $retypePassword : "" ?>">
                         <?php
                         if (isset($errors["retypePassword"])) {
                         ?>
-                            <p><?= $errors["retypePassword"] ?></p>
+                            <p class="errorsTxt"><?= $errors["retypePassword"] ?></p>
                         <?php
                         }
                         ?>
@@ -193,7 +220,7 @@ include("../templates/header.php")
                 <div class="form-group">
                     <div class="form-item-group">
                         <label for="inputpostcode">Téléphone *</label>
-                        <input type="number" id="inputphone" name="phone" value="<?= isset($phone) ? $phone : "" ?>">
+                        <input type="number" id="inputphone" name="phone" value="<?= isset($phone) ? $phone : "" ?>" required>
                     </div>
                     <div class="form-item-group">
                         <label for="inputVehicule">Véhicule(s)</label>

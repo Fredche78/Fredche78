@@ -240,7 +240,7 @@ include("../templates/header.php")
         <a href="request.php">Demandes</a>
     </div>
 
-    <div class="container">
+    <div class="administration">
 
         <div class="servicesAdmin">
 
@@ -323,34 +323,41 @@ include("../templates/header.php")
 
             <h2>Avis clients</h2>
 
-            <div class="viewReviews">
+            <!-- <div class="viewReviews"> -->
 
-                <?php
-                foreach ($reviews as $data) {
-                ?>
-                    <div class="carousel">
-                        <div class="reviewAdmin"><?= $data["client"] . " - " . $data["review"] ?>
-                        </div>
-                        <div class="deleteReview">
+                <!-- <div class="carousel"> -->
 
-                            <form action="" method="post">
-                                <button class="btn-delete" name="deleteReview" type="submit" value="<?= $data['id'] ?>">X</button>
-                            </form>
+                    <?php
+                    foreach ($reviews as $data) {
+                    ?>
+                        <div id="carousel">
+
+                            <!-- <div class="reviewAdmin">-->
+                                <?= $data["client"] . " - " . $data["review"] ?> 
+                            <!-- </div> -->
+
+                            <div class="deleteReview">
+
+                                <form action="" method="post">
+                                    <button class="btn-delete" name="deleteReview" type="submit" value="<?= $data['id'] ?>">X</button>
+                                </form>
+                            </div>
+
                         </div>
-                    </div>
-                    <!-- <div class="precedent" onclick="ChangeSlide(-1)">
+                        <!-- <div class="precedent" onclick="ChangeSlide(-1)">
                     <span>
                         <<<<<< </span>
-                </div>
-                <div class="suivant" onclick="ChangeSlide(1)">
+                    </div>
+                    <div class="suivant" onclick="ChangeSlide(1)">
                     <span>
                         >>>>>>
                         <span>
-                </div> -->
-                <?php
-                }
-                ?>
-            </div>
+                    </div> -->
+                    <?php
+                    }
+                    ?>
+                <!-- </div> -->
+            <!-- </div> -->
 
             <div class="addReviews">
 
@@ -400,6 +407,9 @@ include("../templates/header.php")
         <div class="photosVehicules" id="photosView">
             <div class="pictures">
                 <?php
+
+                // var_dump($photos);
+
                 foreach ($photos as $data) {
                 ?>
                     <div class="picture">
