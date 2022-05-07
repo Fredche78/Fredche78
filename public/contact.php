@@ -1,4 +1,20 @@
 <?php
+include("../templates/header.php");
+
+//Initialisation d'un tableau d'erreur
+$errors = [];
+$confirme = "";
+
+if (isset($_SESSION['email'])) {
+    $emailLog = trim(strip_tags($_SESSION['email']));
+
+    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+
+    $queryLog = $db->prepare("SELECT * FROM users WHERE email =  :email");
+    $queryLog->BindParam(":email", $emailLog);
+    $queryLog->execute();
+    $userLog = $queryLog->fetch(PDO::FETCH_ASSOC);
+}
 
 if (!empty($_POST)) {
     // Le formulaire a été soumis
@@ -9,54 +25,43 @@ if (!empty($_POST)) {
     $vehicule = trim(strip_tags($_POST["vehicule"]));
     $city = trim(strip_tags($_POST["city"]));
     $question = trim(strip_tags($_POST["question"]));
-    $photoOld = trim(strip_tags($_FILES["photo"]["name"]));
-    $photoOld2 = trim(strip_tags($_FILES["photo2"]["name"]));
-    $photoOld3 = trim(strip_tags($_FILES["photo3"]["name"]));
-    // $photo = trim(strip_tags($_FILES["photo"]["name"]));
-    // $photo2 = trim(strip_tags($_POST["photo2"]));
-    // $photo3 = trim(strip_tags($_POST["photo3"]));
     $message = trim(strip_tags($_POST["message"]));
 
-    // if (!empty($_FILES["photo"]["name"])) {
-        // var_dump($photoOld); 
-    // }
+    for ($i = 1; $i < 4; $i++) {
 
-    $tmpName = $_FILES["photo"]["tmp_name"];
-    $name = $_FILES["photo"]["name"];
-    $size = $_FILES["photo"]["size"];
+/////////////////////////// Vérifier si ce if fonctionne/////////////////
+        if (!empty($_FILES["photo" . $i]["name"])) {
 
-    // var_dump($tmpName);
-    // var_dump($name);
-    // var_dump($size);
+            $photoOld[$i] = trim(strip_tags($_FILES["photo" . $i]["name"]));
+            $tmpName[$i] = $_FILES["photo" . $i]["tmp_name"];
+            $name[$i] = $_FILES["photo" . $i]["name"];
+            $size[$i] = $_FILES["photo" . $i]["size"];
+            $uploadPath[$i] = "assets/img/photos/devis/" . $name[$i];
+            $errorsFiles = $_FILES["photo" . $i]["error"];
+            $tabExtension[$i] = explode(".", $name[$i]);
+            $extension[$i] = strtolower(end($tabExtension[$i]));
+            $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
+            $maxSize = 2000000;
 
-    $tmpName2 = $_FILES["photo2"]["tmp_name"];
-    $name2 = $_FILES["photo2"]["name"];
-    $size2 = $_FILES["photo2"]["size"];
+            if (in_array($extension[$i], $allowedTypes) && $size[$i] <= $maxSize && $errorsFiles == 0) {
 
-    // var_dump($tmpName2);
-    // var_dump($name2);
-    // var_dump($size2);
+                $uniqueName[$i] = md5(time() . $name[$i]);
+                $photo[$i] = $uniqueName[$i] . "." . $extension[$i];
 
-    $tmpName3 = $_FILES["photo3"]["tmp_name"];
-    $name3 = $_FILES["photo3"]["name"];
-    $size3 = $_FILES["photo3"]["size"];
+                move_uploaded_file($tmpName[$i], $uploadPath[$i]);
+                rename("assets/img/photos/devis/$photoOld[$i]", "assets/img/photos/devis/$photo[$i]");
 
-    $uploadPath = "assets/img/photos/devis/" . $name; // . $photo fonctionne aussi
-    $uploadPath2 = "assets/img/photos/devis/" . $name2; // . $photo fonctionne aussi
-    $uploadPath3 = "assets/img/photos/devis/" . $name3; // . $photo fonctionne aussi
+                // echo "Image enregistrée";
+            } else {
 
-
-    //Initialisation d'un tableau d'erreur
-    $errors = [];
-    ///////////////////////// A comprendre ou à revoir////////////////////////////////////////////
-    $errorsFiles = $_FILES["photo"]["error"];
-    // var_dump($errors);
-
-    $tabExtension = explode(".", $name);
-    $extension = strtolower(end($tabExtension));
-    $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-    // $allowedTypes = array("image/jpeg", "image/png", "image/jpg", "image/bmp");
-    $maxSize = 2000000;
+                if ($maxSize <= $size[$i]) {
+                    $errors["weight"][$i] = "Maximum 2Mo";
+                } else {
+                    $errors["files"][$i] = "Une erreur est survenue";
+                }
+            }
+        }
+    }
 
     // Validation de l'email
 
@@ -64,51 +69,13 @@ if (!empty($_POST)) {
         $errors["email"] = "L'email n'est pas valide";
     }
 
-    // if ($maxSize<=$size) {
-    //     $_FILES["photo"]["error"] = "Fichier trop volumineux";
-    //     var_dump($errors["photo"]);
-    // }
-
-    /////////////////////////////////////////////////////////////////////////////////
-    if (in_array($extension, $allowedTypes) && $size <= $maxSize && $errorsFiles == 0) {
-        $uniqueName = md5($name);
-        $uniqueName2 = md5($name2);
-        $uniqueName3 = md5($name3);
-
-        $photo = $uniqueName . "." . $extension;
-        $photo2 = $uniqueName2 . "." . $extension;
-        $photo3 = $uniqueName3 . "." . $extension;
-
-        move_uploaded_file($tmpName, $uploadPath);
-        move_uploaded_file($tmpName2, $uploadPath2);
-        move_uploaded_file($tmpName3, $uploadPath3);
-        // $photoOld = trim(strip_tags($_FILES["photo"]["name"]));
-        rename("assets/img/photos/devis/$photoOld", "assets/img/photos/devis/$photo");
-        rename("assets/img/photos/devis/$photoOld2", "assets/img/photos/devis/$photo2");
-        rename("assets/img/photos/devis/$photoOld3", "assets/img/photos/devis/$photo3");
-
-        echo "Image enregistrée";
-    } else {
-        echo "Une erreur est survenue";
-
-        if ($maxSize <= $size) {
-            echo "Fichier trop volumineux";
-        }
-    }
-    /////////////////////////////////////////////////////////////////////////////////
-
-    // Validation de l'email
-    // if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    //     $errors["email"] = "L'email n'est pas valide";
-    // }
-
     //////////////////////////////////////////////////////////////////////////////////
 
     // Si pas d'erreur -> insertion de l'utilisateur en BDD
     if (empty($errors) && empty($errorsFiles)) {
         $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
-        $query = $db->prepare("INSERT INTO contacts (firstname, lastname, email, phone, vehicule, city, question, photo, photo2, photo3, message) VALUES (:firstname, :lastname, :email, :phone, :vehicule, :city, :question, :photo, :photo2, :photo3, :message)");
+        $query = $db->prepare("INSERT INTO contacts (firstname, lastname, email, phone, vehicule, city, question, photo, photo2, photo3, message) VALUES (:firstname, :lastname, :email, :phone, :vehicule, :city, :question, :photo1, :photo2, :photo3, :message)");
 
         $query->bindParam(":firstname", $firstname);
         $query->bindParam(":lastname", $lastname);
@@ -117,102 +84,247 @@ if (!empty($_POST)) {
         $query->bindParam(":vehicule", $vehicule);
         $query->bindParam(":city", $city);
         $query->bindParam(":question", $question);
-        $query->bindParam(":photo", $photo);
-        $query->bindParam(":photo2", $photo2);
-        $query->bindParam(":photo3", $photo3);
+        $query->bindParam(":photo1", $photo[1]);
+        $query->bindParam(":photo2", $photo[2]);
+        $query->bindParam(":photo3", $photo[3]);
         $query->bindParam(":message", $message);
 
         if ($query->execute()) {
-            // header("Location: contact.php");
+
             // echo "message envoyé";
+            // header("Location: contact.php");
+            $confirme = "Votre demande a bien été enregistrée";
+            // header("Location: contact.php");
             // sleep(5);
+
         } else {
-            $messageError = "Erreur de bdd";
+            $errors["db"] = "Erreur de bdd";
         }
     }
 }
-include("../templates/header.php")
 ?>
 
 <div class="contact">
 
-    <h1>Formulaire de contact</h1>
+    <?php
+    if (empty($confirme)) {
+    ?>
 
-    <div class="form">
-        <form action="" method="post" enctype="multipart/form-data">
-            <!-- Lorsque l’on souhaite soumettre un formulaire avec un type file il faut rajouter l’attribut  enctype= »multipart/form-data » dans la balise form. -->
-            <div class="container">
-                <div class="form-group">
-                    <div class="form-item-group">
-                        <label for="inputFirstname">Prénom *</label>
-                        <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>" required>
-                    </div>
-                    <div class="form-item-group">
-                        <label for="inputLastname">Nom *</label>
-                        <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>" required>
-                    </div>
-                </div>
+        <h1>Formulaire de contact</h1>
 
-                <div class="form-group">
-                    <div class="form-item-group">
-                        <label for="inputMail">E-mail *</label>
-                        <input type="email" id="inputMail" name="email" value="<?= isset($email) ? $email : "" ?>" required>
-                    </div>
-                    <div class="form-item-group">
-                        <label for="inputPhone">Téléphone *</label>
-                        <input type="tel" id="inputPhone" name="phone" value="<?= isset($phone) ? $phone : "" ?>">
-                    </div>
-                </div>
+        <?php
+        if (isset($errors["db"])) {
+        ?>
+            <h2><?= $errors["db"] ?>
+            </h2>
+        <?php
+        }
+        ?>
 
-                <div class="form-group">
-                    <div class="form-item-group">
-                        <label for="inputVehicule">Véhicule(s)</label>
-                        <input type="text" id="inputVehicule" name="vehicule" <?= isset($vehicule) ? $vehicule : "" ?>">
-                    </div>
-                    <div class="form-item-group">
-                        <label for="inputCity">Ville</label>
-                        <input type="text" id="inputCity" name="city" value="<?= isset($city) ? $city : "" ?>">
-                    </div>
-                </div>
+        <div class="form">
+            <form action="" method="post" enctype="multipart/form-data">
+                <!-- Lorsque l’on souhaite soumettre un formulaire avec un type file il faut rajouter l’attribut  enctype= »multipart/form-data » dans la balise form. -->
+                <div class="container">
+                    <div class="form-group">
+                        <div class="form-item-group">
+                            <label for="inputFirstname">Prénom *</label>
 
-                <div class="form-group">
-                    <div class="form-item-group">
-                        <label for="selectQuestion">Votre demande *</label>
-                        <select name="question" id="selectQuestion">
-                            <option value="Devis" <?= (isset($question) && $question === "Devis") ? "selected" : "" ?>>Demander un devis</option>
-                            <option value="Question" <?= (isset($question) && $question === "Question") ? "selected" : "" ?>>Poser une question</option>
-                        </select>
-                    </div>
-                    <div class="form-item-group">
-                        <label>Photo(s)</label>
-                        <div class="form-photo">
-                            <label for="inputPhoto">Photo 1</label>
-                            <input type="file" id="inputPhoto" name="photo" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo) ? $photo : "" ?>" style="display: none;">
-                            <!-- <p id="test"><?=$photoOld?></p> -->
-                            <!--  multiple="multiple" -->
-                            <label for="inputPhoto2">Photo 2</label>
-                            <input type="file" id="inputPhoto2" name="photo2" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo2) ? $photo2 : "" ?>" style="display: none;">
-                            <label for="inputPhoto3">Photo 3</label>
-                            <input type="file" id="inputPhoto3" name="photo3" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo3) ? $photo3 : "" ?>" style="display: none;">
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($userLog["firstname"]) ? $userLog["firstname"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>" required>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="form-item-group">
+                            <label for="inputLastname">Nom *</label>
+
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($userLog["lastname"]) ? $userLog["lastname"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>" required>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="form-item-group">
-                        <label for="txtMsg">Message</label>
-                        <textarea name="message" id="txtMsg" cols="167" rows="15" value="<?= isset($message) ? $message : "" ?>"></textarea>
+                    <div class="form-group">
+                        <div class="form-item-group">
+                            <label for="inputMail">E-mail *</label>
+
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputMail" name="email" value="<?= isset($userLog["email"]) ? $userLog["email"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="email" id="inputMail" name="email" value="<?= isset($email) ? $email : "" ?>" required>
+                            <?php
+                            }
+                            if (isset($errors["email"])) {
+                            ?>
+                                <p class="errorsTxt"><?= $errors["email"] ?>
+                                </p>
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="form-item-group">
+                            <label for="inputPhone">Téléphone *</label>
+
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputPhone" name="phone" value="<?= isset($userLog["phone"]) ? $userLog["phone"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="tel" id="inputPhone" name="phone" value="<?= isset($phone) ? $phone : "" ?>">
+                            <?php
+                            }
+                            ?>
+                        </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="form-item-group">
+                            <label for="inputVehicule">Véhicule(s)</label>
+
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputVehicule" name="vehicule" value="<?= isset($userLog["vehicule"]) ? $userLog["vehicule"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="text" id="inputVehicule" name="vehicule" <?= isset($vehicule) ? $vehicule : "" ?>">
+                            <?php
+                            }
+                            ?>
+                        </div>
+                        <div class="form-item-group">
+                            <label for="inputCity">Ville</label>
+
+                            <?php
+                            if (isset($_SESSION["email"])) {
+                            ?>
+                                <input type="text" id="inputCity" name="city" value="<?= isset($userLog["city"]) ? $userLog["city"] : "" ?>" required>
+                            <?php
+                            } else {
+                            ?>
+                                <input type="text" id="inputCity" name="city" value="<?= isset($city) ? $city : "" ?>">
+                            <?php
+                            }
+                            ?>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-item-group">
+                            <label for="selectQuestion">Votre demande *</label>
+                            <select name="question" id="selectQuestion">
+                                <option value="Devis" <?= (isset($question) && $question === "Devis") ? "selected" : "" ?>>Demander un devis</option>
+                                <option value="Question" <?= (isset($question) && $question === "Question") ? "selected" : "" ?>>Poser une question</option>
+                            </select>
+                        </div>
+                        <div class="form-item-group">
+                            <label>Photo(s)</label>
+                            <div class="form-photo">
+                                <label for="inputPhoto">Photo 1</label>
+                                <input type="file" id="inputPhoto" name="photo1" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo1) ? $photo1 : "" ?>" style="display: none;">
+                                <label for="inputPhoto2">Photo 2</label>
+                                <input type="file" id="inputPhoto2" name="photo2" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo2) ? $photo2 : "" ?>" style="display: none;">
+                                <label for="inputPhoto3">Photo 3</label>
+                                <input type="file" id="inputPhoto3" name="photo3" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo3) ? $photo3 : "" ?>" style="display: none;">
+                            </div>
+                            <div class="warning">
+                                <?php
+                                if (isset($errors["files"][1])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["files"][1] ?>
+                                    </p>
+                                <?php
+                                }
+                                if (isset($errors["files"][2])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["files"][2] ?>
+                                    </p>
+                                <?php
+                                }
+                                if (isset($errors["files"][3])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["files"][3] ?>
+                                    </p>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                            <div class="warning">
+                                <?php
+                                if (isset($errors["weight"][1])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["weight"][1] ?>
+                                    </p>
+                                <?php
+                                }
+                                if (isset($errors["weight"][2])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["weight"][2] ?>
+                                    </p>
+                                <?php
+                                }
+                                if (isset($errors["weight"][3])) {
+                                ?>
+                                    <p class="errorsTxt"><?= $errors["weight"][3] ?>
+                                    </p>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="form-item-area">
+                            <label for="txtMsg">Message</label>
+                            <textarea name="message" id="txtMsg" rows="15" value="<?= isset($message) ? $message : "" ?>"></textarea>
+                        </div>
+                    </div>
+
+                    <p>* Champs obligatoires</p>
+
+                    <input class="btn-submit" type="submit" value="Envoyer votre demande" />
                 </div>
-
-                <p>* Champs obligatoires</p>
-
-                <input class="btn-submit" type="submit" value="Envoyer votre demande" />
-            </div>
-        </form>
-    </div>
-
+            </form>
+        </div>
 </div>
+
+<?php
+    } else {
+?>
+    <h1><?= $confirme ?></h1>
+
+    <h2>Nous vous répondrons dans les meilleurs délais</h2>
+
+    <div class="btn">
+        <a href="./">Retour à l'accueil
+        </a>
+    </div>
+<?php
+    }
+?>
+
 
 
 <?php

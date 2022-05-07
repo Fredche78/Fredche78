@@ -21,10 +21,13 @@ if (isset($_POST["email"])) {
         // La fonction random_bytes renvoie un binaire que nous transformons en une chaine hexadécimale avec la fonction bin2hex
         // Si nous indiquons 50 en paramètre de la fonction random_bytes nous obtiendrions un chaine de 100 caractères.
         $token = bin2hex(random_bytes(50));
+        $validity = time() + 3600;
 
-        $query = $db->prepare("INSERT INTO password_reset (email, token) VALUES (:email, :token)");
+        $query = $db->prepare("INSERT INTO password_reset (email, token, validity) VALUES (:email, :token, :validity)");
         $query->bindParam(":email", $email);
         $query->bindParam(":token", $token);
+        //On lie la durée de validity
+        $query->bindParam(":validity", $validity, PDO::PARAM_INT);
 
         if ($query->execute()) {
 
@@ -79,6 +82,8 @@ if (isset($_POST["email"])) {
             $phpmailer->CharSet  = "UTF-8";
             //Envoi du mail
             $phpmailer->send();
+
+            header("Location: login.php");
         }
     }
 }
@@ -91,11 +96,12 @@ include("../templates/header.php")
 <div class="contact">
 
     <h1>Mot de passe oublié</h1>
+    <h2>Un lien va vous être envoyé par Email</h2>
 
     <div class="form">
         <form action="" method="post">
             <div class="container">
-                <div class="form-group">
+                <div class="form-group-account">
                     <div class="form-item-group">
                         <label for="inputEmail">Email</label>
                         <input type="email" name="email" id="inputEmail">

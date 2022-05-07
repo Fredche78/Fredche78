@@ -137,90 +137,99 @@ include("../templates/header.php")
 
     <h2>Les avis de nos clients</h2>
 
-    <div class="reviewsView">
-
-        <?php
-        foreach ($reviews as $data) {
-        ?>
-            <div class="carousel <?= $data["id"] ?>">
-                <p><?= $data["client"] . " - " . $data["review"] ?></p>
+    <div class="slideReviews">
+        <div class="splide" id="splideReviews" role="group" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <div class="splide__list">
+                    <?php
+                    foreach ($reviews as $review) {
+                    ?>
+                        <div class="splide__slide">
+                            <?= $review["client"] . " - " . $review["review"] ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
             </div>
-        <?php
-        }
-        ?>
+        </div>
     </div>
-
-    <!-- <div id="precedent" onclick="ChangeSlide(-1)">
-        < </div>
-            <div id="suivant" onclick="ChangeSlide(1)"> >
-            </div>
-
-    </div> -->
 </div>
 
 <div class="pictures">
 
-    <?php
-    foreach ($photos as $data) {
-    ?>
-        <div class="picturesView">
-
-            <div class="before">
-
-                <h2>Avant</h2>
-
-                <div class="imgBefore">
-
-                    <img src="assets/img/photos/travaux/<?= $data["img_before"] ?>" alt="Avant nettoyage">
+    <div class="slidePictures">
+        <div class="splide" id="splidePictures" role="group" aria-label="Splide Basic HTML Example">
+            <div class="splide__track">
+                <div class="splide__list">
 
                     <?php
-                    if (!empty($data["txt_before"])) {
+                    foreach ($photos as $photo) {
                     ?>
-                        <div class="txtBefore">
+                        <div class="splide__slide">
+                            
+                            <div class="picturesView">
 
-                            <p>
-                                <?= $data["txt_before"] ?>
-                            </p>
+                                <div class="before">
 
+                                    <h2>Avant</h2>
+
+                                    <div class="imgBefore">
+
+                                        <img src="assets/img/photos/travaux/<?= $photo["img_before"] ?>" alt="Avant nettoyage">
+
+                                        <?php
+                                        if (!empty($photo["txt_before"])) {
+                                        ?>
+                                            <div class="txtBefore">
+
+                                                <p>
+                                                    <?= $photo["txt_before"] ?>
+                                                </p>
+
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="after">
+
+                                    <h2>Après</h2>
+
+                                    <div class="imgAfter">
+
+                                        <img src="assets/img/photos/travaux/<?= $photo["img_after"] ?>" alt="Après nettoyage">
+
+                                        <?php
+                                        if (!empty($photo["txt_after"])) {
+                                        ?>
+                                            <div class="txtAfter">
+
+                                                <p>
+                                                    <?= $photo["txt_after"] ?>
+                                                </p>
+
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     <?php
                     }
                     ?>
 
                 </div>
-
             </div>
-
-            <div class="after">
-
-                <h2>Après</h2>
-
-                <div class="imgAfter">
-
-                    <img src="assets/img/photos/travaux/<?= $data["img_after"] ?>" alt="Après nettoyage">
-
-                    <?php
-                    if (!empty($data["txt_after"])) {
-                    ?>
-                        <div class="txtAfter">
-
-                            <p>
-                                <?= $data["txt_after"] ?>
-                            </p>
-
-                        </div>
-                    <?php
-                    }
-                    ?>
-
-                </div>
-
-            </div>
-
         </div>
-    <?php
-    }
-    ?>
+    </div>
 </div>
 
 <div class="infosSociety">

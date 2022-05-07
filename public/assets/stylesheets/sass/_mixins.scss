@@ -21,7 +21,7 @@
     resize: none;
 
     @media screen and (max-width: v.$md-breakpoint) {
-        max-width: 100%
+        max-width: 100%;
     }
 }
 
@@ -32,4 +32,22 @@
     padding: 0 3%;
     border: 2px solid #fff;
     border-radius: 0.5rem;
+}
+
+@mixin btn-submit2 {
+    text-align: center;
+    background-color: #40423f;
+    border: 0.4rem solid v.$color-primary;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 2rem 8rem;
+    margin: 3rem 0;
+    cursor: pointer;
+    font-size: x-large;
+
+    &:hover {
+        // background-color: #3f3d3d;
+        background-color: #637b54;
+    }
 }

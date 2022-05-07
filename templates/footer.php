@@ -1,5 +1,5 @@
         </main>
-
+        
         <footer>
 
             <div class="footerView">
@@ -37,9 +37,8 @@
         </footer>
 
         <!-- <script src="https://kit.fontawesome.com/6b8692a053.js" crossorigin="anonymous"></script> -->
-        <script src="js/carousel.js">
-        </script>
-
+        <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+        <script src="js/carousel.js"></script>
         </body>
 
         </html>

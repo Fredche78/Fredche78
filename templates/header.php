@@ -10,6 +10,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/stylesheets/css/main.css">
+    <!-- Link to the file hosted on your server, -->
+    <link rel="stylesheet" href="../node_modules/@splidejs/splide/dist/css/splide.min.css">
     <link rel="icon" href="assets/icons/favicon.ico">
     <title>SB Polish</title>
 </head>
@@ -35,7 +37,7 @@ session_start();
                         // On teste en complément l'adresse ip de l'utilisateur pour valider que la session appartient bien à l'utilisateur 
                         if (isset($_SESSION["user"]) && ($_SESSION["user_ip"] === $_SERVER["REMOTE_ADDR"])) {
                         ?>
-                            <p>Bienvenue: <?= ($_SESSION["user"] ." ". $_SESSION["userName"])?>
+                            <p>Bienvenue: <?= ($_SESSION["user"] . " " . $_SESSION["userName"]) ?>
                             </p>
 
                             <li>

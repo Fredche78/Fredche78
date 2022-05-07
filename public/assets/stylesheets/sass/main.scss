@@ -14,10 +14,9 @@
 
 body {
     position: relative;
-    // min-height: 100vh;
-    // background-color: v.$color-background;
-    background: url("../../img/background-carbone.webp");
-    // linear-gradient(to top, transparent, 15%, #ff0000)
+    min-height: 85vh;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(15,15,15,0.6) 51%, rgba(0,0,0,0.6) 100%), url("../../img/background-carbone.webp");
     background-size: contain;
     background-attachment: fixed;
     // font-size: 2rem;
@@ -27,13 +26,13 @@ body {
     main {
         height: 100%;
         position: relative;
-        background-color: rgba($color: #000000, $alpha: 0.6);
+        // background-color: rgba($color: #000000, $alpha: 0.6);
         color: #fff;
         // padding: 0 4rem;
 
         .view {
             background: url("../../img/Lamborghini.jpg");
-            background-size: 90%;
+            background-size: 100%;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -44,13 +43,16 @@ body {
                 text-align: center;
                 padding: 1.5rem 0rem;
                 font-size: 130%;
+                box-shadow: 0px 20px 50px rgba($color: #fff, $alpha: 0.1), 0px -20px 50px rgba($color: #fff, $alpha: 0.1);
+                text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
                 // max-height: 90rem;
                 // height: 40rem;
 
                 .txtHome {
                     padding: 3rem;
-                    margin: 5rem 20rem;
+                    margin: 4rem 20rem;
                     background-color: rgba($color: #000000, $alpha: 0.5);
+                    box-shadow: 10px -10px 10px rgba(255, 255, 255, 0.2), -10px 10px 10px rgba(255, 255, 255, 0.2);
                     border-radius: 2rem;
         
                     // &:hover {
@@ -178,21 +180,22 @@ body {
                             width: 100%;
                             border-radius: 2rem;
 
-                            .txtAfter {
-                                position: absolute;
-                                top: 89%;
-                                right: 0;
-                                bottom: 0.5%;
-                                left: 0;
-                                background-color: rgba($color: #000000, $alpha: 0.5);
-                                border-radius: 0 0 2rem 2rem;
-    
-                                p {
-                                    // margin: 0.5rem;
-                                    font-size: 2rem;
-                                }
-                            }
                         }  
+
+                        .txtAfter {
+                            position: absolute;
+                            top: 89%;
+                            right: 0;
+                            bottom: 0.5%;
+                            left: 0;
+                            background-color: rgba($color: #000000, $alpha: 0.5);
+                            border-radius: 0 0 2rem 2rem;
+
+                            p {
+                                // margin: 0.5rem;
+                                font-size: 2rem;
+                            }
+                        }
                     }
                 }
             }

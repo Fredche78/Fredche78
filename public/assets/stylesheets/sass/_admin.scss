@@ -2,12 +2,13 @@
 @use "mixins" as m;
 
 .backoffice {
+    margin: 0 2%;
+    // display: flex;
+    // justify-content: center;
     // background-color: rgba($color: #fff, $alpha: 0.1);
 
     .administration {
-        
         .servicesAdmin {
-
             h2 {
                 text-align: center;
                 text-transform: uppercase;
@@ -166,85 +167,92 @@
                 }
             }
         }
+    }
+}
 
-        .photoVehicules {
-            .pictures {
-                .picture {
-                    background-color: #c91f1f;
-                    border: 3px solid #fff;
-                    // .before {
-                    //     .imgBefore {
-                    //     }
-                    //     .txtBefore {
-                    //     }
-                    // }
-                    // .after {
-                    //     .imgAfter {
-                    //     }
-                    //     .txtAfter {
-                    //     }
-                    // }
-                }
+/////Utilisée aussi dans main.scss/////
+.picturesView {
+    border: 2px solid #fff;
+
+    .deleteWork {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+
+        form {
+            display: flex;
+            align-items: bottom;
+
+            button {
+                display: flex;
+                padding: 20rem, 20rem, 0, 0;
             }
         }
     }
 }
 
 .addWorks {
-
     background-color: #000;
     border: 1px solid #fff;
     padding: 2% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     form {
-        width: 100%;
+        // width: 100%;
+        text-align: center;
 
-        .form-admin-group {
-            display: flex;
+        .form-group {
 
-            padding: 2% 5%;
-            // margin: 1% 1%;
-            // border: 2px solid #fff;
-            @media screen and (max-width: v.$md-breakpoint) {
-                display: block;
-                padding: 1% 4%;
-            }
 
-            .form-admin-item {
+            .form-admin-group {
                 display: flex;
-                flex-direction: column;
-                width: 100%;
 
-                // label {
-                //     display: flex;
-                //     background-color: v.$color-background-label;
-                //     ////////////////////////////////////////////////////////////////////background-color: v.$color-background-label;
-                // }
-                input {
-                    display: flex;
-                    @include m.placeholder;
-                    // width: 30rem;
-                    // background-color: #276d10;
-                    // border: 2px solid #fff;
-                    @media screen and (max-width: v.$md-breakpoint) {
-                        margin-bottom: 2rem;
-                    }
+                padding: 2% 5%;
+                // margin: 1% 1%;
+                // border: 2px solid #fff;
+                @media screen and (max-width: v.$md-breakpoint) {
+                    display: block;
+                    padding: 1% 4%;
                 }
 
-                input[type=file] {
-                    cursor: pointer;
-                    // display: flex;
-                    // justify-content: center;
-                    padding-left: 5.5rem;
-                    // content: none;
+                .form-admin-item {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
 
-                    // button {
-                    //     cursor: pointer;
+                    // label {
+                    //     display: flex;
+                    //     background-color: v.$color-background-label;
+                    //     ////////////////////////////////////////////////////////////////////background-color: v.$color-background-label;
                     // }
+                    input {
+                        display: flex;
+                        @include m.placeholder;
+                        // width: 30rem;
+                        // background-color: #276d10;
+                        // border: 2px solid #fff;
+                        @media screen and (max-width: v.$md-breakpoint) {
+                            margin-bottom: 2rem;
+                        }
+                    }
 
-                    &:active {
-                        color: #c91f1f;
-                        background-color: #000;
+                    input[type="file"] {
+                        cursor: pointer;
+                        // display: flex;
+                        // justify-content: center;
+                        padding-left: 5.5rem;
+                        // content: none;
+
+                        // button {
+                        //     cursor: pointer;
+                        // }
+
+                        &:active {
+                            color: #c91f1f;
+                            background-color: #000;
+                        }
                     }
                 }
             }
@@ -252,9 +260,9 @@
 
         .btn-submit {
             @include m.btn-submit;
+            // width: 50%;
             padding: 2rem 3rem;
-            // margin: 0 5%;
-            width: 100%;
+            // margin: 0 30%;
 
             @media screen and (max-width: v.$md-breakpoint) {
                 width: 100%;

@@ -153,14 +153,11 @@ include("../templates/header.php")
 
         <form action="" method="post">
             <div class="container">
-                <div class="form-group">
+                <div class="form-group-account">
                     <div class="form-item-group">
                         <label for="inputEmail">Email :</label>
                         <input type="email" name="email" id="inputEmail">
-                    </div>
-                    <!-- </div> -->
-                    <!-- <div class="form-group"> -->
-                    <div class="form-item-group">
+
                         <label for="inputPassword">Mot de passe :</label>
                         <input type="password" name="password" id="inputPassword">
                         <p id="resetPwd">

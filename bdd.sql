@@ -186,3 +186,9 @@ ON type_services.id = type_services_link.type_services_id
 INNER JOIN services
 ON type_services_link.services_id = services.id
 GROUP BY type_services.type;
+
+
+-- Ajout d'une nouvelle colonne a password reste pour fdonner une durée de validité an lien 
+
+ALTER TABLE password_reset
+ADD validity int(11);

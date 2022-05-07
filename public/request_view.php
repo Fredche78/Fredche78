@@ -19,6 +19,11 @@ if (isset($_POST["deleteRequest"])) {
     $supRequest->bindParam(":id", $delete);
 
     if ($supRequest->execute()) {
+
+        unlink("assets/img/photos/devis/" .$request['photo']);
+        unlink("assets/img/photos/devis/" .$request['photo2']);
+        unlink("assets/img/photos/devis/" .$request['photo3']);
+
         header("Location: request.php");
     } else {
         $message = "Erreur de bdd";
@@ -83,7 +88,7 @@ include("../templates/header.php")
             <?php
             if (empty($request['photo'])) {
             ?>
-                <img src="assets/img/photos/devis/placeholder.png" alt="Pas de photo">
+                <img src="./assets/img/image.svg" class="placeholderView" alt="Pas de photo">
             <?php
             } else {
             ?>
@@ -105,7 +110,7 @@ include("../templates/header.php")
             <?php
             if (empty($request['photo2'])) {
             ?>
-                <img src="assets/img/photos/devis/placeholder.png" alt="Pas de photo">
+                <img src="./assets/img/image.svg" class="placeholderView" alt="Pas de photo">
             <?php
             } else {
             ?>
@@ -124,9 +129,9 @@ include("../templates/header.php")
         </div>
         <div class="photo">
             <?php
-            if (empty($request['photo2'])) {
+            if (empty($request['photo3'])) {
             ?>
-                <img src="assets/img/photos/devis/placeholder.png" alt="Pas de photo">
+                <img src="./assets/img/image.svg" class="placeholderView" alt="Pas de photo">
             <?php
             } else {
             ?>

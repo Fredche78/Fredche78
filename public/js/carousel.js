@@ -1,69 +1,58 @@
-// var carousel = new Array("foret-peuplier.jpg", "paysage-montagne.jpg", "chemin-automne.jpg", "prairie-alpes.jpg");
-// var number = 0;
+document.addEventListener('DOMContentLoaded', function () {
 
-// function ChangeSlide(sens) {
-//     number = number + sens;
-//     if (number < 0)
-//         number = carousel.length - 1;
-//     if (number > carousel.length - 1)
-//         number = 0;
+    new Splide('#splideReviews', {
+        type: "loop",
+        pagination: false,
+        rewind: true,
+        rewindByDrag: true,
+        interval: number = 6000,
+        speed: number = 1500,
+        pauseOnHover: true,
+        perPage: 1,
+        autoplay: true,
+        keyboard: true,
+        // wheel: true,
+        // releaseWheel: true,
+        // direction: "ttb" = "ltr",
+    }).mount();
 
-//     // document.querySelector(".carousel").src = slide[number];
-//     carousel[number] = document.querySelector(".carousel");
-//     console.log(number);
-// }
+    new Splide('#splidePictures', {
+        type: "loop",
+        rewind: true,
+        rewindByDrag: true,
+        interval: number = 6000,
+        speed: number = 2000,
+        pauseOnHover: true,
+        perPage: 1,
+        autoplay: true,
+        keyboard: true,
+    }).mount();
 
-
-
-// class Carousel {
-
-//     /**
-//      * 
-//      * @param {HTMLElement} element 
-//      * @param {Object} options 
-//      * @param {Object} options.slidesToScroll Nombres d'éléments à faire défiler
-//      * @param {Object} options.slidesVisible Nombres d'éléments visibles dans un slide
-//      */
-    
-//     constructor (element, options ={}) {
-//         this.element = element
-//         this.options = Object.assign({}, {
-//             slidesToScroll: 1,
-//             slideVisible: 1
-//         }, options)
-//         this.children = [].slice.call(element.children)
-//         let ratio = this.children.length / this.options.slidesVisible
-//         let root = this.createDivWithClass('carousel')
-//         let container = this.createDivWithClass('carousel__container')
-//         container.style.width = (ratio * 100) + "%"
-//         root.appendChild(container)
-//         this.element.appendChild(root)
-//         this.children.forEach((child) => {
-//             let item = this.createDivWithClass('carousel__item')
-//             item.appendChild(child)
-//             container.appendChild(item)
-//         // debugger
-//     })
-// }
-
-// /**
-//  * 
-//  * @param {string} className 
-//  * @returns {HTMLElement}
-//  * 
-//  */
-// createDivWithClass (className) {
-//     let div = document.createElement('div')
-//     div.setAttribute('class, className')
-//     return div
-// }
+    new Splide('#splideReviewsAdmin', {
+        type: "loop",
+        pagination: false,
+        rewind: true,
+        rewindByDrag: true,
+        interval: number = 6000,
+        speed: number = 1500,
+        pauseOnHover: true,
+        perPage: 1,
+        autoplay: true,
+        keyboard: true,
+        // wheel: true,
+        // releaseWheel: true,
+        // direction: "ttb" = "ltr",
+    }).mount();
 
 
-// document.addEventListener('DOMContentLoaded', function () {
+});
 
-//     new Carousel(document.querySelector('#itemReview'), {
-//         slidesVisible: 1
-//     })
-
-// })
+// new Splide('.splide', {
+//     classes: {
+//         arrows: 'splide__arrows your-class-arrows',
+//         arrow: 'splide__arrow your-class-arrow',
+//         prev: 'splide__arrow--prev slide__arrow--prev',
+//         next: 'splide__arrow--next slide__arrow--next',
+//     },
+// });
 

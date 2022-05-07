@@ -53,9 +53,11 @@
     .photos {
         display: flex;
         justify-content: space-between;
+        align-items: center;
         margin: 2rem 0;
 
         .photo {
+            align-items: top;
             flex-basis: 30%;
 
             img {
@@ -76,6 +78,11 @@
                         color: #fff;
                     }
                 }
+            }
+
+            .placeholderView {
+                padding: 20%;
+                filter: v.$color-svg;
             }
         }
     }

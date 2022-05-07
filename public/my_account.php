@@ -32,13 +32,16 @@ if (!empty($_POST["modifyAccount"])) {
     $vehicule = trim(strip_tags($_POST["vehicule"]));
     $email = trim(strip_tags($user["email"]));
     // Requète SQL de mise à jour du compte
-    $queryUpdate = $db->prepare("UPDATE users SET  address = :address,
-                                                    city = :city,
-                                                    postcode = :postcode,
-                                                    vehicule = :vehicule,   
-                                                    phone = :phone,
-                                                    state = :state
-                                WHERE email LIKE :email");
+    $queryUpdate = $db->prepare(
+                                "UPDATE users SET
+                                address = :address,
+                                city = :city,
+                                postcode = :postcode,
+                                vehicule = :vehicule,   
+                                phone = :phone,
+                                state = :state
+                                WHERE email LIKE :email"
+                                );
 
     $queryUpdate->bindParam(":address", $address);
     $queryUpdate->bindParam(":city", $city);

@@ -1,13 +1,29 @@
 <?php
+
+$errors = [];
+
 if (isset($_GET["token"])) {
+
     $token = trim(strip_tags($_GET["token"]));
 
     $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
-    $query = $db->prepare("SELECT email FROM password_reset WHERE token LIKE :token");
+    $query = $db->prepare("SELECT email, validity FROM password_reset WHERE token LIKE :token");
     $query->bindParam(":token", $token);
     $query->execute();
     $result = $query->fetch();
+
+    // Validdité du lien avec temps de validation
+
+    if (!$result || $result["validity"] < time()) {
+
+        // array_push($errors, "Votre lien de récupération du mot de passe est invalide ou expiré");
+
+        $errors["validity"] = "Votre lien de récupération du mot de passe est invalide ou expiré";
+    } else {
+
+        $_SESSION["token"] = $token;
+    }
 
     if (empty($result)) {
         // Tchao bye bye -> Le token n'a pas été trouvé dans la base
@@ -21,40 +37,48 @@ if (isset($_GET["token"])) {
         $password = trim(strip_tags($_POST["password"]));
         $retypePassword = trim(strip_tags($_POST["retypePassword"]));
 
-        $errors = [];
-        
         if ($password !== $retypePassword) {
             $errors["retypePassword"] = "Les mots de passe ne sont pas identiques";
         }
 
-        $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
-        $lowercase = preg_match("/[a-z]/", $password);
-        $number = preg_match("/[0-9]/", $password);
-        $haveSpace = preg_match("/ /", $password);
+        if ($result["email"] && $result["validity"] > time()) {
 
-        if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
-            $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
-        }
+            $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
+            $lowercase = preg_match("/[a-z]/", $password);
+            $number = preg_match("/[0-9]/", $password);
+            $haveSpace = preg_match("/ /", $password);
 
-         // Cryptage du mot de passe
-        $password = password_hash($password, PASSWORD_DEFAULT);
+            if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
+                $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
+            }
 
-        if (empty($errors)) {
+            // Cryptage du mot de passe
+            $password = password_hash($password, PASSWORD_DEFAULT);
 
-            // Requète SQL de mise à jour du mot de passe
-            $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");
-            $query->bindParam(":password", $password);
-            $query->bindParam(":email", $result["email"]);
+            if (empty($errors)) {
 
-            if ($query->execute()) {
-                // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
-                header("Location: ./login.php");
-            } else {
-                $message = "Erreur de bdd";
+                // Requète SQL de mise à jour du mot de passe
+                $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");
+                $query->bindParam(":password", $password);
+                $query->bindParam(":email", $result["email"]);
+
+                if ($query->execute()) {
+                    // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+                    $delete = $db->prepare(
+                        "DELETE 
+                                        FROM password_reset
+                                        WHERE email = :email"
+                    );
+                    $delete->bindParam(":email", $result["email"]);
+                    $delete->execute();
+
+                    header("Location: ./login.php");
+                } else {
+                    $message = "Erreur de bdd";
+                }
             }
         }
     }
-
 } else {
     header("Location: ./");
 }
@@ -73,7 +97,7 @@ include("../templates/header.php")
 
             <div class="container">
 
-                <div class="form-group">
+                <div class="form-group-account">
 
                     <div class="form-item-group">
 
@@ -88,11 +112,19 @@ include("../templates/header.php")
                         <?php
                         }
                         ?>
+                        <?php
+                        if (isset($errors["validity"])) {
+                        ?>
+                            <p class="errorsTxt"><?= $errors["validity"] ?>
+                            </p>
+                        <?php
+                        }
+                        ?>
 
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group-account">
 
                     <div class="form-item-group">
 

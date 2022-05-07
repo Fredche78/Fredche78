@@ -2,13 +2,17 @@
 @use "mixins" as m;
 
 .contact {
-
     h1 {
         font-size: xx-large;
         text-transform: uppercase;
         text-align: center;
         margin: 0;
         padding: 5rem 0;
+    }
+
+    h2 {
+        margin: 0 0 2rem 0;
+        text-align: center;
     }
 
     #errorLogin {
@@ -25,7 +29,7 @@
         }
 
         .container {
-            // display: flex;
+            justify-content: center;
             text-align: center;
             // flex-basis: 80%;
             // justify-content: space-between;
@@ -33,6 +37,17 @@
             .form-group {
                 display: flex;
                 justify-content: space-between;
+            }
+
+            // S'applique sur reset password
+
+            .form-group-account {
+                display: flex;
+                justify-content: center;
+            }
+
+            .form-group,
+            .form-group-account {
                 padding: 1rem 0;
 
                 label {
@@ -71,7 +86,7 @@
                         // background-color: #000;
                         color: v.$color-primary;
                         border-radius: 0.4rem;
-                        // padding: 1rem;
+                        padding: 0.6rem;
                         border: 0.2rem solid rgb(176, 174, 174);
 
                         * {
@@ -83,27 +98,32 @@
                             }
                         }
 
-                        #test {
-                            color: #fff;
+                    //     #test {
+                    //         color: #fff;
+                    //     }
+                    }
+
+                    .warning {
+                        display: flex;
+                        justify-content: space-around;
+
+                        p {
+                            margin: 0.6rem 0;
+                            text-align: center;
                         }
                     }
+                }
+
+                .form-item-area {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    text-align: left;
                 }
             }
 
             input[type="submit"] {
-                text-align: center;
-                @include m.box;
-                text-transform: uppercase;
-                color: #fff;
-                padding: 2rem 8rem;
-                margin: 3rem 0;
-                cursor: pointer;
-                font-size: x-large;
-
-                &:hover {
-                    // background-color: #3f3d3d;
-                    background-color: #637b54;
-                }
+                @include m.btn-submit2;
             }
         }
     }
@@ -113,10 +133,20 @@
     padding: 0.7rem;
     margin: 0;
 
-        a {
-            // text-decoration: none;
-            color: #fff;
-            text-transform: uppercase;
-        }
+    a {
+        // text-decoration: none;
+        color: #fff;
+        text-transform: uppercase;
+    }
+}
 
+.btn {
+    // @include m.btn-submit2;
+    display: flex;
+    justify-content: center;
+
+    a {
+        @include m.btn-submit2;
+        text-decoration: none;
+    }
 }
