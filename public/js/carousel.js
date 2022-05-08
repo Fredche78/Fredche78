@@ -20,28 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
         type: "loop",
         rewind: true,
         rewindByDrag: true,
-        interval: number = 6000,
-        speed: number = 2000,
+        interval: number = 10000,
+        speed: number = 3000,
         pauseOnHover: true,
         perPage: 1,
         autoplay: true,
         keyboard: true,
     }).mount();
 
-    new Splide('#splideReviewsAdmin', {
+    new Splide('#splidePicturesAdmin', {
         type: "loop",
-        pagination: false,
         rewind: true,
         rewindByDrag: true,
         interval: number = 6000,
-        speed: number = 1500,
+        speed: number = 2000,
         pauseOnHover: true,
         perPage: 1,
         autoplay: true,
         keyboard: true,
-        // wheel: true,
-        // releaseWheel: true,
-        // direction: "ttb" = "ltr",
     }).mount();
 
 

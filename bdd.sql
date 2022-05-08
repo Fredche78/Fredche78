@@ -192,3 +192,7 @@ GROUP BY type_services.type;
 
 ALTER TABLE password_reset
 ADD validity int(11);
+
+ALTER TABLE services 
+ADD FOREIGN KEY (services)
+REFERENCES type_services (type);

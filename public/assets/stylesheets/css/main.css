@@ -265,36 +265,48 @@ footer .footerView .copyright {
 .backoffice {
   margin: 0 2%;
 }
-.backoffice .administration .servicesAdmin h2 {
-  text-align: center;
-  text-transform: uppercase;
-}
-.backoffice .administration .servicesAdmin .addServices {
+.backoffice .addServices,
+.backoffice .modifyServices,
+.backoffice .addReviews {
   background-color: #000;
   border: 1px solid #fff;
   padding: 2% 0;
 }
-.backoffice .administration .servicesAdmin .addServices form {
+.backoffice .addServices form,
+.backoffice .modifyServices form,
+.backoffice .addReviews form {
   width: 100%;
 }
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group {
+.backoffice .addServices form .form-admin-group,
+.backoffice .modifyServices form .form-admin-group,
+.backoffice .addReviews form .form-admin-group {
   display: flex;
   padding: 2% 5%;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .administration .servicesAdmin .addServices form .form-admin-group {
+  .backoffice .addServices form .form-admin-group,
+.backoffice .modifyServices form .form-admin-group,
+.backoffice .addReviews form .form-admin-group {
     display: block;
     padding: 1% 4%;
   }
 }
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item {
+.backoffice .addServices form .form-admin-group .form-admin-item,
+.backoffice .modifyServices form .form-admin-group .form-admin-item,
+.backoffice .addReviews form .form-admin-group .form-admin-item {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+.backoffice .addServices form .form-admin-group .form-admin-item input,
+.backoffice .addServices form .form-admin-group .form-admin-item select,
+.backoffice .addServices form .form-admin-group .form-admin-item textarea,
+.backoffice .modifyServices form .form-admin-group .form-admin-item input,
+.backoffice .modifyServices form .form-admin-group .form-admin-item select,
+.backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
+.backoffice .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .addReviews form .form-admin-group .form-admin-item select,
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
   display: flex;
   max-width: 90%;
   background-color: #828481;
@@ -305,20 +317,34 @@ footer .footerView .copyright {
   resize: none;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+  .backoffice .addServices form .form-admin-group .form-admin-item input,
+.backoffice .addServices form .form-admin-group .form-admin-item select,
+.backoffice .addServices form .form-admin-group .form-admin-item textarea,
+.backoffice .modifyServices form .form-admin-group .form-admin-item input,
+.backoffice .modifyServices form .form-admin-group .form-admin-item select,
+.backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
+.backoffice .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .addReviews form .form-admin-group .form-admin-item select,
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
     max-width: 100%;
   }
 }
 @media screen and (max-width: 768px) {
-  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item input,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item select,
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .form-admin-item textarea {
+  .backoffice .addServices form .form-admin-group .form-admin-item input,
+.backoffice .addServices form .form-admin-group .form-admin-item select,
+.backoffice .addServices form .form-admin-group .form-admin-item textarea,
+.backoffice .modifyServices form .form-admin-group .form-admin-item input,
+.backoffice .modifyServices form .form-admin-group .form-admin-item select,
+.backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
+.backoffice .addReviews form .form-admin-group .form-admin-item input,
+.backoffice .addReviews form .form-admin-group .form-admin-item select,
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
     margin-bottom: 2rem;
   }
 }
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit {
+.backoffice .addServices form .form-admin-group .btn-submit,
+.backoffice .modifyServices form .form-admin-group .btn-submit,
+.backoffice .addReviews form .form-admin-group .btn-submit {
   background-color: #aad992;
   font-weight: bolder;
   text-transform: uppercase;
@@ -327,99 +353,40 @@ footer .footerView .copyright {
   border-radius: 0.5rem;
 }
 @media screen and (max-width: 768px) {
-  .backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit {
+  .backoffice .addServices form .form-admin-group .btn-submit,
+.backoffice .modifyServices form .form-admin-group .btn-submit,
+.backoffice .addReviews form .form-admin-group .btn-submit {
     width: 100%;
     margin-top: 1rem;
     padding: 2rem 0;
   }
 }
-.backoffice .administration .servicesAdmin .addServices form .form-admin-group .btn-submit:hover {
+.backoffice .addServices form .form-admin-group .btn-submit:hover,
+.backoffice .modifyServices form .form-admin-group .btn-submit:hover,
+.backoffice .addReviews form .form-admin-group .btn-submit:hover {
   background-color: #276d10;
+}
+.backoffice .administration .servicesAdmin h2 {
+  text-align: center;
+  text-transform: uppercase;
 }
 .backoffice .administration .reviewsAdmin h2 {
   text-align: center;
   text-transform: uppercase;
 }
-.backoffice .administration .reviewsAdmin .viewReviews .carousel {
+.backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.5);
   margin: 1% 10%;
 }
-.backoffice .administration .reviewsAdmin .viewReviews .carousel .reviewAdmin {
+.backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect {
   display: flex;
-  width: 100%;
-}
-.backoffice .administration .reviewsAdmin .addReviews {
-  background-color: #000;
+  flex-basis: 49%;
+  justify-content: space-between;
+  align-items: center;
   border: 1px solid #fff;
-  padding: 2% 0;
-}
-.backoffice .administration .reviewsAdmin .addReviews form {
-  width: 100%;
-}
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group {
-  display: flex;
-  padding: 2% 5%;
-}
-@media screen and (max-width: 768px) {
-  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group {
-    display: block;
-    padding: 1% 4%;
-  }
-}
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-@media screen and (max-width: 768px) {
-  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item label {
-    padding: 0 0 0.6rem 0;
-  }
-}
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
-  max-width: 90%;
-  background-color: #828481;
-  font-weight: bolder;
-  padding: 2% 0;
-  border: 1px solid #fff;
-  border-radius: 0.4rem;
-  resize: none;
-  display: flex;
-}
-@media screen and (max-width: 768px) {
-  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
-    max-width: 100%;
-  }
-}
-@media screen and (max-width: 768px) {
-  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item input,
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .form-admin-item textarea {
-    margin-bottom: 2rem;
-  }
-}
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
-  background-color: #aad992;
-  font-weight: bolder;
-  text-transform: uppercase;
-  padding: 0 3%;
-  border: 2px solid #fff;
-  border-radius: 0.5rem;
-}
-@media screen and (max-width: 768px) {
-  .backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit {
-    width: 100%;
-    margin-top: 1rem;
-    padding: 2rem 0;
-  }
-}
-.backoffice .administration .reviewsAdmin .addReviews form .form-admin-group .btn-submit:hover {
-  background-color: #276d10;
-}
-
-.picturesView {
-  border: 2px solid #fff;
 }
 .picturesView .deleteWork {
   display: flex;
@@ -757,6 +724,9 @@ footer .footerView .copyright {
   opacity: 1;
   transition: opacity 0.5s;
 }
+.slidePictures #splidePictures .splide__track {
+  padding: 5rem 0;
+}
 .slidePictures #splidePictures .splide__arrows {
   opacity: 0;
   transition: opacity 0.5s;
@@ -873,7 +843,6 @@ body main .pictures .picturesView {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
-  margin: 7rem 0;
 }
 body main .pictures .picturesView .before {
   flex-basis: 45%;
@@ -882,16 +851,17 @@ body main .pictures .picturesView .before .imgBefore {
   position: relative;
 }
 body main .pictures .picturesView .before .imgBefore img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 50rem;
   border-radius: 2rem;
 }
 body main .pictures .picturesView .before .imgBefore .txtBefore {
   position: absolute;
-  top: 89%;
+  top: 90%;
   right: 0;
   bottom: 0.5%;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
   border-radius: 0 0 2rem 2rem;
 }
 body main .pictures .picturesView .before .imgBefore .txtBefore p {
@@ -904,16 +874,17 @@ body main .pictures .picturesView .after .imgAfter {
   position: relative;
 }
 body main .pictures .picturesView .after .imgAfter img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 50rem;
   border-radius: 2rem;
 }
 body main .pictures .picturesView .after .imgAfter .txtAfter {
   position: absolute;
-  top: 89%;
+  top: 90%;
   right: 0;
-  bottom: 0.5%;
+  bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
   border-radius: 0 0 2rem 2rem;
 }
 body main .pictures .picturesView .after .imgAfter .txtAfter p {

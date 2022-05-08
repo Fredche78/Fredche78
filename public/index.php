@@ -1,4 +1,5 @@
 <?php
+include("../templates/header.php");
 
 //Connexion à la base d'avis
 
@@ -12,16 +13,21 @@ $reviews = $queryReviews->fetchAll();
 $queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC");
 $photos = $queryPhotos->fetchAll();
 
-$queryServices = $db->query("SELECT 
-type_services.type AS 'colonnes', 
-GROUP_CONCAT(services.name SEPARATOR '<br>') AS 'services' 
-FROM type_services
-INNER JOIN type_services_link
-ON type_services.id = type_services_link.type_services_id
-INNER JOIN services
-ON type_services_link.services_id = services.id
-GROUP BY type_services.type;");
-$services = $queryServices->fetchAll();
+// $queryServices = $db->query("SELECT 
+// type_services.type AS 'colonnes', 
+// GROUP_CONCAT(services.name SEPARATOR '<br>') AS 'services' 
+// FROM type_services
+// INNER JOIN type_services_link
+// ON type_services.id = type_services_link.type_services_id
+// INNER JOIN services
+// ON type_services_link.services_id = services.id
+// GROUP BY type_services.type;");
+// $services = $queryServices->fetchAll();
+
+$queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.name ORDER BY services.id SEPARATOR '<BR>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
+$services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
+
+// var_dump($services);
 
 // $serviceList = 0;
 // var_dump($services);
@@ -60,7 +66,6 @@ $services = $queryServices->fetchAll();
 // var_dump($servicesList2);
 // var_dump($services[0]);
 
-include("../templates/header.php")
 ?>
 
 <div class="view">
@@ -98,11 +103,11 @@ include("../templates/header.php")
     ?>
         <div class="servicesView">
 
-            <h3><?= $service["colonnes"] ?></h3>
+            <h3><?= $service["type"] ?></h3>
             <hr>
 
             <div class="listServices">
-                <?= $service["services"] ?>
+                <?= $service["listes"] ?>
             </div>
 
         </div>
