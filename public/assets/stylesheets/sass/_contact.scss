@@ -93,14 +93,11 @@
                             cursor: pointer;
 
                             &:active {
-                                color: v.$color-secondary;
-                                background-color: #000;
+                                color: v.$color-btn-green;
+                                // text-decoration: underline;
+                                // background-color: v.$color-primary;
                             }
                         }
-
-                    //     #test {
-                    //         color: #fff;
-                    //     }
                     }
 
                     .warning {

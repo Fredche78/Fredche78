@@ -8,7 +8,7 @@ $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 $queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC LIMIT 10");
 $reviews = $queryReviews->fetchAll();
 
-$queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC");
+$queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC LIMIT 10");
 $photos = $queryPhotos->fetchAll();
 
 $queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.id, ' - ', services.name ORDER BY services.id SEPARATOR '<BR>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
@@ -19,20 +19,12 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 $queryServicesNames = $db->query("SELECT type FROM type_services");
 $servicesName = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
-// REQUETE POUR UN UPDATE
-
-// SELECT services.id, services.name as 'service', type_services.id as 'type_id', type_services.type as 'name' 
-// FROM type_services
-// INNER JOIN services
-// ON type_services.id = services.service_type;
-
-
-/////////////////////////Tableaux d'erreur////////////////////////////////
+////////////////////////////////TABLEAU D'ERREUR////////////////////////////////////
 
 $errors = [];
 $errorsReviews = [];
 
-///////////////////////////INSERT INTO////////////////////////////////
+///////////////////////////////////INSERT INTO/////////////////////////////////////
 
 if (!empty($_POST["submitService"])) {
 
@@ -51,10 +43,10 @@ if (!empty($_POST["submitService"])) {
 
         $addService = $db->prepare("INSERT INTO services (name, service_type) VALUES (:nameService, :columnService)");
         $addService->bindParam(":nameService", $nameService);
-        $addService->bindParam(":columnService", $columnService);
+        $addService->bindParam(":columnService", $columnService, PDO::PARAM_INT);
 
         if ($addService->execute()) {
-            header("Location: home_admin.php");
+            header("Location: home_admin.php#administration");
         }
     }
 }
@@ -252,7 +244,7 @@ if (!empty($_POST['submitPhotosCars'])) {
 
         if ($addWork->execute()) {
 
-//////////////////////////////Se positionne sur l'ID//////////////////////////
+            //////////////////* Se positionne sur l'ID */
 
             header("Location: home_admin.php#photosView");
             // var_dump($imgBefore);
@@ -263,19 +255,17 @@ if (!empty($_POST['submitPhotosCars'])) {
     }
 }
 
-//////////////////////////////// DELETES /////////////////////////////////////
+////////////////////////////////////// DELETES ////////////////////////////////////////
 
-if (!empty($_POST["deleteService"])) {
+if (!empty($_POST["deleteServices"])) {
 
-    $deleteService = trim(strip_tags($deleteService));
+    $idService = trim(strip_tags($_POST["idService"]));
 
-    // $deleteService = $_POST["deleteService"];
-    $supService = $db->prepare("DELETE FROM services WHERE id = :deleteService");
-    $supService->bindParam(":deleteService", $deleteService);
+    $supService = $db->prepare("DELETE FROM services WHERE services.id = :idService");
+    $supService->bindParam(":idService", $idService, PDO::PARAM_INT);
 
     if ($supService->execute()) {
-        // header("Location: home_admin.php#administration");
-        
+        header("Location: home_admin.php#administration");
     } else {
         $message = "Erreur de bdd";
     }
@@ -285,7 +275,7 @@ if (isset($_POST["deleteReview"])) {
 
     $delete = $_POST["deleteReview"];
     $supReview = $db->prepare("DELETE FROM reviews WHERE id = :id");
-    $supReview->bindParam(":id", $delete);
+    $supReview->bindParam(":id", $delete, PDO::PARAM_INT);
 
     if ($supReview->execute()) {
         header("Location: home_admin.php#reviewsView");
@@ -298,14 +288,48 @@ if (isset($_POST["deleteWork"])) {
 
     $delete = $_POST["deleteWork"];
     $supWork = $db->prepare("DELETE FROM photos_cars WHERE id = :id");
-    $supWork->bindParam(":id", $delete);
+    $supWork->bindParam(":id", $delete, PDO::PARAM_INT);
 
     if ($supWork->execute()) {
 
-        unlink("assets/img/photos/travaux/" . $imgBefore);
-        unlink("assets/img/photos/travaux/" . $imgAfter);
+        foreach ($photos as $photo) {
+
+            if (!empty($photo["img_before"])) {
+
+                if ($photo["id"] == $delete) {
+
+                    unlink("assets/img/photos/travaux/" . $photo["img_before"]);
+                    unlink("assets/img/photos/travaux/" . $photo["img_after"]);
+                }
+            }
+        }
 
         header("Location: home_admin.php#photosView");
+    } else {
+        $message = "Erreur de bdd";
+    }
+}
+
+///////////////////////////////////////UPDATE//////////////////////////////////////////
+
+if (isset($_POST["updateServices"])) {
+
+    $updateService = trim(strip_tags($_POST["updateService"]));
+    $updateType = trim(strip_tags($_POST["updateType"]));
+    $idUpdateService = trim(strip_tags($_POST["idUpdateService"]));
+
+    $queryUpdate = $db->prepare("UPDATE services
+                                SET name = :updateService,
+                                service_type = :updateType
+                                WHERE id LIKE :idUpdateService");
+
+    $queryUpdate->bindParam(":updateService", $updateService);
+    $queryUpdate->bindParam(":updateType", $updateType, PDO::PARAM_INT);
+    $queryUpdate->bindParam(":idUpdateService", $idUpdateService, PDO::PARAM_INT);
+
+    if ($queryUpdate->execute()) {
+        // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+        header("Location: home_admin.php#administration");
     } else {
         $message = "Erreur de bdd";
     }
@@ -410,22 +434,44 @@ if (isset($_POST["deleteWork"])) {
                     </div>
                 </form>
             </div>
-
             <div class="modifyServices">
+                <form action="" method="post">
+                    <div class="form-admin-group">
+                        <div class="form-admin-item">
+                            <label for="idUpdateService">ID du service à modifier</label>
+                            <input type="number" id="idUpdateService" name="idUpdateService" value="<?= isset($idUpdateService) ? $idUpdateService : "" ?>">
+                        </div>
+                        <div class="form-admin-item">
+                            <label for="updateService">Texte du service</label>
+                            <input type="text" id="updateService" name="updateService" value="<?= isset($updateService) ? $updateService : "" ?>">
+                        </div>
+                        <div class="form-admin-item">
+                            <label for="updateType">Changer le type</label>
+                            <select name="updateType" id="updateType">
+                                <option value="1" <?= (isset($updateType) && $updateType === "Intérieur") ? "selected" : "" ?>>Intérieur</option>
+                                <option value="2" <?= (isset($updateType) && $updateType === "Extérieur") ? "selected" : "" ?>>Extérieur</option>
+                                <option value="3" <?= (isset($updateType) && $updateType === "Options") ? "selected" : "" ?>>Options</option>
+                            </select>
+                        </div>
+                        <input class="btn-submit" name="updateServices" type="submit" value="Mettre à jour le service" />
+                        <!-- <button class="btn-submit" name="updateServices" type="submit">Mettre à jour le service</button> -->
+                    </div>
+                </form>
+            </div>
+            <div class="deleteServices">
                 <form action="" method="post">
                     <div class="form-admin-group">
 
                         <div class="form-admin-item">
                             <label for="idService">Renseignez l'ID à supprimer</label>
-                            <input type="number" id="idService" name="deleteService" value="<?= isset($deleteService) ? $deleteService : "" ?>">
+                            <input type="text" id="idService" name="idService" value="<?= isset($idService) ? $idService : "" ?>">
                         </div>
 
-                        <button class="btn-submit" name="deleteService" type="submit" >Supprimer le service</button>
+                        <input type="submit" class="btn-submit" name="deleteServices" value="Supprimer le service" />
 
                     </div>
                 </form>
             </div>
-
         </div>
 
 

@@ -33,8 +33,8 @@ if (!empty($_POST["modifyAccount"])) {
     $email = trim(strip_tags($user["email"]));
     // Requète SQL de mise à jour du compte
     $queryUpdate = $db->prepare(
-                                "UPDATE users SET
-                                address = :address,
+                                "UPDATE users
+                                SET address = :address,
                                 city = :city,
                                 postcode = :postcode,
                                 vehicule = :vehicule,   

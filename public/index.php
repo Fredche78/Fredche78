@@ -96,47 +96,7 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
-<div class="services">
-
-    <?php
-    foreach ($services as $service) {
-    ?>
-        <div class="servicesView">
-
-            <h3><?= $service["type"] ?></h3>
-            <hr>
-
-            <div class="listServices">
-                <?= $service["listes"] ?>
-            </div>
-
-        </div>
-    <?php
-    }
-    ?>
-
-</div>
-
-<div class="prices">
-
-    <a href="prices.php">
-
-        <p>Détails de nos tarifs et de nos prestations</p>
-
-        <div class="selections">
-
-            <div class="citadine">
-
-            </div>
-
-        </div>
-
-        <p>Votre tarif sur-mesure</p>
-
-    </a>
-
-</div>
-
+<!-- Affichage des avis -->
 
 <div class="reviews">
 
@@ -161,18 +121,46 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
+<div class="services">
+
+    <?php
+    foreach ($services as $service) {
+    ?>
+        <div class="servicesView">
+
+            <h3><?= $service["type"] ?></h3>
+            <hr>
+
+            <div class="listServices">
+                <?= $service["listes"] ?>
+            </div>
+
+        </div>
+    <?php
+    }
+    ?>
+
+</div>
+
+<a href="prices.php" Class="prices">
+    <div class="price">
+        <p>Détails de nos tarifs et de nos prestations</p>
+    </div>
+</a>
+
 <div class="pictures">
 
     <div class="slidePictures">
         <div class="splide" id="splidePictures" role="group" aria-label="Splide Basic HTML Example">
             <div class="splide__track">
+                <h2>Nos interventions</h2>
                 <div class="splide__list">
 
                     <?php
                     foreach ($photos as $photo) {
                     ?>
                         <div class="splide__slide">
-                            
+
                             <div class="picturesView">
 
                                 <div class="before">

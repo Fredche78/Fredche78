@@ -1,0 +1,58 @@
+@use "variables" as v;
+@use "mixins" as m;
+
+.pricesPage {
+    .categoriesPrices {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // font-size: v.$font-size-l;
+        font-weight: bolder;
+        margin: 5rem;
+
+        @media screen and (max-width: v.$xl-breakpoint) {
+            font-size: 100%;
+            margin: 3rem;
+        }
+
+        .standardPrices,
+        .optionsPrices {
+            border-collapse: collapse;
+            text-align: center;
+            align-items: center;
+            background-color: v.$color-secondary;
+
+            thead,
+            tbody {
+                tr {
+                    th,
+                    td {
+                        text-transform: uppercase;
+                        border: 2px solid v.$color-primary;
+                        padding: 3rem;
+
+                        a {
+                            color: #fff;
+                        }
+                    }
+
+                    th {
+                        background-color: v.$color-background-label;
+                    }
+                }
+            }
+        }
+
+        .optionsPrices {
+            tr {
+                &:nth-child(odd) {
+                    background-color: v.$color-background-label;
+                }
+
+                &:nth-child(even) {
+                    background-color: v.$color-secondary;
+                }
+            }
+        }
+    }
+}

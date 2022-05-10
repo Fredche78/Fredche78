@@ -27,20 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
         autoplay: true,
         keyboard: true,
     }).mount();
-
-    new Splide('#splidePicturesAdmin', {
-        type: "loop",
-        rewind: true,
-        rewindByDrag: true,
-        interval: number = 6000,
-        speed: number = 2000,
-        pauseOnHover: true,
-        perPage: 1,
-        autoplay: true,
-        keyboard: true,
-    }).mount();
-
-
+    
 });
 
 // new Splide('.splide', {

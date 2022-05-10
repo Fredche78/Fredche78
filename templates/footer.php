@@ -1,5 +1,5 @@
         </main>
-        
+
         <footer>
 
             <div class="footerView">

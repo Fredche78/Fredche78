@@ -7,10 +7,11 @@
     ////////////////////////Mise en page des formulaires/////////////////////////////
     .addServices,
     .modifyServices,
-    .addReviews {
+    .addReviews,
+    .deleteServices {
         background-color: #000;
         border: 1px solid #fff;
-        padding: 2% 0;
+        // padding: 2% 0;
 
         form {
             // display: flex;
@@ -18,7 +19,7 @@
 
             .form-admin-group {
                 display: flex;
-                padding: 2% 5%;
+                padding: 1% 5%;
 
                 @media screen and (max-width: v.$md-breakpoint) {
                     display: block;
@@ -27,6 +28,7 @@
 
                 .form-admin-item {
                     display: flex;
+                    justify-content: center;
                     flex-direction: column;
                     width: 100%;
 
@@ -37,12 +39,24 @@
                     //         padding: 0 0 0.6rem 0;
                     //     }
                     // }
+                    #idService {
+                        // display: flex;
+                        max-width: 30%;
+                    }
+
+                    // #idUpdateService {
+                    //     display: flex;
+                    //     max-width: 50%; 
+                    // }
+
+
 
                     input,
                     select,
                     textarea {
                         display: flex;
                         @include m.placeholder;
+                        padding: 2%;
 
                         @media screen and (max-width: v.$md-breakpoint) {
                             margin-bottom: 2rem;
@@ -122,7 +136,7 @@
 }
 
 /////Utilisée aussi dans main.scss/////
-.picturesView {
+// .picturesView {
     // border: 2px solid #fff;
 
     .deleteWork {
@@ -140,7 +154,7 @@
             }
         }
     }
-}
+// }
 
 .addWorks {
     background-color: #000;
@@ -182,6 +196,7 @@
                         // width: 30rem;
                         // background-color: #276d10;
                         // border: 2px solid #fff;
+
                         @media screen and (max-width: v.$md-breakpoint) {
                             margin-bottom: 2rem;
                         }
@@ -199,8 +214,8 @@
                         // }
 
                         &:active {
-                            color: #c91f1f;
-                            background-color: #000;
+                            color: #000;
+                            background-color: v.$color-primary;
                         }
                     }
                 }

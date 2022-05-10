@@ -20,9 +20,9 @@ if (isset($_POST["deleteRequest"])) {
 
     if ($supRequest->execute()) {
 
-        unlink("assets/img/photos/devis/" .$request['photo']);
-        unlink("assets/img/photos/devis/" .$request['photo2']);
-        unlink("assets/img/photos/devis/" .$request['photo3']);
+        unlink("assets/img/photos/devis/" . $request['photo']);
+        unlink("assets/img/photos/devis/" . $request['photo2']);
+        unlink("assets/img/photos/devis/" . $request['photo3']);
 
         header("Location: request.php");
     } else {

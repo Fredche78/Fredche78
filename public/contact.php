@@ -5,6 +5,8 @@ include("../templates/header.php");
 $errors = [];
 $confirme = "";
 
+/* Récupération des informations de l'utilisateur connecté pour les afficher dans les placeholders */
+
 if (isset($_SESSION['email'])) {
     $emailLog = trim(strip_tags($_SESSION['email']));
 
@@ -69,7 +71,7 @@ if (!empty($_POST)) {
         $errors["email"] = "L'email n'est pas valide";
     }
 
-    //////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////INSERT INTO/////////////////////////////////////////////
 
     // Si pas d'erreur -> insertion de l'utilisateur en BDD
     if (empty($errors) && empty($errorsFiles)) {
@@ -103,6 +105,8 @@ if (!empty($_POST)) {
     }
 }
 ?>
+
+<!-- //////////////////////////////////HTML////////////////////////////////////// -->
 
 <div class="contact">
 
@@ -242,11 +246,11 @@ if (!empty($_POST)) {
                             <label>Photo(s)</label>
                             <div class="form-photo">
                                 <label for="inputPhoto">Photo 1</label>
-                                <input type="file" id="inputPhoto" name="photo1" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo1) ? $photo1 : "" ?>" style="display: none;">
+                                <input type="file" id="inputPhoto" name="photo1" accept=".png, .jepg, .jpg, .bmp" style="display: none;">
                                 <label for="inputPhoto2">Photo 2</label>
-                                <input type="file" id="inputPhoto2" name="photo2" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo2) ? $photo2 : "" ?>" style="display: none;">
+                                <input type="file" id="inputPhoto2" name="photo2" accept=".png, .jepg, .jpg, .bmp" style="display: none;">
                                 <label for="inputPhoto3">Photo 3</label>
-                                <input type="file" id="inputPhoto3" name="photo3" accept=".png, .jepg, .jpg, .bmp" value="<?= isset($photo3) ? $photo3 : "" ?>" style="display: none;">
+                                <input type="file" id="inputPhoto3" name="photo3" accept=".png, .jepg, .jpg, .bmp" style="display: none;">
                             </div>
                             <div class="warning">
                                 <?php

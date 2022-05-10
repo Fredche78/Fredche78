@@ -31,7 +31,7 @@
             .splide__arrow {
                 background-color: v.$color-primary;
                 opacity: 0.1;
-                margin: 0 15%;
+                margin: 0 5%;
                 font-size: 3rem;
                 transition: opacity 0.8s;
 
@@ -45,7 +45,8 @@
 }
 
 .slidePictures {
-    margin: 3% 0;
+    // padding-bottom: 3% 0;
+    border-radius: 5rem;
     background-color: v.$color-background-label;
 
     #splidePictures {
@@ -55,11 +56,16 @@
         }
 
         .splide__track {
-            padding: 5rem 0;
-            .splide__list {
-                .splide__slide {
-                }
+            padding-bottom: 7rem;
+
+            h2 {
+                text-align: center;
+                text-transform: uppercase;
             }
+            // .splide__list {
+            //     .splide__slide {
+            //     }
+            // }
         }
 
         .splide__arrows {

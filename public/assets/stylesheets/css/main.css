@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -12,67 +13,93 @@ body {
   padding: 0;
 }
 
-header {
+header .headerView {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  padding: 3rem 5rem;
+  background-color: black;
+  padding: 0.5rem 5rem;
 }
-header .company {
+@media screen and (max-width: 768px) {
+  header .headerView {
+    padding: 0 2rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  header .headerView {
+    display: block;
+    padding: 0 0.2rem;
+  }
+}
+header .headerView .company {
   color: #f6ab36;
   display: flex;
-  flex-basis: 30%;
+  flex-basis: 35%;
 }
-header .company .logo img {
+@media screen and (max-width: 1200px) {
+  header .headerView .company {
+    flex-basis: 45%;
+  }
+}
+@media screen and (max-width: 992px) {
+  header .headerView .company {
+    flex-basis: 55%;
+  }
+}
+header .headerView .company .logo img {
   max-width: 100%;
 }
-header .rightMenu {
-  flex-basis: 30%;
+header .headerView .rightMenu {
+  flex-basis: 45%;
 }
-header .rightMenu .authentification {
+@media screen and (max-width: 576px) {
+  header .headerView .rightMenu {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.2rem;
+  }
+}
+header .headerView .rightMenu .authentification {
   display: flex;
   justify-content: right;
   color: #fff;
 }
-header .rightMenu .authentification ul {
+header .headerView .rightMenu .authentification nav ul {
   text-align: right;
 }
-header .rightMenu .authentification ul p {
+@media screen and (max-width: 576px) {
+  header .headerView .rightMenu .authentification nav ul {
+    text-align: left;
+    padding-left: 0.2rem;
+  }
+}
+header .headerView .rightMenu .authentification nav ul p {
   margin: 0;
 }
-header .rightMenu .authentification ul li {
-  list-style: none;
+header .headerView .rightMenu .authentification nav ul li {
+  list-style-type: none;
   display: inline-flex;
   justify-content: space-between;
 }
-header .rightMenu .authentification ul li a {
+header .headerView .rightMenu .authentification nav ul li a {
   color: #fff;
   text-decoration: none;
 }
-header .rightMenu .links {
+header .headerView .rightMenu .links {
   display: flex;
   filter: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
   justify-content: right;
+  align-items: center;
 }
-header .rightMenu .links .mail {
-  width: 45px;
-  height: 45px;
-  background: url("../../icons/envelope.svg");
-  background-repeat: no-repeat;
-}
-header .rightMenu .links .phone {
-  width: 40px;
-  height: 40px;
+header .headerView .rightMenu .links .phone {
   margin: 0 2rem;
-  background: url("../../icons/phone.svg");
-  background-repeat: no-repeat;
 }
-header .rightMenu .links .facebook {
-  width: 40px;
-  height: 40px;
-  background: url("../../icons/facebook.svg");
-  background-repeat: no-repeat;
+header .hrDiv hr {
+  padding: 0;
+  margin: 0;
+  height: 0.2rem;
+  border: none;
+  background-color: #f6ab36;
 }
 
 footer {
@@ -180,8 +207,7 @@ footer .footerView .copyright {
 }
 .contact .form .container .form-group .form-item-group .form-photo *:active,
 .contact .form .container .form-group-account .form-item-group .form-photo *:active {
-  color: #707070;
-  background-color: #000;
+  color: #276d10;
 }
 .contact .form .container .form-group .form-item-group .warning,
 .contact .form .container .form-group-account .form-item-group .warning {
@@ -267,36 +293,47 @@ footer .footerView .copyright {
 }
 .backoffice .addServices,
 .backoffice .modifyServices,
-.backoffice .addReviews {
+.backoffice .addReviews,
+.backoffice .deleteServices {
   background-color: #000;
   border: 1px solid #fff;
-  padding: 2% 0;
 }
 .backoffice .addServices form,
 .backoffice .modifyServices form,
-.backoffice .addReviews form {
+.backoffice .addReviews form,
+.backoffice .deleteServices form {
   width: 100%;
 }
 .backoffice .addServices form .form-admin-group,
 .backoffice .modifyServices form .form-admin-group,
-.backoffice .addReviews form .form-admin-group {
+.backoffice .addReviews form .form-admin-group,
+.backoffice .deleteServices form .form-admin-group {
   display: flex;
-  padding: 2% 5%;
+  padding: 1% 5%;
 }
 @media screen and (max-width: 768px) {
   .backoffice .addServices form .form-admin-group,
 .backoffice .modifyServices form .form-admin-group,
-.backoffice .addReviews form .form-admin-group {
+.backoffice .addReviews form .form-admin-group,
+.backoffice .deleteServices form .form-admin-group {
     display: block;
     padding: 1% 4%;
   }
 }
 .backoffice .addServices form .form-admin-group .form-admin-item,
 .backoffice .modifyServices form .form-admin-group .form-admin-item,
-.backoffice .addReviews form .form-admin-group .form-admin-item {
+.backoffice .addReviews form .form-admin-group .form-admin-item,
+.backoffice .deleteServices form .form-admin-group .form-admin-item {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
+}
+.backoffice .addServices form .form-admin-group .form-admin-item #idService,
+.backoffice .modifyServices form .form-admin-group .form-admin-item #idService,
+.backoffice .addReviews form .form-admin-group .form-admin-item #idService,
+.backoffice .deleteServices form .form-admin-group .form-admin-item #idService {
+  max-width: 30%;
 }
 .backoffice .addServices form .form-admin-group .form-admin-item input,
 .backoffice .addServices form .form-admin-group .form-admin-item select,
@@ -306,7 +343,10 @@ footer .footerView .copyright {
 .backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
 .backoffice .addReviews form .form-admin-group .form-admin-item input,
 .backoffice .addReviews form .form-admin-group .form-admin-item select,
-.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea,
+.backoffice .deleteServices form .form-admin-group .form-admin-item input,
+.backoffice .deleteServices form .form-admin-group .form-admin-item select,
+.backoffice .deleteServices form .form-admin-group .form-admin-item textarea {
   display: flex;
   max-width: 90%;
   background-color: #828481;
@@ -315,6 +355,7 @@ footer .footerView .copyright {
   border: 1px solid #fff;
   border-radius: 0.4rem;
   resize: none;
+  padding: 2%;
 }
 @media screen and (max-width: 768px) {
   .backoffice .addServices form .form-admin-group .form-admin-item input,
@@ -325,7 +366,10 @@ footer .footerView .copyright {
 .backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
 .backoffice .addReviews form .form-admin-group .form-admin-item input,
 .backoffice .addReviews form .form-admin-group .form-admin-item select,
-.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea,
+.backoffice .deleteServices form .form-admin-group .form-admin-item input,
+.backoffice .deleteServices form .form-admin-group .form-admin-item select,
+.backoffice .deleteServices form .form-admin-group .form-admin-item textarea {
     max-width: 100%;
   }
 }
@@ -338,13 +382,17 @@ footer .footerView .copyright {
 .backoffice .modifyServices form .form-admin-group .form-admin-item textarea,
 .backoffice .addReviews form .form-admin-group .form-admin-item input,
 .backoffice .addReviews form .form-admin-group .form-admin-item select,
-.backoffice .addReviews form .form-admin-group .form-admin-item textarea {
+.backoffice .addReviews form .form-admin-group .form-admin-item textarea,
+.backoffice .deleteServices form .form-admin-group .form-admin-item input,
+.backoffice .deleteServices form .form-admin-group .form-admin-item select,
+.backoffice .deleteServices form .form-admin-group .form-admin-item textarea {
     margin-bottom: 2rem;
   }
 }
 .backoffice .addServices form .form-admin-group .btn-submit,
 .backoffice .modifyServices form .form-admin-group .btn-submit,
-.backoffice .addReviews form .form-admin-group .btn-submit {
+.backoffice .addReviews form .form-admin-group .btn-submit,
+.backoffice .deleteServices form .form-admin-group .btn-submit {
   background-color: #aad992;
   font-weight: bolder;
   text-transform: uppercase;
@@ -355,7 +403,8 @@ footer .footerView .copyright {
 @media screen and (max-width: 768px) {
   .backoffice .addServices form .form-admin-group .btn-submit,
 .backoffice .modifyServices form .form-admin-group .btn-submit,
-.backoffice .addReviews form .form-admin-group .btn-submit {
+.backoffice .addReviews form .form-admin-group .btn-submit,
+.backoffice .deleteServices form .form-admin-group .btn-submit {
     width: 100%;
     margin-top: 1rem;
     padding: 2rem 0;
@@ -363,7 +412,8 @@ footer .footerView .copyright {
 }
 .backoffice .addServices form .form-admin-group .btn-submit:hover,
 .backoffice .modifyServices form .form-admin-group .btn-submit:hover,
-.backoffice .addReviews form .form-admin-group .btn-submit:hover {
+.backoffice .addReviews form .form-admin-group .btn-submit:hover,
+.backoffice .deleteServices form .form-admin-group .btn-submit:hover {
   background-color: #276d10;
 }
 .backoffice .administration .servicesAdmin h2 {
@@ -388,16 +438,16 @@ footer .footerView .copyright {
   align-items: center;
   border: 1px solid #fff;
 }
-.picturesView .deleteWork {
+.deleteWork {
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
-.picturesView .deleteWork form {
+.deleteWork form {
   display: flex;
   align-items: bottom;
 }
-.picturesView .deleteWork form button {
+.deleteWork form button {
   display: flex;
   padding: 20rem, 20rem, 0, 0;
 }
@@ -453,8 +503,8 @@ footer .footerView .copyright {
   padding-left: 5.5rem;
 }
 .addWorks form .form-group .form-admin-group .form-admin-item input[type=file]:active {
-  color: #c91f1f;
-  background-color: #000;
+  color: #000;
+  background-color: #f6ab36;
 }
 .addWorks form .btn-submit {
   background-color: #aad992;
@@ -681,6 +731,61 @@ footer .footerView .copyright {
   margin: 1.8rem 0;
 }
 
+.pricesPage .categoriesPrices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bolder;
+  margin: 5rem;
+}
+@media screen and (max-width: 1200px) {
+  .pricesPage .categoriesPrices {
+    font-size: 100%;
+    margin: 3rem;
+  }
+}
+.pricesPage .categoriesPrices .standardPrices,
+.pricesPage .categoriesPrices .optionsPrices {
+  border-collapse: collapse;
+  text-align: center;
+  align-items: center;
+  background-color: #40423f;
+}
+.pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices thead tr td,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr td,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr td,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td {
+  text-transform: uppercase;
+  border: 2px solid #f6ab36;
+  padding: 3rem;
+}
+.pricesPage .categoriesPrices .standardPrices thead tr th a,
+.pricesPage .categoriesPrices .standardPrices thead tr td a,
+.pricesPage .categoriesPrices .standardPrices tbody tr th a,
+.pricesPage .categoriesPrices .standardPrices tbody tr td a,
+.pricesPage .categoriesPrices .optionsPrices thead tr th a,
+.pricesPage .categoriesPrices .optionsPrices thead tr td a,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th a,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td a {
+  color: #fff;
+}
+.pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.pricesPage .categoriesPrices .optionsPrices tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.pricesPage .categoriesPrices .optionsPrices tr:nth-child(even) {
+  background-color: #40423f;
+}
+
 .slideReviews {
   margin: 3% 5%;
 }
@@ -707,7 +812,7 @@ footer .footerView .copyright {
 .slideReviews #splideReviews .splide__arrows .splide__arrow, .slideReviews #splideReviewsAdmin .splide__arrows .splide__arrow {
   background-color: #f6ab36;
   opacity: 0.1;
-  margin: 0 15%;
+  margin: 0 5%;
   font-size: 3rem;
   transition: opacity 0.8s;
 }
@@ -717,7 +822,7 @@ footer .footerView .copyright {
 }
 
 .slidePictures {
-  margin: 3% 0;
+  border-radius: 5rem;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .slidePictures #splidePictures:hover .splide__arrows {
@@ -725,7 +830,11 @@ footer .footerView .copyright {
   transition: opacity 0.5s;
 }
 .slidePictures #splidePictures .splide__track {
-  padding: 5rem 0;
+  padding-bottom: 7rem;
+}
+.slidePictures #splidePictures .splide__track h2 {
+  text-align: center;
+  text-transform: uppercase;
 }
 .slidePictures #splidePictures .splide__arrows {
   opacity: 0;
@@ -742,13 +851,24 @@ footer .footerView .copyright {
   transition: opacity 0.8s;
 }
 
+html {
+  background-color: #000;
+}
+
 body {
   position: relative;
   min-height: 85vh;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(15, 15, 15, 0.6) 51%, rgba(0, 0, 0, 0.6) 100%), url("../../img/background-carbone.webp");
-  background-size: contain;
+  font-family: "Jura", sans-serif;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 15, 15, 0.7) 51%, rgba(0, 0, 0, 0.7) 100%), url("../../img/background-carbone.webp");
+  background-size: cover;
   background-attachment: fixed;
+  margin: 0 6rem;
+}
+@media screen and (max-width: 1200px) {
+  body {
+    margin: 0;
+  }
 }
 body main {
   height: 100%;
@@ -767,7 +887,6 @@ body main .view .txtView {
   text-align: center;
   padding: 1.5rem 0rem;
   font-size: 130%;
-  box-shadow: 0px 20px 50px rgba(255, 255, 255, 0.1), 0px -20px 50px rgba(255, 255, 255, 0.1);
   text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 body main .view .txtView .txtHome {
@@ -780,7 +899,7 @@ body main .view .txtView .txtHome {
 body main .ceo {
   display: flex;
   justify-content: center;
-  margin: 5rem 5rem;
+  margin: 10%;
 }
 body main .ceo .txtCeo {
   flex-basis: 80%;
@@ -795,6 +914,17 @@ body main .ceo .pictCeo {
 }
 body main .ceo .pictCeo img {
   width: 100px;
+}
+body main .reviews {
+  text-align: center;
+  padding: 2% 5%;
+  margin: 5% 10%;
+  border-radius: 5rem;
+  font-size: 125%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+body main .reviews .reviewsView {
+  text-align: center;
 }
 body main .services {
   display: flex;
@@ -820,6 +950,10 @@ body main .services .servicesView .listServices {
   margin: 4rem 0;
 }
 body main .prices {
+  text-decoration: none;
+  color: #fff;
+}
+body main .prices .price {
   background-color: #40423f;
   border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
@@ -829,15 +963,8 @@ body main .prices {
   text-align: center;
   text-transform: uppercase;
 }
-body main .prices * {
-  color: #fff;
-  text-decoration: none;
-}
-body main .reviews {
-  text-align: center;
-}
-body main .reviews .reviewsView {
-  text-align: center;
+body main .pictures {
+  margin: 0 7% 7% 5%;
 }
 body main .pictures .picturesView {
   display: flex;
