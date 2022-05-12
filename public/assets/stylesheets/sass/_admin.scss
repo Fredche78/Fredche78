@@ -2,7 +2,20 @@
 @use "mixins" as m;
 
 .backoffice {
-    margin: 0 2%;
+    // margin: 0 2%;
+    
+
+    .navAdmin {
+        display: flex;
+        width: 40%;
+        background-color: v.$color-background-label;
+        justify-content: space-around;
+
+        a {
+            // width: 30%;
+            @include m.btn-submit2;
+        }
+    }
 
     ////////////////////////Mise en page des formulaires/////////////////////////////
     .addServices,

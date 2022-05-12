@@ -300,6 +300,7 @@ if (isset($_POST["deleteWork"])) {
 
                     unlink("assets/img/photos/travaux/" . $photo["img_before"]);
                     unlink("assets/img/photos/travaux/" . $photo["img_after"]);
+
                 }
             }
         }
@@ -341,7 +342,7 @@ if (isset($_POST["updateServices"])) {
 
 <div class="backoffice">
 
-    <div class="nav">
+    <div class="navAdmin">
         <a href="prices.php">Prix</a>
         <a href="request.php">Demandes</a>
     </div>

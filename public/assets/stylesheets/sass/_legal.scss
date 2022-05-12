@@ -1,6 +1,20 @@
+@use "variables" as v;
+
 .legalRules {
     display: flex;
+    text-align: justify;
     justify-content: center;
     padding: 5%;
     font-size: x-large;
+
+    .develop {
+        a {
+            color: #fff;
+        } 
+    }
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        text-align: center;
+        font-size: large;
+    }
 }

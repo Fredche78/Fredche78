@@ -41,10 +41,15 @@
     border-radius: 2rem;
     text-transform: uppercase;
     color: #fff;
-    padding: 2rem 8rem;
+    // padding: 2rem 8rem;
+    padding: 3% 8%;
     margin: 3rem 0;
     cursor: pointer;
     font-size: x-large;
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+        font-size: medium;
+    }
 
     &:hover {
         // background-color: #3f3d3d;

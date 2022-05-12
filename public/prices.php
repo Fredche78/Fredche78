@@ -60,13 +60,18 @@ include("../templates/header.php")
                 </tr>
                 <tr>
                     <td colspan="5">
-                        <p>* Plus 30€ sur le tarif appliqué sur l'intérieur</p>  
+                        <p>* Plus 30€ sur le tarif appliqué sur l'intérieur</p>
                     </td>
                 </tr>
 
             </tbody>
 
         </table>
+
+    </div>
+
+    <div class="categoriesPrices">
+
         <table class="optionsPrices">
             <tr>
                 <td colspan="7">
@@ -196,8 +201,10 @@ include("../templates/header.php")
         </table>
 
     </div>
+    
+</div>
 
-    <!-- <div class="options">
+<!-- <div class="options">
 
         <div class="option">
             <div class="nameOption">

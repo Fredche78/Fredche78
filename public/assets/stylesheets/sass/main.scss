@@ -122,6 +122,11 @@ body {
                 flex-basis: 25%;
                 @include m.box;
                 margin: 1rem 0;
+                text-shadow: v.$color-text-shadow-box;
+
+                h3 {
+                    text-transform: uppercase;   
+                }
 
                 hr {
                     height: 0.3rem;
@@ -137,6 +142,7 @@ body {
 
         .prices {
             text-decoration: none;
+            text-shadow: v.$color-text-shadow-box;
             color: #fff;
 
             .price {
@@ -234,7 +240,8 @@ body {
                 font-size: 3rem;
 
                 p {
-                    text-shadow: 1px 2px 20px #262635, -1px -2px 20px #262635;
+                    text-shadow: v.$color-text-shadow-box;
+                    // text-shadow: 1px 2px 20px #262635, -1px -2px 20px #262635;
                     margin: 1.5rem 0;
                 }
 

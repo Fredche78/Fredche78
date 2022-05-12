@@ -2,17 +2,35 @@
 @use "mixins" as m;
 
 .pricesPage {
+    margin: 4rem;
+
     .categoriesPrices {
         display: flex;
+        table-layout: auto;
+        width: 100%;
         flex-direction: column;
         justify-content: center;
+        margin-bottom: 8%;
         // font-size: v.$font-size-l;
         font-weight: bolder;
-        margin: 5rem;
 
         @media screen and (max-width: v.$xl-breakpoint) {
-            font-size: 100%;
-            margin: 3rem;
+            margin-bottom: 10%;
+        }
+
+        @media screen and (max-width: v.$lg-breakpoint) {
+            font-size: 80%;
+            margin-bottom: 15%;
+        }
+
+        @media screen and (max-width: v.$md-breakpoint) {
+            font-size: 65%;
+            margin-bottom: 15%;
+        }
+
+        @media screen and (max-width: v.$md-breakpoint) {
+            font-size: 50%;
+            margin-bottom: 15%;
         }
 
         .standardPrices,
@@ -29,7 +47,23 @@
                     td {
                         text-transform: uppercase;
                         border: 2px solid v.$color-primary;
-                        padding: 3rem;
+                        padding: 2.5rem;
+
+                        @media screen and (max-width: v.$xl-breakpoint) {
+                            padding: 2rem;
+                        }
+
+                        @media screen and (max-width: v.$lg-breakpoint) {
+                            padding: 1.5rem;
+                        }
+
+                        @media screen and (max-width: v.$md-breakpoint) {
+                            padding: 1rem;
+                        }
+
+                        @media screen and (max-width: v.$sm-breakpoint) {
+                            padding: 0.3rem;
+                        }
 
                         a {
                             color: #fff;

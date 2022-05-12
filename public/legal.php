@@ -14,6 +14,7 @@ include("../templates/header.php")
         <div class="mentions">
 
             <p>Entreprise: SB POLISH</p>
+            <p>Responsable légal: Sébastien BROUILLARD</p>
             <p>Statuts : Auto-Entreprise</p>
             <p>Siret: 80260641800035</p>
             <p>Adresse: 91 Rue Henri Durre</p>

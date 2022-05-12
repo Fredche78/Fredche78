@@ -18,6 +18,7 @@ if (!empty($_POST)) {
     //Initialisation d'un tableau d'erreur
     $errors = [];
 
+    //////////////////////////////////Voir comment/s'il faut mettre un prépare///////////////////////
     $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
     $queryUsersMail = $db->query("SELECT email FROM users");
     $usersMail = $queryUsersMail->fetchAll();
@@ -64,9 +65,10 @@ if (!empty($_POST)) {
     $lowercase = preg_match("/[a-z]/", $password);
     $number = preg_match("/[0-9]/", $password);
     $haveSpace = preg_match("/ /", $password);
+    $specialChar = preg_match("/[^a-zA-Z0-9]/", $password);
 
-    if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
-        $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
+    if (strlen($password) < 12 || !$uppercase || !$lowercase || !$number || !$specialChar || $haveSpace) {
+        $errors["password"] = "Le mot de passe doit contenir au minimum 12 caractères, une majuscule, une minuscule, un caractère spécial et un chiffre";
     }
 
     // Si pas d'erreur -> insertion de l'utilisateur en BDD

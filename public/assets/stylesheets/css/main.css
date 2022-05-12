@@ -114,12 +114,39 @@ footer .footerView {
   display: flex;
   justify-content: space-evenly;
   padding: 5rem 0;
-  margin: 0 20%;
+  margin: 0 15%;
+}
+@media screen and (max-width: 1200px) {
+  footer .footerView {
+    margin: 0 10%;
+  }
+}
+@media screen and (max-width: 576px) {
+  footer .footerView {
+    margin: 0;
+    padding: 1rem 0;
+  }
 }
 footer .footerView div, footer .footerView div > a {
   color: #fff;
   text-decoration: none;
+  text-align: center;
   font-size: 2.5rem;
+}
+@media screen and (max-width: 1200px) {
+  footer .footerView div, footer .footerView div > a {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  footer .footerView div, footer .footerView div > a {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  footer .footerView div, footer .footerView div > a {
+    font-size: 1.2rem;
+  }
 }
 footer .footerView .copyright {
   display: flex;
@@ -146,6 +173,11 @@ footer .footerView .copyright {
 .contact .form form {
   width: 70%;
 }
+@media screen and (max-width: 768px) {
+  .contact .form form {
+    width: 90%;
+  }
+}
 .contact .form .container {
   justify-content: center;
   text-align: center;
@@ -153,6 +185,11 @@ footer .footerView .copyright {
 .contact .form .container .form-group {
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 576px) {
+  .contact .form .container .form-group {
+    display: block;
+  }
 }
 .contact .form .container .form-group-account {
   display: flex;
@@ -233,10 +270,15 @@ footer .footerView .copyright {
   border-radius: 2rem;
   text-transform: uppercase;
   color: #fff;
-  padding: 2rem 8rem;
+  padding: 3% 8%;
   margin: 3rem 0;
   cursor: pointer;
   font-size: x-large;
+}
+@media screen and (max-width: 576px) {
+  .contact .form .container input[type=submit] {
+    font-size: medium;
+  }
 }
 .contact .form .container input[type=submit]:hover {
   background-color: #637b54;
@@ -262,11 +304,16 @@ footer .footerView .copyright {
   border-radius: 2rem;
   text-transform: uppercase;
   color: #fff;
-  padding: 2rem 8rem;
+  padding: 3% 8%;
   margin: 3rem 0;
   cursor: pointer;
   font-size: x-large;
   text-decoration: none;
+}
+@media screen and (max-width: 576px) {
+  .btn a {
+    font-size: medium;
+  }
 }
 .btn a:hover {
   background-color: #637b54;
@@ -288,8 +335,31 @@ footer .footerView .copyright {
   font-size: x-large;
 }
 
-.backoffice {
-  margin: 0 2%;
+.backoffice .navAdmin {
+  display: flex;
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: space-around;
+}
+.backoffice .navAdmin a {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+}
+@media screen and (max-width: 576px) {
+  .backoffice .navAdmin a {
+    font-size: medium;
+  }
+}
+.backoffice .navAdmin a:hover {
+  background-color: #637b54;
 }
 .backoffice .addServices,
 .backoffice .modifyServices,
@@ -688,9 +758,19 @@ footer .footerView .copyright {
 
 .legalRules {
   display: flex;
+  text-align: justify;
   justify-content: center;
   padding: 5%;
   font-size: x-large;
+}
+.legalRules .develop a {
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .legalRules {
+    text-align: center;
+    font-size: large;
+  }
 }
 
 .myAccount {
@@ -731,17 +811,39 @@ footer .footerView .copyright {
   margin: 1.8rem 0;
 }
 
+.pricesPage {
+  margin: 4rem;
+}
 .pricesPage .categoriesPrices {
   display: flex;
+  table-layout: auto;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
+  margin-bottom: 8%;
   font-weight: bolder;
-  margin: 5rem;
 }
 @media screen and (max-width: 1200px) {
   .pricesPage .categoriesPrices {
-    font-size: 100%;
-    margin: 3rem;
+    margin-bottom: 10%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .pricesPage .categoriesPrices {
+    font-size: 80%;
+    margin-bottom: 15%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pricesPage .categoriesPrices {
+    font-size: 65%;
+    margin-bottom: 15%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pricesPage .categoriesPrices {
+    font-size: 50%;
+    margin-bottom: 15%;
   }
 }
 .pricesPage .categoriesPrices .standardPrices,
@@ -761,7 +863,55 @@ footer .footerView .copyright {
 .pricesPage .categoriesPrices .optionsPrices tbody tr td {
   text-transform: uppercase;
   border: 2px solid #f6ab36;
-  padding: 3rem;
+  padding: 2.5rem;
+}
+@media screen and (max-width: 1200px) {
+  .pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices thead tr td,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr td,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr td,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td {
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 992px) {
+  .pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices thead tr td,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr td,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr td,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td {
+    padding: 1.5rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices thead tr td,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr td,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr td,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td {
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .pricesPage .categoriesPrices .standardPrices thead tr th,
+.pricesPage .categoriesPrices .standardPrices thead tr td,
+.pricesPage .categoriesPrices .standardPrices tbody tr th,
+.pricesPage .categoriesPrices .standardPrices tbody tr td,
+.pricesPage .categoriesPrices .optionsPrices thead tr th,
+.pricesPage .categoriesPrices .optionsPrices thead tr td,
+.pricesPage .categoriesPrices .optionsPrices tbody tr th,
+.pricesPage .categoriesPrices .optionsPrices tbody tr td {
+    padding: 0.3rem;
+  }
 }
 .pricesPage .categoriesPrices .standardPrices thead tr th a,
 .pricesPage .categoriesPrices .standardPrices thead tr td a,
@@ -793,7 +943,7 @@ footer .footerView .copyright {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10rem;
+  height: 8rem;
 }
 .slideReviews #splideReviews:hover .splide__arrows, .slideReviews #splideReviewsAdmin:hover .splide__arrows {
   opacity: 1;
@@ -803,7 +953,7 @@ footer .footerView .copyright {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .slideReviews #splideReviews .splide__arrows, .slideReviews #splideReviewsAdmin .splide__arrows {
   opacity: 0;
@@ -812,8 +962,7 @@ footer .footerView .copyright {
 .slideReviews #splideReviews .splide__arrows .splide__arrow, .slideReviews #splideReviewsAdmin .splide__arrows .splide__arrow {
   background-color: #f6ab36;
   opacity: 0.1;
-  margin: 0 5%;
-  font-size: 3rem;
+  font-size: 2rem;
   transition: opacity 0.8s;
 }
 .slideReviews #splideReviews .splide__arrows .splide__arrow:hover, .slideReviews #splideReviewsAdmin .splide__arrows .splide__arrow:hover {
@@ -940,6 +1089,10 @@ body main .services .servicesView {
   border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
   margin: 1rem 0;
+  text-shadow: 3px 3px 10px #000;
+}
+body main .services .servicesView h3 {
+  text-transform: uppercase;
 }
 body main .services .servicesView hr {
   height: 0.3rem;
@@ -951,6 +1104,7 @@ body main .services .servicesView .listServices {
 }
 body main .prices {
   text-decoration: none;
+  text-shadow: 3px 3px 10px #000;
   color: #fff;
 }
 body main .prices .price {
@@ -1031,7 +1185,7 @@ body main .infosSociety .society {
   font-size: 3rem;
 }
 body main .infosSociety .society p {
-  text-shadow: 1px 2px 20px #262635, -1px -2px 20px #262635;
+  text-shadow: 3px 3px 10px #000;
   margin: 1.5rem 0;
 }
 body main .infosSociety .society #nameSociety {

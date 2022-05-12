@@ -26,6 +26,10 @@
 
         form {
             width: 70%;
+
+            @media screen and (max-width: v.$md-breakpoint) {
+                width: 90%;
+            }
         }
 
         .container {
@@ -37,6 +41,10 @@
             .form-group {
                 display: flex;
                 justify-content: space-between;
+
+                @media screen and (max-width: v.$sm-breakpoint) {
+                    display: block;
+                }
             }
 
             // S'applique sur reset password
