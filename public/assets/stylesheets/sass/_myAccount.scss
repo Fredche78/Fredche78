@@ -1,3 +1,6 @@
+@use "variables" as v;
+@use "mixins" as m;
+
 .myAccount {
     display: flex;
     // width: 100%;
@@ -5,45 +8,98 @@
 
     .account {
         text-align: center;
-        width: 60%;
+        width: 70%;
+
+        @media screen and (max-width: v.$xl-breakpoint) {
+            width: 75%;
+        }
+
+        @media screen and (max-width: v.$lg-breakpoint) {
+            width: 80%;
+        }
 
         .viewAccount {
             display: flex;
-            margin: 5rem 0;
+            justify-content: space-between;
+            margin: 4rem 0;
+
+            @media screen and (max-width: v.$lg-breakpoint) {
+                display: block;
+            }
 
             .items-account {
-                flex-basis: 50%;
+                flex-basis: 45%;
 
-                .item-view {
-                    margin: 1.5rem;
+                h2 {
+                    margin-bottom: 7%;
                 }
 
+                .item-view {
+                    margin-bottom: 4%;
+                    background-color: #000;
+                    color: v.$color-primary;
+                    padding: 2.8rem;
+                    border: 2px solid #fff;
+                    border-radius: 0.5rem;
+
+                    @media screen and (max-width: v.$xl-breakpoint) {
+                        padding: 6.5%;
+                    }
+
+                    h3 {
+                        margin-bottom: 4%;
+                    }
+                }
+
+                .deleteAccount {
+                    .btn-account {
+                        @include m.btn-submit2;
+                        background-color: rgb(113, 13, 13);
+                    }
+                    
+                }
             }
 
             .items-account-address {
-                flex-basis: 50%;
+                flex-basis: 45%;
 
                 h3 {
                     margin: 2rem 0 1rem 0;
                 }
 
-
                 .address-account {
                     .address {
-                        display: flex;
-                        justify-content: center;
+                        .addressView {
+                            // display: flex;
+                            justify-content: space-around;
+                            // width: 100%;
 
-                        label,
-                        input,
-                        select {
-                            display: flex;
-                            width: 100%;
-                        }
+                            label,
+                            input,
+                            select {
+                                display: flex;
+                                width: 100%;
+                            }
 
-                        label {
-                            margin: 1.8rem 0;
+                            input,
+                            select {
+                                background-color: #000;
+                                color: v.$color-primary;
+                                padding: 3% 8%;
+                                border: 2px solid #fff;
+                                border-radius: 0.5rem;
+                            }
+
+                            label {
+                                color: v.$color-primary;
+                                margin-bottom: 0.2rem;
+                            }
                         }
                     }
+                }
+
+                input[type="submit"] {
+                    @include m.btn-submit2;
                 }
             }
         }

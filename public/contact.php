@@ -1,5 +1,6 @@
 <?php
 include("../templates/header.php");
+require_once '../system/config.php';
 
 //Initialisation d'un tableau d'erreur
 $errors = [];
@@ -10,7 +11,7 @@ $confirme = "";
 if (isset($_SESSION['email'])) {
     $emailLog = trim(strip_tags($_SESSION['email']));
 
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
     $queryLog = $db->prepare("SELECT * FROM users WHERE email =  :email");
     $queryLog->BindParam(":email", $emailLog);
@@ -31,7 +32,7 @@ if (!empty($_POST)) {
 
     for ($i = 1; $i < 4; $i++) {
 
-/////////////////////////// Vérifier si ce if fonctionne/////////////////
+        /////////////////////////// Vérifier si ce if fonctionne/////////////////
         if (!empty($_FILES["photo" . $i]["name"])) {
 
             $photoOld[$i] = trim(strip_tags($_FILES["photo" . $i]["name"]));
@@ -45,7 +46,7 @@ if (!empty($_POST)) {
             $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
             $maxSize = 2000000;
 
-            if (in_array($extension[$i], $allowedTypes) && $size[$i] <= $maxSize && $errorsFiles == 0) {
+            if (in_array($extension[$i], $allowedTypes) && $size[$i] < $maxSize && $errorsFiles == 0) {
 
                 $uniqueName[$i] = md5(time() . $name[$i]);
                 $photo[$i] = $uniqueName[$i] . "." . $extension[$i];
@@ -53,7 +54,7 @@ if (!empty($_POST)) {
                 move_uploaded_file($tmpName[$i], $uploadPath[$i]);
                 rename("assets/img/photos/devis/$photoOld[$i]", "assets/img/photos/devis/$photo[$i]");
 
-                // echo "Image enregistrée";
+                ////////////////////////////////La gestion des erreurs d'images/////////////////////////////
             } else {
 
                 if ($maxSize <= $size[$i]) {
@@ -65,17 +66,37 @@ if (!empty($_POST)) {
         }
     }
 
+    ////////////////////////////La gestion des erreurs textes///////////////////////////////
+
     // Validation de l'email
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors["email"] = "L'email n'est pas valide";
     }
 
+    // Validation du prénom
+
+    if (empty($firstname)) {
+        $errors["firstname"] = "Prénom requis";
+    }
+
+    // Validation du Nom
+
+    if (empty($lastname)) {
+        $errors["lastname"] = "Nom requis";
+    }
+
+    // Validation du numéro de téléphone
+
+    if (empty($phone)) {
+        $errors["phone"] = "Numéro de téléphone requis";
+    }
+
     /////////////////////////////////////INSERT INTO/////////////////////////////////////////////
 
     // Si pas d'erreur -> insertion de l'utilisateur en BDD
     if (empty($errors) && empty($errorsFiles)) {
-        $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+        // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
         $query = $db->prepare("INSERT INTO contacts (firstname, lastname, email, phone, vehicule, city, question, photo, photo2, photo3, message) VALUES (:firstname, :lastname, :email, :phone, :vehicule, :city, :question, :photo1, :photo2, :photo3, :message)");
 
@@ -93,12 +114,7 @@ if (!empty($_POST)) {
 
         if ($query->execute()) {
 
-            // echo "message envoyé";
-            // header("Location: contact.php");
             $confirme = "Votre demande a bien été enregistrée";
-            // header("Location: contact.php");
-            // sleep(5);
-
         } else {
             $errors["db"] = "Erreur de bdd";
         }
@@ -136,11 +152,17 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($userLog["firstname"]) ? $userLog["firstname"] : "" ?>" required>
+                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($userLog["firstname"]) ? $userLog["firstname"] : "" ?>">
                             <?php
                             } else {
                             ?>
-                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>" required>
+                                <input type="text" id="inputFirstname" name="firstname" value="<?= isset($firstname) ? $firstname : "" ?>">
+                            <?php
+                            }
+                            if (isset($errors["firstname"])) {
+                            ?>
+                                <p class="errorsTxt"><?= $errors["firstname"] ?>
+                                </p>
                             <?php
                             }
                             ?>
@@ -151,11 +173,17 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($userLog["lastname"]) ? $userLog["lastname"] : "" ?>" required>
+                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($userLog["lastname"]) ? $userLog["lastname"] : "" ?>">
                             <?php
                             } else {
                             ?>
-                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>" required>
+                                <input type="text" id="inputLastname" name="lastname" value="<?= isset($lastname) ? $lastname : "" ?>">
+                            <?php
+                            }
+                            if (isset($errors["lastname"])) {
+                            ?>
+                                <p class="errorsTxt"><?= $errors["lastname"] ?>
+                                </p>
                             <?php
                             }
                             ?>
@@ -169,11 +197,11 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputMail" name="email" value="<?= isset($userLog["email"]) ? $userLog["email"] : "" ?>" required>
+                                <input type="email" id="inputMail" name="email" value="<?= isset($userLog["email"]) ? $userLog["email"] : "" ?>">
                             <?php
                             } else {
                             ?>
-                                <input type="email" id="inputMail" name="email" value="<?= isset($email) ? $email : "" ?>" required>
+                                <input type="email" id="inputMail" name="email" value="<?= isset($email) ? $email : "" ?>">
                             <?php
                             }
                             if (isset($errors["email"])) {
@@ -190,11 +218,17 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputPhone" name="phone" value="<?= isset($userLog["phone"]) ? $userLog["phone"] : "" ?>" required>
+                                <input type="tel" id="inputPhone" name="phone" value="<?= isset($userLog["phone"]) ? $userLog["phone"] : "" ?>">
                             <?php
                             } else {
                             ?>
                                 <input type="tel" id="inputPhone" name="phone" value="<?= isset($phone) ? $phone : "" ?>">
+                            <?php
+                            }
+                            if (isset($errors["phone"])) {
+                            ?>
+                                <p class="errorsTxt"><?= $errors["phone"] ?>
+                                </p>
                             <?php
                             }
                             ?>
@@ -236,7 +270,7 @@ if (!empty($_POST)) {
 
                     <div class="form-group">
                         <div class="form-item-group">
-                            <label for="selectQuestion">Votre demande *</label>
+                            <label for="selectQuestion">Votre demande</label>
                             <select name="question" id="selectQuestion">
                                 <option value="Devis" <?= (isset($question) && $question === "Devis") ? "selected" : "" ?>>Demander un devis</option>
                                 <option value="Question" <?= (isset($question) && $question === "Question") ? "selected" : "" ?>>Poser une question</option>
@@ -252,50 +286,43 @@ if (!empty($_POST)) {
                                 <label for="inputPhoto3">Photo 3</label>
                                 <input type="file" id="inputPhoto3" name="photo3" accept=".png, .jepg, .jpg, .bmp" style="display: none;">
                             </div>
-                            <div class="warning">
+
+                            <div class="warningFiles">
+
                                 <?php
-                                if (isset($errors["files"][1])) {
+                                for ($i = 1; $i < 4; $i++) {
                                 ?>
-                                    <p class="errorsTxt"><?= $errors["files"][1] ?>
-                                    </p>
+                                    <div class="warning">
+
+                                        <?php
+                                        if (isset($errors["files"][$i])) {
+                                        ?>
+                                            <p class="errorsTxt"><?= $errors["files"][$i] ?>
+                                            </p>
+                                        <?php
+                                        }
+                                        ?>
+
+                                    </div>
+                                    <div class="warning">
+
+                                        <?php
+                                        if (isset($errors["weight"][$i])) {
+                                        ?>
+                                            <p class="errorsTxt"><?= $errors["weight"][$i] ?>
+                                            </p>
+                                        <?php
+                                        }
+                                        ?>
+                                        
+                                    </div>
                                 <?php
                                 }
-                                if (isset($errors["files"][2])) {
                                 ?>
-                                    <p class="errorsTxt"><?= $errors["files"][2] ?>
-                                    </p>
-                                <?php
-                                }
-                                if (isset($errors["files"][3])) {
-                                ?>
-                                    <p class="errorsTxt"><?= $errors["files"][3] ?>
-                                    </p>
-                                <?php
-                                }
-                                ?>
+
                             </div>
-                            <div class="warning">
-                                <?php
-                                if (isset($errors["weight"][1])) {
-                                ?>
-                                    <p class="errorsTxt"><?= $errors["weight"][1] ?>
-                                    </p>
-                                <?php
-                                }
-                                if (isset($errors["weight"][2])) {
-                                ?>
-                                    <p class="errorsTxt"><?= $errors["weight"][2] ?>
-                                    </p>
-                                <?php
-                                }
-                                if (isset($errors["weight"][3])) {
-                                ?>
-                                    <p class="errorsTxt"><?= $errors["weight"][3] ?>
-                                    </p>
-                                <?php
-                                }
-                                ?>
-                            </div>
+
+
                         </div>
                     </div>
 

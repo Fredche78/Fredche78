@@ -1,5 +1,5 @@
 <?php
-
+require_once '../system/config.php';
 /////////////////////////////////////////////////////////////////////////////////////////
 //Grâce à cette ligne nous avons une gestion stricte des types 
 // declare(strict_types=1);
@@ -106,7 +106,7 @@ if (!empty($_POST)) {
     $email = trim(strip_tags($_POST["email"]));
     $password = trim(strip_tags($_POST["password"]));
 
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
     $query = $db->prepare("SELECT * FROM users WHERE email LIKE :email");
     $query->bindParam(":email", $email);
     $query->execute();

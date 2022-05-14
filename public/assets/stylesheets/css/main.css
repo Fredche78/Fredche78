@@ -17,7 +17,7 @@ header .headerView {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(15, 15, 15, 0.5) 51%, rgba(0, 0, 0, 0.8) 100%);
   padding: 0.5rem 5rem;
 }
 @media screen and (max-width: 768px) {
@@ -63,6 +63,7 @@ header .headerView .rightMenu .authentification {
   display: flex;
   justify-content: right;
   color: #fff;
+  font-size: 125%;
 }
 header .headerView .rightMenu .authentification nav ul {
   text-align: right;
@@ -85,6 +86,9 @@ header .headerView .rightMenu .authentification nav ul li a {
   color: #fff;
   text-decoration: none;
 }
+header .headerView .rightMenu .authentification nav ul li a:hover {
+  color: #f6ab36;
+}
 header .headerView .rightMenu .links {
   display: flex;
   filter: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
@@ -104,7 +108,6 @@ header .hrDiv hr {
 
 footer {
   position: absolute;
-  width: 100%;
   top: 100%;
   left: 0;
   right: 0;
@@ -131,7 +134,7 @@ footer .footerView div, footer .footerView div > a {
   color: #fff;
   text-decoration: none;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2.7rem;
 }
 @media screen and (max-width: 1200px) {
   footer .footerView div, footer .footerView div > a {
@@ -246,13 +249,13 @@ footer .footerView .copyright {
 .contact .form .container .form-group-account .form-item-group .form-photo *:active {
   color: #276d10;
 }
-.contact .form .container .form-group .form-item-group .warning,
-.contact .form .container .form-group-account .form-item-group .warning {
+.contact .form .container .form-group .form-item-group .warningFiles,
+.contact .form .container .form-group-account .form-item-group .warningFiles {
   display: flex;
   justify-content: space-around;
 }
-.contact .form .container .form-group .form-item-group .warning p,
-.contact .form .container .form-group-account .form-item-group .warning p {
+.contact .form .container .form-group .form-item-group .warningFiles p,
+.contact .form .container .form-group-account .form-item-group .warningFiles p {
   margin: 0.6rem 0;
   text-align: center;
 }
@@ -281,7 +284,8 @@ footer .footerView .copyright {
   }
 }
 .contact .form .container input[type=submit]:hover {
-  background-color: #637b54;
+  background-color: #315122;
+  border: 0.4rem solid #828481;
 }
 
 #resetPwd {
@@ -291,6 +295,9 @@ footer .footerView .copyright {
 #resetPwd a {
   color: #fff;
   text-transform: uppercase;
+}
+#resetPwd a:hover {
+  color: #f6ab36;
 }
 
 .btn {
@@ -316,7 +323,8 @@ footer .footerView .copyright {
   }
 }
 .btn a:hover {
-  background-color: #637b54;
+  background-color: #315122;
+  border: 0.4rem solid #828481;
 }
 
 .resetMail {
@@ -326,7 +334,6 @@ footer .footerView .copyright {
 }
 .resetMail h1 {
   font-size: smaller;
-  color: crimson;
 }
 .resetMail p {
   font-size: x-large;
@@ -337,7 +344,6 @@ footer .footerView .copyright {
 
 .backoffice .navAdmin {
   display: flex;
-  width: 40%;
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: space-around;
 }
@@ -359,7 +365,8 @@ footer .footerView .copyright {
   }
 }
 .backoffice .navAdmin a:hover {
-  background-color: #637b54;
+  background-color: #315122;
+  border: 0.4rem solid #828481;
 }
 .backoffice .addServices,
 .backoffice .modifyServices,
@@ -463,12 +470,21 @@ footer .footerView .copyright {
 .backoffice .modifyServices form .form-admin-group .btn-submit,
 .backoffice .addReviews form .form-admin-group .btn-submit,
 .backoffice .deleteServices form .form-admin-group .btn-submit {
-  background-color: #aad992;
+  background-color: #315122;
+  color: #fff;
   font-weight: bolder;
   text-transform: uppercase;
   padding: 0 3%;
   border: 2px solid #fff;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
+}
+.backoffice .addServices form .form-admin-group .btn-submit:hover,
+.backoffice .modifyServices form .form-admin-group .btn-submit:hover,
+.backoffice .addReviews form .form-admin-group .btn-submit:hover,
+.backoffice .deleteServices form .form-admin-group .btn-submit:hover {
+  background-color: #276d10;
+  border: 2px solid #828481;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .backoffice .addServices form .form-admin-group .btn-submit,
@@ -479,12 +495,6 @@ footer .footerView .copyright {
     margin-top: 1rem;
     padding: 2rem 0;
   }
-}
-.backoffice .addServices form .form-admin-group .btn-submit:hover,
-.backoffice .modifyServices form .form-admin-group .btn-submit:hover,
-.backoffice .addReviews form .form-admin-group .btn-submit:hover,
-.backoffice .deleteServices form .form-admin-group .btn-submit:hover {
-  background-color: #276d10;
 }
 .backoffice .administration .servicesAdmin h2 {
   text-align: center;
@@ -499,7 +509,7 @@ footer .footerView .copyright {
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.5);
-  margin: 1% 10%;
+  margin: 1% 5%;
 }
 .backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect {
   display: flex;
@@ -508,6 +518,12 @@ footer .footerView .copyright {
   align-items: center;
   border: 1px solid #fff;
 }
+.backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect .deleteReview form .btn-delete {
+  display: flex;
+  justify-content: right;
+  text-align: right;
+}
+
 .deleteWork {
   display: flex;
   flex-direction: column;
@@ -577,13 +593,19 @@ footer .footerView .copyright {
   background-color: #f6ab36;
 }
 .addWorks form .btn-submit {
-  background-color: #aad992;
+  background-color: #315122;
+  color: #fff;
   font-weight: bolder;
   text-transform: uppercase;
   padding: 0 3%;
   border: 2px solid #fff;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   padding: 2rem 3rem;
+}
+.addWorks form .btn-submit:hover {
+  background-color: #276d10;
+  border: 2px solid #828481;
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .addWorks form .btn-submit {
@@ -592,22 +614,22 @@ footer .footerView .copyright {
     padding: 2rem 0;
   }
 }
-.addWorks form .btn-submit:hover {
-  background-color: #276d10;
-}
 
 .btn-delete {
-  display: flex;
+  background-color: #315122;
   font-weight: bolder;
   font-size: xx-large;
-  justify-content: right;
-  background-color: #276d10;
   color: #fff;
   border: 1px solid #fff;
+  border-radius: 100%;
+  padding: 2.5rem;
+  margin: 2rem;
   cursor: pointer;
+  display: flex;
+  justify-content: right;
 }
 .btn-delete:hover {
-  background-color: #c91f1f;
+  background-color: #790303;
 }
 
 .requests h1 {
@@ -678,6 +700,8 @@ footer .footerView .copyright {
 .quote h1 {
   text-transform: uppercase;
   text-align: center;
+  margin: 0%;
+  padding: 2% 0;
 }
 .quote .viewQuote {
   display: flex;
@@ -779,36 +803,119 @@ footer .footerView .copyright {
 }
 .myAccount .account {
   text-align: center;
-  width: 60%;
+  width: 70%;
+}
+@media screen and (max-width: 1200px) {
+  .myAccount .account {
+    width: 75%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .myAccount .account {
+    width: 80%;
+  }
 }
 .myAccount .account .viewAccount {
   display: flex;
-  margin: 5rem 0;
+  justify-content: space-between;
+  margin: 4rem 0;
+}
+@media screen and (max-width: 992px) {
+  .myAccount .account .viewAccount {
+    display: block;
+  }
 }
 .myAccount .account .viewAccount .items-account {
-  flex-basis: 50%;
+  flex-basis: 45%;
+}
+.myAccount .account .viewAccount .items-account h2 {
+  margin-bottom: 7%;
 }
 .myAccount .account .viewAccount .items-account .item-view {
-  margin: 1.5rem;
+  margin-bottom: 4%;
+  background-color: #000;
+  color: #f6ab36;
+  padding: 2.8rem;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+}
+@media screen and (max-width: 1200px) {
+  .myAccount .account .viewAccount .items-account .item-view {
+    padding: 6.5%;
+  }
+}
+.myAccount .account .viewAccount .items-account .item-view h3 {
+  margin-bottom: 4%;
+}
+.myAccount .account .viewAccount .items-account .deleteAccount .btn-account {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+  background-color: #710d0d;
+}
+@media screen and (max-width: 576px) {
+  .myAccount .account .viewAccount .items-account .deleteAccount .btn-account {
+    font-size: medium;
+  }
+}
+.myAccount .account .viewAccount .items-account .deleteAccount .btn-account:hover {
+  background-color: #315122;
+  border: 0.4rem solid #828481;
 }
 .myAccount .account .viewAccount .items-account-address {
-  flex-basis: 50%;
+  flex-basis: 45%;
 }
 .myAccount .account .viewAccount .items-account-address h3 {
   margin: 2rem 0 1rem 0;
 }
-.myAccount .account .viewAccount .items-account-address .address-account .address {
-  display: flex;
-  justify-content: center;
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView {
+  justify-content: space-around;
 }
-.myAccount .account .viewAccount .items-account-address .address-account .address label,
-.myAccount .account .viewAccount .items-account-address .address-account .address input,
-.myAccount .account .viewAccount .items-account-address .address-account .address select {
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView label,
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView input,
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView select {
   display: flex;
   width: 100%;
 }
-.myAccount .account .viewAccount .items-account-address .address-account .address label {
-  margin: 1.8rem 0;
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView input,
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView select {
+  background-color: #000;
+  color: #f6ab36;
+  padding: 3% 8%;
+  border: 2px solid #fff;
+  border-radius: 0.5rem;
+}
+.myAccount .account .viewAccount .items-account-address .address-account .address .addressView label {
+  color: #f6ab36;
+  margin-bottom: 0.2rem;
+}
+.myAccount .account .viewAccount .items-account-address input[type=submit] {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+}
+@media screen and (max-width: 576px) {
+  .myAccount .account .viewAccount .items-account-address input[type=submit] {
+    font-size: medium;
+  }
+}
+.myAccount .account .viewAccount .items-account-address input[type=submit]:hover {
+  background-color: #315122;
+  border: 0.4rem solid #828481;
 }
 
 .pricesPage {
@@ -953,7 +1060,7 @@ footer .footerView .copyright {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 125%;
 }
 .slideReviews #splideReviews .splide__arrows, .slideReviews #splideReviewsAdmin .splide__arrows {
   opacity: 0;
@@ -962,7 +1069,7 @@ footer .footerView .copyright {
 .slideReviews #splideReviews .splide__arrows .splide__arrow, .slideReviews #splideReviewsAdmin .splide__arrows .splide__arrow {
   background-color: #f6ab36;
   opacity: 0.1;
-  font-size: 2rem;
+  font-size: 150%;
   transition: opacity 0.8s;
 }
 .slideReviews #splideReviews .splide__arrows .splide__arrow:hover, .slideReviews #splideReviewsAdmin .splide__arrows .splide__arrow:hover {
@@ -973,6 +1080,11 @@ footer .footerView .copyright {
 .slidePictures {
   border-radius: 5rem;
   background-color: rgba(0, 0, 0, 0.5);
+}
+@media screen and (max-width: 768px) {
+  .slidePictures {
+    border-radius: 2rem;
+  }
 }
 .slidePictures #splidePictures:hover .splide__arrows {
   opacity: 1;
@@ -992,8 +1104,13 @@ footer .footerView .copyright {
 .slidePictures #splidePictures .splide__arrows .splide__arrow {
   background-color: #f6ab36;
   opacity: 0.3;
-  font-size: 3rem;
+  font-size: 150%;
   transition: opacity 0.8s;
+}
+@media screen and (max-width: 768px) {
+  .slidePictures #splidePictures .splide__arrows .splide__arrow {
+    font-size: 200%;
+  }
 }
 .slidePictures #splidePictures .splide__arrows .splide__arrow:hover {
   opacity: 1;
@@ -1006,12 +1123,11 @@ html {
 
 body {
   position: relative;
-  min-height: 85vh;
-  height: 100%;
-  font-family: "Jura", sans-serif;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 15, 15, 0.7) 51%, rgba(0, 0, 0, 0.7) 100%), url("../../img/background-carbone.webp");
   background-size: cover;
   background-attachment: fixed;
+  min-height: 85vh;
+  font-family: "Jura", sans-serif;
   margin: 0 6rem;
 }
 @media screen and (max-width: 1200px) {
@@ -1020,70 +1136,96 @@ body {
   }
 }
 body main {
-  height: 100%;
-  position: relative;
   color: #fff;
+  font-size: 150%;
+}
+@media screen and (max-width: 1200px) {
+  body main {
+    font-size: 125%;
+  }
+}
+@media screen and (max-width: 768px) {
+  body main {
+    font-size: 100%;
+  }
 }
 body main .view {
   background: url("../../img/Lamborghini.jpg");
-  background-size: 100%;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   color: #fff;
 }
 body main .view .txtView {
+  width: 100%;
   text-align: center;
-  padding: 1.5rem 0rem;
-  font-size: 130%;
+  padding: 2% 0;
+  font-weight: bolder;
   text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 body main .view .txtView .txtHome {
-  padding: 3rem;
-  margin: 4rem 20rem;
+  padding: 2% 0;
+  margin: 2% 10%;
   background-color: rgba(0, 0, 0, 0.5);
   box-shadow: 10px -10px 10px rgba(255, 255, 255, 0.2), -10px 10px 10px rgba(255, 255, 255, 0.2);
   border-radius: 2rem;
 }
-body main .ceo {
+body main .view .txtView .txtHome:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+body .ceo {
   display: flex;
   justify-content: center;
   margin: 10%;
 }
-body main .ceo .txtCeo {
+body .ceo .txtCeo {
   flex-basis: 80%;
   color: #fff;
 }
-body main .ceo .pictCeo {
+body .ceo .pictCeo {
   flex-basis: 20%;
   background: no-repeat url("../../img/image.svg");
   background-size: contain;
   background-position: right;
   filter: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
 }
-body main .ceo .pictCeo img {
+body .ceo .pictCeo img {
   width: 100px;
 }
-body main .reviews {
+body .reviews {
   text-align: center;
   padding: 2% 5%;
   margin: 5% 10%;
   border-radius: 5rem;
-  font-size: 125%;
   background-color: rgba(0, 0, 0, 0.5);
 }
-body main .reviews .reviewsView {
+@media screen and (max-width: 768px) {
+  body .reviews {
+    margin: 2%;
+    border-radius: 2rem;
+  }
+}
+body .reviews h2 {
+  text-transform: uppercase;
+}
+body .reviews .reviewsView {
   text-align: center;
 }
-body main .services {
+body .services {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
   color: #fff;
-  font-size: 2rem;
   margin: 0;
 }
-body main .services .servicesView {
+@media screen and (max-width: 768px) {
+  body .services {
+    display: block;
+    margin-top: 2rem;
+  }
+}
+body .services .servicesView {
   flex-basis: 25%;
   background-color: #40423f;
   border: 0.4rem solid #f6ab36;
@@ -1091,23 +1233,42 @@ body main .services .servicesView {
   margin: 1rem 0;
   text-shadow: 3px 3px 10px #000;
 }
-body main .services .servicesView h3 {
+@media screen and (max-width: 1200px) {
+  body .services .servicesView {
+    flex-basis: 30%;
+  }
+}
+@media screen and (max-width: 768px) {
+  body .services .servicesView {
+    margin: 2rem;
+  }
+}
+body .services .servicesView h3 {
   text-transform: uppercase;
 }
-body main .services .servicesView hr {
+body .services .servicesView hr {
   height: 0.3rem;
   border: none;
   background-color: #f6ab36;
 }
-body main .services .servicesView .listServices {
+body .services .servicesView .listServices {
   margin: 4rem 0;
 }
-body main .prices {
+@media screen and (max-width: 768px) {
+  body .services .servicesView .listServices {
+    margin: 2rem;
+  }
+}
+body .prices,
+body .contacts {
   text-decoration: none;
   text-shadow: 3px 3px 10px #000;
   color: #fff;
 }
-body main .prices .price {
+body .prices .price,
+body .prices .contact,
+body .contacts .price,
+body .contacts .contact {
   background-color: #40423f;
   border: 0.4rem solid #f6ab36;
   border-radius: 2rem;
@@ -1117,26 +1278,66 @@ body main .prices .price {
   text-align: center;
   text-transform: uppercase;
 }
-body main .pictures {
+@media screen and (max-width: 768px) {
+  body .prices .price,
+body .prices .contact,
+body .contacts .price,
+body .contacts .contact {
+    margin: 6rem;
+    padding: 1.5rem 0;
+  }
+}
+body .prices .price:hover,
+body .prices .contact:hover,
+body .contacts .price:hover,
+body .contacts .contact:hover {
+  color: #f6ab36;
+  background-color: #353434;
+}
+body .prices .price span,
+body .prices .contact span,
+body .contacts .price span,
+body .contacts .contact span {
+  font-weight: bold;
+  text-decoration: underline;
+}
+body .pictures {
   margin: 0 7% 7% 5%;
 }
-body main .pictures .picturesView {
+@media screen and (max-width: 768px) {
+  body .pictures {
+    margin: 0 2% 2% 2%;
+  }
+}
+body .pictures .picturesView {
   display: flex;
   text-align: center;
   justify-content: space-evenly;
 }
-body main .pictures .picturesView .before {
+@media screen and (max-width: 768px) {
+  body .pictures .picturesView {
+    display: block;
+    margin: 5%;
+  }
+}
+@media screen and (max-width: 576px) {
+  body .pictures .picturesView {
+    display: block;
+    margin: 3%;
+  }
+}
+body .pictures .picturesView .before {
   flex-basis: 45%;
 }
-body main .pictures .picturesView .before .imgBefore {
+body .pictures .picturesView .before .imgBefore {
   position: relative;
 }
-body main .pictures .picturesView .before .imgBefore img {
+body .pictures .picturesView .before .imgBefore img {
   max-width: 100%;
   max-height: 50rem;
   border-radius: 2rem;
 }
-body main .pictures .picturesView .before .imgBefore .txtBefore {
+body .pictures .picturesView .before .imgBefore .txtBefore {
   position: absolute;
   top: 90%;
   right: 0;
@@ -1145,21 +1346,21 @@ body main .pictures .picturesView .before .imgBefore .txtBefore {
   text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
   border-radius: 0 0 2rem 2rem;
 }
-body main .pictures .picturesView .before .imgBefore .txtBefore p {
+body .pictures .picturesView .before .imgBefore .txtBefore p {
   font-size: 2rem;
 }
-body main .pictures .picturesView .after {
+body .pictures .picturesView .after {
   flex-basis: 45%;
 }
-body main .pictures .picturesView .after .imgAfter {
+body .pictures .picturesView .after .imgAfter {
   position: relative;
 }
-body main .pictures .picturesView .after .imgAfter img {
+body .pictures .picturesView .after .imgAfter img {
   max-width: 100%;
   max-height: 50rem;
   border-radius: 2rem;
 }
-body main .pictures .picturesView .after .imgAfter .txtAfter {
+body .pictures .picturesView .after .imgAfter .txtAfter {
   position: absolute;
   top: 90%;
   right: 0;
@@ -1168,10 +1369,10 @@ body main .pictures .picturesView .after .imgAfter .txtAfter {
   text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
   border-radius: 0 0 2rem 2rem;
 }
-body main .pictures .picturesView .after .imgAfter .txtAfter p {
+body .pictures .picturesView .after .imgAfter .txtAfter p {
   font-size: 2rem;
 }
-body main .infosSociety {
+body .infosSociety {
   display: flex;
   justify-content: space-evenly;
   background-color: #40423f;
@@ -1180,23 +1381,43 @@ body main .infosSociety {
   margin: 0 5rem;
   padding: 5rem;
 }
-body main .infosSociety .society {
-  flex-basis: 45%;
-  font-size: 3rem;
+@media screen and (max-width: 768px) {
+  body .infosSociety {
+    display: block;
+    margin: 2rem;
+    padding: 1.5rem;
+  }
 }
-body main .infosSociety .society p {
+body .infosSociety .society {
+  flex-basis: 45%;
+}
+body .infosSociety .society p {
   text-shadow: 3px 3px 10px #000;
   margin: 1.5rem 0;
 }
-body main .infosSociety .society #nameSociety {
-  font-size: 4rem;
+@media screen and (max-width: 768px) {
+  body .infosSociety .society p {
+    text-align: center;
+  }
+}
+body .infosSociety .society #nameSociety {
+  font-size: 150%;
   text-transform: uppercase;
 }
-body main .infosSociety .map {
+body .infosSociety .society #openingQuestion {
+  text-transform: uppercase;
+}
+body .infosSociety .society #openingQuestion a {
+  color: #fff;
+}
+body .infosSociety .society #openingQuestion a:hover {
+  color: #f6ab36;
+}
+body .infosSociety .map {
   flex-basis: 45%;
   box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
 }
-body main .infosSociety .map iframe {
+body .infosSociety .map iframe {
   display: flex;
   width: 100%;
   height: 100%;

@@ -1,109 +1,109 @@
-            </main>
+                    </main>
 
-            <footer>
+                    <footer>
 
-                <div class="footerView">
+                        <div class="footerView">
 
-                    <div class="copyright">
-                        2022 <img src="assets/icons/copyright.svg" alt="Copyright" width="15px" height="15px">
-                    </div>
+                            <div class="copyright">
+                                2022 <img src="assets/icons/copyright.svg" alt="Copyright" width="15px" height="15px">
+                            </div>
 
-                    <div> -
-                    </div>
+                            <div> -
+                            </div>
 
-                    <div class="legal">
-                        <a href="legal.php?page=mentions">Mentions légales
-                        </a>
-                    </div>
+                            <div class="legal">
+                                <a href="legal.php?page=mentions">Mentions légales
+                                </a>
+                            </div>
 
-                    <div> -
-                    </div>
+                            <div> -
+                            </div>
 
-                    <div class="protect">
-                        <a href="legal.php?page=protect">Protection de la vie privée
-                        </a>
-                    </div>
+                            <div class="protect">
+                                <a href="legal.php?page=protect">Protection de la vie privée
+                                </a>
+                            </div>
 
-                    <div> -
-                    </div>
+                            <div> -
+                            </div>
 
-                    <div class="cookies">
-                        <a href="legal.php?page=cookies">Cookies
-                        </a>
-                    </div>
+                            <div class="cookies">
+                                <a href="legal.php?page=cookies">Cookies
+                                </a>
+                            </div>
 
-                </div>
+                        </div>
 
-            </footer>
-            
-            <script src="js/tarteaucitron/tarteaucitron.js"></script>
-            <script type="text/javascript">
-                tarteaucitron.init({
-                    "privacyUrl": "",
-                    /* Privacy policy url */
-                    "bodyPosition": "bottom",
-                    /* or top to bring it as first element for accessibility */
+                    </footer>
 
-                    "hashtag": "#tarteaucitron",
-                    /* Open the panel with this hashtag */
-                    "cookieName": "tarteaucitron",
-                    /* Cookie name */
+                    <script src="js/tarteaucitron/tarteaucitron.js"></script>
+                    <script type="text/javascript">
+                        tarteaucitron.init({
+                            "privacyUrl": "",
+                            /* Privacy policy url */
+                            "bodyPosition": "bottom",
+                            /* or top to bring it as first element for accessibility */
 
-                    "orientation": "middle",
-                    /* Banner position (top - bottom) */
+                            "hashtag": "#tarteaucitron",
+                            /* Open the panel with this hashtag */
+                            "cookieName": "tarteaucitron",
+                            /* Cookie name */
 
-                    "groupServices": false,
-                    /* Group services by category */
+                            "orientation": "middle",
+                            /* Banner position (top - bottom) */
 
-                    "showAlertSmall": false,
-                    /* Show the small banner on bottom right */
-                    "cookieslist": false,
-                    /* Show the cookie list */
+                            "groupServices": false,
+                            /* Group services by category */
 
-                    "closePopup": false,
-                    /* Show a close X on the banner */
+                            "showAlertSmall": false,
+                            /* Show the small banner on bottom right */
+                            "cookieslist": false,
+                            /* Show the cookie list */
 
-                    "showIcon": true,
-                    /* Show cookie icon to manage cookies */
-                    //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
-                    "iconPosition": "BottomRight",
-                    /* BottomRight, BottomLeft, TopRight and TopLeft */
+                            "closePopup": false,
+                            /* Show a close X on the banner */
 
-                    "adblocker": false,
-                    /* Show a Warning if an adblocker is detected */
+                            "showIcon": false,
+                            /* Show cookie icon to manage cookies */
+                            //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+                            "iconPosition": "BottomRight",
+                            /* BottomRight, BottomLeft, TopRight and TopLeft */
 
-                    "DenyAllCta": true,
-                    /* Show the deny all button */
-                    "AcceptAllCta": true,
-                    /* Show the accept all button when highPrivacy on */
-                    "highPrivacy": true,
-                    /* HIGHLY RECOMMANDED Disable auto consent */
+                            "adblocker": false,
+                            /* Show a Warning if an adblocker is detected */
 
-                    "handleBrowserDNTRequest": false,
-                    /* If Do Not Track == 1, disallow all */
+                            "DenyAllCta": true,
+                            /* Show the deny all button */
+                            "AcceptAllCta": true,
+                            /* Show the accept all button when highPrivacy on */
+                            "highPrivacy": true,
+                            /* HIGHLY RECOMMANDED Disable auto consent */
 
-                    "removeCredit": false,
-                    /* Remove credit link */
-                    "moreInfoLink": true,
-                    /* Show more info link */
+                            "handleBrowserDNTRequest": false,
+                            /* If Do Not Track == 1, disallow all */
 
-                    "useExternalCss": false,
-                    /* If false, the tarteaucitron.css file will be loaded */
-                    "useExternalJs": false,
-                    /* If false, the tarteaucitron.js file will be loaded */
+                            "removeCredit": false,
+                            /* Remove credit link */
+                            "moreInfoLink": true,
+                            /* Show more info link */
 
-                    //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
+                            "useExternalCss": false,
+                            /* If false, the tarteaucitron.css file will be loaded */
+                            "useExternalJs": false,
+                            /* If false, the tarteaucitron.js file will be loaded */
 
-                    "readmoreLink": "",
-                    /* Change the default readmore link */
+                            //"cookieDomain": ".my-multisite-domaine.fr", /* Shared cookie for multisite */
 
-                    "mandatory": true,
-                    /* Show a message about mandatory cookies */
-                    "mandatoryCta": true /* Show the disabled accept button when mandatory on */
-                });
-            </script>
-            <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
-            <script src="js/carousel.js"></script>
-            </body>
+                            "readmoreLink": "",
+                            /* Change the default readmore link */
 
-            </html>
+                            "mandatory": true,
+                            /* Show a message about mandatory cookies */
+                            "mandatoryCta": true /* Show the disabled accept button when mandatory on */
+                        });
+                    </script>
+                    <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+                    <script src="js/carousel.js"></script>
+                    </body>
+
+                    </html>

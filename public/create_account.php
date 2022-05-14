@@ -222,7 +222,7 @@ include("../templates/header.php")
                 <div class="form-group">
                     <div class="form-item-group">
                         <label for="inputpostcode">Téléphone *</label>
-                        <input type="number" id="inputphone" name="phone" value="<?= isset($phone) ? $phone : "" ?>" required>
+                        <input type="tel" id="inputphone" name="phone" value="<?= isset($phone) ? $phone : "" ?>" required>
                     </div>
                     <div class="form-item-group">
                         <label for="inputVehicule">Véhicule(s)</label>

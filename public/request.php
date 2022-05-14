@@ -1,5 +1,7 @@
 <?php
-$db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+require_once '../system/config.php';
+
+// $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 $queryRequests = $db->query("SELECT * FROM contacts
                             ORDER BY id DESC");
 $requests = $queryRequests->fetchAll();

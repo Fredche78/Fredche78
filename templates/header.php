@@ -24,7 +24,7 @@ session_start();
             <div class="company">
                 <div class="logo">
                     <a href="./">
-                        <img src="assets/img/logo.jpg" alt="logo">
+                        <img src="assets/img/logo.png" alt="logo">
                     </a>
                 </div>
                 <!-- <p>Depuis 2014</p> -->
@@ -57,6 +57,7 @@ session_start();
                                     <a href="create_account.php">Création du compte
                                     </a>
                                 </li>
+                                -
                                 <li>
                                     <a href="login.php">Connexion
                                     </a>

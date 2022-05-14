@@ -1,13 +1,14 @@
 @use "variables" as v;
 
 header {
+    // margin-bottom: 0.8%;
     .headerView {
         display: flex;
         justify-content: space-between;
         align-items: center;
         // width: 100%;
-        // background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(15, 15, 15, 0.9) 51%, rgba(0, 0, 0, 1) 100%);
-        background-color: rgba($color: #000000, $alpha: 1);
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.3) 0%, rgba(15, 15, 15, 0.5) 51%, rgba(0, 0, 0, 0.8) 100%);
+        // background-color: rgba($color: #000000, $alpha: 1);
         padding: 0.5rem 5rem;
 
         @media screen and (max-width: v.$md-breakpoint) {
@@ -31,7 +32,6 @@ header {
             @media screen and (max-width: v.$lg-breakpoint) {
                 flex-basis: 55%;
             }
-
 
             .logo {
                 img {
@@ -59,9 +59,9 @@ header {
                 display: flex;
                 justify-content: right;
                 color: #fff;
-
+                font-size: v.$font-size-m;
+ 
                 nav {
-                    
                     ul {
                         text-align: right;
 
@@ -69,24 +69,27 @@ header {
                             text-align: left;
                             padding-left: 0.2rem;
                         }
-    
+
                         p {
                             margin: 0;
                         }
-    
+
                         li {
                             list-style-type: none;
                             display: inline-flex;
                             justify-content: space-between;
-    
+
                             a {
                                 color: #fff;
                                 text-decoration: none;
+
+                                &:hover {
+                                    color: v.$color-primary;
+                                }
                             }
                         }
                     }
-
-                }  
+                }
             }
 
             .links {
@@ -115,17 +118,16 @@ header {
                 }
 
                 // .facebook {
-                    // width: 35px;
-                    // height: 35px;
-                    // background: url("../../icons/facebook.svg");
-                    // background-repeat: no-repeat;
+                // width: 35px;
+                // height: 35px;
+                // background: url("../../icons/facebook.svg");
+                // background-repeat: no-repeat;
                 // }
             }
         }
     }
 
     .hrDiv {
-
         hr {
             padding: 0;
             margin: 0;

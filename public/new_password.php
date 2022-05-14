@@ -1,4 +1,5 @@
 <?php
+require_once '../system/config.php';
 
 $errors = [];
 
@@ -6,7 +7,7 @@ if (isset($_GET["token"])) {
 
     $token = trim(strip_tags($_GET["token"]));
 
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
     $query = $db->prepare("SELECT email, validity FROM password_reset WHERE token LIKE :token");
     $query->bindParam(":token", $token);

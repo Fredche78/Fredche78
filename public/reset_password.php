@@ -2,6 +2,8 @@
 //Chargement des dépendances Composer
 require("../vendor/autoload.php");
 
+require_once '../system/config.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 // Création d'une constante pour générer le lien de réinitialisation du mot de passe
@@ -10,7 +12,8 @@ define("HOST", "http://localhost/sbpolish/public/");
 if (isset($_POST["email"])) {
     $email = trim(strip_tags($_POST["email"]));
 
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    
     // Vérification de l'existence d'un utilisateur avec cette adresse mail
     $query = $db->prepare("SELECT * FROM users WHERE email LIKE :email");
     $query->bindParam(":email", $email);

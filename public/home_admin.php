@@ -1,7 +1,8 @@
 <?php
 include("../templates/header.php");
+require_once '../system/config.php';
 
-$db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+// $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
 /////////////////////////Select////////////////////////////////////
 
@@ -11,13 +12,31 @@ $reviews = $queryReviews->fetchAll();
 $queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC LIMIT 10");
 $photos = $queryPhotos->fetchAll();
 
-$queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.id, ' - ', services.name ORDER BY services.id SEPARATOR '<BR>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
+$queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.id, ' - ', services.name ORDER BY services.id SEPARATOR '<br>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
 $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
 ///////////////////////////////////////TEST/////////////////////////////////////////
 
-$queryServicesNames = $db->query("SELECT type FROM type_services");
-$servicesName = $queryServices->fetchAll(PDO::FETCH_ASSOC);
+
+
+// $liste1 = ($services[1]["listes"]);
+// $liste2 = ($services[2]["listes"]);
+// $liste3 = ($services[2]["listes"]);
+
+// var_dump( explode( ',', $liste1 ) );
+// var_dump($liste2);
+// var_dump($liste3);
+// $liste=$services[""];
+// $i=0;
+// for ($i=0; $i<count($liste); $i++) {
+//     $liste[$i] = ($service["listes"])[$i];
+// }
+
+// var_dump($liste[$i]);
+
+
+// $queryServicesNames = $db->query("SELECT type FROM type_services");
+// $servicesName = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
 ////////////////////////////////TABLEAU D'ERREUR////////////////////////////////////
 
@@ -364,7 +383,25 @@ if (isset($_POST["updateServices"])) {
                         <h3><?= $service["type"] ?></h3>
                         <hr>
                         <div class="listServices">
-                            <?= $service["listes"] ?>
+                            <?=
+                            $service["listes"]
+
+                                // for ($i=0; $i<count($liste); $i++) {
+                                //     $liste = explode(" ", (($service[$i])["listes"]));
+                                // }
+                                // $i=0;
+                                // $liste = $service["listes"];
+                                // ( explode( ',', $liste1 ) );
+
+                                // $liste[$i] = ($service[$i]["listes"]);
+                                // var_dump($liste[$i]);
+
+                                // for ($i=0; $i<count($liste); $i++) {
+                                //     $liste[$i]=$service[$i]["listes"];
+                                //     var_dump($liste[$i]);
+
+                                // }
+                            ?>
                         </div>
                     </div>
                 <?php
@@ -588,6 +625,12 @@ if (isset($_POST["updateServices"])) {
                             </div>
 
                         </div>
+                        <div class="deleteWork">
+                            <form action="" method="post">
+                                <button class="btn-delete" name="deleteWork" type="submit" value="<?= $photo['id'] ?>">X
+                                </button>
+                            </form>
+                        </div>
                         <div class="after">
 
                             <h2>Après</h2>
@@ -611,12 +654,6 @@ if (isset($_POST["updateServices"])) {
                                 ?>
 
                             </div>
-                        </div>
-                        <div class="deleteWork">
-                            <form action="" method="post">
-                                <button class="btn-delete" name="deleteWork" type="submit" value="<?= $photo['id'] ?>">X
-                                </button>
-                            </form>
                         </div>
                     </div>
                 <?php

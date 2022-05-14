@@ -1,9 +1,9 @@
 <?php
-
+require_once '../system/config.php';
 ////////////////////////GET//////////////////////////
 
 if (isset($_GET["id"])) {
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
     $queryRequests = $db->query("SELECT * FROM contacts
                                     WHERE id = {$_GET['id']}");
     $request = $queryRequests->fetch(PDO::FETCH_ASSOC);
@@ -44,7 +44,7 @@ include("../templates/header.php")
             <div class="rows">
 
                 <div class="row">
-                    <span>ID:</span> <?= $request["id"] ?>
+                    <span>Demande n°</span> <?= $request["id"] ?>
                 </div>
                 <div class="row">
                     <span>Client:</span> <?= $request["firstname"] . " " . $request["lastname"] ?>
@@ -57,6 +57,9 @@ include("../templates/header.php")
                 </div>
                 <div class="row">
                     <span>Ville:</span> <?= $request["city"] ?>
+                </div>
+                <div class="row">
+                    <span>Véhicule(s):</span> <?= $request["vehicule"] ?>
                 </div>
 
             </div>

@@ -1,11 +1,11 @@
 <?php
 include("../templates/header.php");
-
+require_once '../system/config.php';
 //Connexion à la base d'avis
 
-$dsn = "mysql:host=localhost;dbname=sbpolish;
-charset=utf8mb4";
-$db = new PDO($dsn, "root", "");
+// $dsn = "mysql:host=localhost;dbname=sbpolish;
+// charset=utf8mb4";
+// $db = new PDO($dsn, "root", "");
 
 $queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC");
 $reviews = $queryReviews->fetchAll();
@@ -95,6 +95,14 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 </div>
+
+<a href="contact.php" Class="contacts">
+    <div class="contact">
+        <p>
+            Votre tarif sur mesure : <span>Cliquez ici</span>
+        </p>
+    </div>
+</a>
 
 <!-- Affichage des avis -->
 
@@ -232,7 +240,10 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
         <p id="nameSociety">S.B Polish</p>
         <p id="addressSociety">91 Rue Henry Durre<br />59174 La Sentinelle</p>
         <p id="phoneSociety">Tel: 06.62.49.20.49</p>
+        <p id="emailSociety">sbpolish@outlook.fr</p>
         <p id="openingSociety">Horaires: lundi au vendredi de 9h - 18h<br />Samedi 9h - 12h sur demande</p>
+        <p id="openingQuestion"><a href="contact.php">Une question ? Cliquez-ici</a></p>
+
     </div>
 
     <div class="map">
@@ -240,9 +251,6 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
         </iframe>
     </div>
 
-    <!-- <div class="question">
-            <p id="questionSociety">Vous avez des questions ? N'hésitez pas à nous contacter.</p>
-        </div> -->
 </div>
 
 <?php

@@ -1,8 +1,6 @@
 <?php
-include("../templates/header.php")
-?>
-
-<?php
+include("../templates/header.php");
+require_once '../system/config.php';
 
 // On teste que l'utilisateur est bien connecté
 if (!isset($_SESSION["user"]) || $_SESSION["user_ip"] != $_SERVER["REMOTE_ADDR"]) {
@@ -13,7 +11,7 @@ if (!isset($_SESSION["user"]) || $_SESSION["user_ip"] != $_SERVER["REMOTE_ADDR"]
     if (isset($_SESSION['email'])) {
         $email = trim(strip_tags($_SESSION['email']));
 
-        $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+        // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
         $query = $db->prepare("SELECT * FROM users WHERE email =  :email");
         $query->BindParam(":email", $email);
@@ -33,7 +31,7 @@ if (!empty($_POST["modifyAccount"])) {
     $email = trim(strip_tags($user["email"]));
     // Requète SQL de mise à jour du compte
     $queryUpdate = $db->prepare(
-                                "UPDATE users
+        "UPDATE users
                                 SET address = :address,
                                 city = :city,
                                 postcode = :postcode,
@@ -41,7 +39,7 @@ if (!empty($_POST["modifyAccount"])) {
                                 phone = :phone,
                                 state = :state
                                 WHERE email LIKE :email"
-                                );
+    );
 
     $queryUpdate->bindParam(":address", $address);
     $queryUpdate->bindParam(":city", $city);
@@ -86,6 +84,7 @@ if (isset($_POST["deleteAccount"])) {
         <div class="viewAccount">
 
             <div class="items-account">
+                <h2>Votre compte</h2>
 
                 <div class="item-view">
                     <h3>Adresse</h3>
@@ -115,62 +114,39 @@ if (isset($_POST["deleteAccount"])) {
 
                 <form action="" method="post">
 
-                    <h3>Modifier votre compte</h3>
+                    <h2>Modifier votre compte</h2>
 
 
                     <div class="address-account">
 
                         <div class="address">
 
-                            <div>
-                                <p> <label for="inputAddress">Adresse:
-                                    </label>
-                                </p>
-
+                            <div class="addressView">
                                 <p>
-                                    <label for="inputPostcode">Code postal:
-                                    </label>
-                                </p>
-
-                                <p>
-                                    <label for="inputCity">Ville:
-                                    </label>
-                                </p>
-                                <p>
-                                    <label for="selectMessage">Pays:
-                                    </label>
-                                </p>
-                                <p>
-                                    <label for="inputPhone">Téléphone:
-                                    </label>
-                                </p>
-                                <p>
-                                    <label for="inputVehicule">Véhicule(s):
-                                    </label>
-                                </p>
-                            </div>
-
-                            <div>
-                                <p>
+                                    <label for="inputAddress">Adresse:</label>
                                     <input type="text" id="inputAddress" name="address" value="<?= $user['address'] ?>">
                                 </p>
                                 <p>
-
+                                    <label for="inputPostcode">Code postal:</label>
                                     <input type="text" id="inputPostcode" name="postcode" value="<?= $user['postcode'] ?>">
                                 </p>
                                 <p>
+                                    <label for="inputCity">Ville:</label>
                                     <input type="text" id="inputCity" name="city" value="<?= $user['city'] ?>">
                                 </p>
                                 <p>
+                                    <label for="selectMessage">Pays:</label>
                                     <select name="state" id="selectState">
                                         <option value="France" <?= (isset($state) && $state === "France") ? "selected" : "" ?>>France</option>
                                         <option value="Belgique" <?= (isset($state) && $state === "Belgique") ? "selected" : "" ?>>Belgique</option>
                                     </select>
                                 </p>
                                 <p>
+                                    <label for="inputPhone">Téléphone:</label>
                                     <input type="text" id="inputPhone" name="phone" value="<?= $user['phone'] ?>">
                                 </p>
                                 <p>
+                                    <label for="inputVehicule">Véhicule(s):</label>
                                     <input type="text" id="inputVehicule" name="vehicule" value="<?= $user['vehicule'] ?>">
                                 </p>
                             </div>

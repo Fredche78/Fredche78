@@ -3,10 +3,12 @@ $color-primary: #f6ab36;
 $color-secondary: #40423f;
 $color-svg: invert(79%) sepia(43%) saturate(911%) hue-rotate(330deg) brightness(97%) contrast(98%);
 $color-background-label: rgba($color: #000, $alpha: 0.5);
-$color-btn-off-green: #aad992;
+$color-btn-off-green: #315122;
 $color-btn-off-red: #b70d0d;
 $color-btn-green: #276d10;
 $color-danger: #f10e0e;
+
+$color-back-box: #353434;
 
 $color-table-column: rgba($color: #000, $alpha: 0.8);
 $color-table-even: rgba($color: #a06402, $alpha: 0.6);
@@ -16,7 +18,9 @@ $color-text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
 $color-text-shadow-box: 3px 3px 10px #000;
 
 
-$font-size-l : 125%;
+$font-size-l : 150%;
+$font-size-m : 125%;
+$font-size-s : 100%;
 
 $sm-breakpoint: 576px;
 $md-breakpoint: 768px;
