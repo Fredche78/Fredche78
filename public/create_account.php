@@ -1,4 +1,5 @@
 <?php
+$page="Création de compte";
 
 if (!empty($_POST)) {
     // Le formulaire a été soumis

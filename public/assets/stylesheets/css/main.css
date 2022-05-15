@@ -156,7 +156,7 @@ footer .footerView .copyright {
 }
 
 .contact h1 {
-  font-size: xx-large;
+  font-size: 150%;
   text-transform: uppercase;
   text-align: center;
   margin: 0;
@@ -214,11 +214,34 @@ footer .footerView .copyright {
 .contact .form .container .form-group-account input,
 .contact .form .container .form-group-account select,
 .contact .form .container .form-group-account textarea {
-  background-color: black;
+  background-color: #000;
   color: #f6ab36;
+  font-size: 65%;
   border-radius: 0.4rem;
   padding: 1rem;
   border: 0.2rem solid #b0aeae;
+}
+.contact .form .container .form-group input:-webkit-autofill,
+.contact .form .container .form-group input:-webkit-autofill:hover,
+.contact .form .container .form-group input:-webkit-autofill:focus,
+.contact .form .container .form-group textarea:-webkit-autofill,
+.contact .form .container .form-group textarea:-webkit-autofill:hover,
+.contact .form .container .form-group textarea:-webkit-autofill:focus,
+.contact .form .container .form-group select:-webkit-autofill,
+.contact .form .container .form-group select:-webkit-autofill:hover,
+.contact .form .container .form-group select:-webkit-autofill:focus,
+.contact .form .container .form-group-account input:-webkit-autofill,
+.contact .form .container .form-group-account input:-webkit-autofill:hover,
+.contact .form .container .form-group-account input:-webkit-autofill:focus,
+.contact .form .container .form-group-account textarea:-webkit-autofill,
+.contact .form .container .form-group-account textarea:-webkit-autofill:hover,
+.contact .form .container .form-group-account textarea:-webkit-autofill:focus,
+.contact .form .container .form-group-account select:-webkit-autofill,
+.contact .form .container .form-group-account select:-webkit-autofill:hover,
+.contact .form .container .form-group-account select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f6ab36;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
 }
 .contact .form .container .form-group .form-item-group,
 .contact .form .container .form-group-account .form-item-group {
@@ -235,7 +258,8 @@ footer .footerView .copyright {
 .contact .form .container .form-group-account .form-item-group .form-photo {
   display: flex;
   justify-content: space-around;
-  background-color: black;
+  font-size: 65%;
+  background-color: #000;
   color: #f6ab36;
   border-radius: 0.4rem;
   padding: 0.6rem;
@@ -252,12 +276,14 @@ footer .footerView .copyright {
 .contact .form .container .form-group .form-item-group .warningFiles,
 .contact .form .container .form-group-account .form-item-group .warningFiles {
   display: flex;
+  margin: 0;
   justify-content: space-around;
 }
 .contact .form .container .form-group .form-item-group .warningFiles p,
 .contact .form .container .form-group-account .form-item-group .warningFiles p {
-  margin: 0.6rem 0;
-  text-align: center;
+  margin: 0.2rem 0;
+  text-align: left;
+  font-size: 65%;
 }
 .contact .form .container .form-group .form-item-area,
 .contact .form .container .form-group-account .form-item-area {
@@ -632,66 +658,99 @@ footer .footerView .copyright {
   background-color: #790303;
 }
 
-.requests h1 {
+.adminLink {
+  display: flex;
+  justify-content: center;
+}
+.adminLink a {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+  text-decoration: none;
+}
+@media screen and (max-width: 576px) {
+  .adminLink a {
+    font-size: medium;
+  }
+}
+.adminLink a:hover {
+  background-color: #315122;
+  border: 0.4rem solid #828481;
+}
+
+.requests {
+  display: flex;
+  justify-content: center;
+  font-size: 60%;
+}
+.requests .requestsTable h1 {
   text-align: center;
   text-transform: uppercase;
 }
-.requests .listRequests table {
-  width: 100%;
+.requests .requestsTable .listRequests {
+  display: flex;
 }
 @media screen and (max-width: 992px) {
-  .requests .listRequests table {
+  .requests .requestsTable .listRequests table {
     display: flex;
   }
 }
-.requests .listRequests table thead tr th {
+.requests .requestsTable .listRequests table thead tr th {
   background-color: rgba(0, 0, 0, 0.8);
   text-transform: uppercase;
   padding: 1.5rem 0;
 }
 @media screen and (max-width: 992px) {
-  .requests .listRequests table thead tr th {
+  .requests .requestsTable .listRequests table thead tr th {
     display: flex;
     padding: 1rem 0;
   }
 }
 @media screen and (max-width: 992px) {
-  .requests .listRequests table tbody {
+  .requests .requestsTable .listRequests table tbody {
     display: flex;
-    width: 100%;
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 }
-.requests .listRequests table tbody tr:nth-child(odd) {
+.requests .requestsTable .listRequests table tbody tr:nth-child(odd) {
   background-color: rgba(160, 100, 2, 0.6);
 }
-.requests .listRequests table tbody tr:nth-child(even) {
+.requests .requestsTable .listRequests table tbody tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.7);
 }
 @media screen and (max-width: 992px) {
-  .requests .listRequests table tbody tr {
-    width: 100%;
+  .requests .requestsTable .listRequests table tbody tr {
+    max-width: 100%;
   }
 }
-.requests .listRequests table tbody td {
+.requests .requestsTable .listRequests table tbody td {
   padding: 1rem 0;
 }
 @media screen and (max-width: 992px) {
-  .requests .listRequests table tbody td {
+  .requests .requestsTable .listRequests table tbody td {
     display: flex;
   }
 }
-.requests .listRequests table,
-.requests .listRequests th,
-.requests .listRequests td {
+.requests .requestsTable .listRequests table,
+.requests .requestsTable .listRequests th,
+.requests .requestsTable .listRequests td {
   text-align: center;
   color: #fff;
   text-shadow: 2px 2px 2px #000;
   border: 1px solid #fff;
   border-collapse: collapse;
 }
-.requests .listRequests table a,
-.requests .listRequests th a,
-.requests .listRequests td a {
+.requests .requestsTable .listRequests table a,
+.requests .requestsTable .listRequests th a,
+.requests .requestsTable .listRequests td a {
   color: #276d10;
   text-shadow: 2px 2px 2px #000;
   text-transform: uppercase;
@@ -918,6 +977,48 @@ footer .footerView .copyright {
   border: 0.4rem solid #828481;
 }
 
+.confirmeDeleteAccount {
+  display: flex;
+  justify-content: center;
+}
+.confirmeDeleteAccount .deleteAccount h1 {
+  font-size: 150%;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0;
+  padding: 5rem 0;
+}
+.confirmeDeleteAccount .deleteAccount h2 {
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+.confirmeDeleteAccount .deleteAccount .btn {
+  display: flex;
+  justify-content: center;
+}
+.confirmeDeleteAccount .deleteAccount .btn a {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+  text-decoration: none;
+}
+@media screen and (max-width: 576px) {
+  .confirmeDeleteAccount .deleteAccount .btn a {
+    font-size: medium;
+  }
+}
+.confirmeDeleteAccount .deleteAccount .btn a:hover {
+  background-color: #315122;
+  border: 0.4rem solid #828481;
+}
+
 .pricesPage {
   margin: 4rem;
 }
@@ -1054,7 +1155,7 @@ footer .footerView .copyright {
 }
 .slideReviews #splideReviews:hover .splide__arrows, .slideReviews #splideReviewsAdmin:hover .splide__arrows {
   opacity: 1;
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .slideReviews #splideReviews .splide__track .splide__list .splide__slide, .slideReviews #splideReviewsAdmin .splide__track .splide__list .splide__slide {
   display: flex;
@@ -1088,7 +1189,7 @@ footer .footerView .copyright {
 }
 .slidePictures #splidePictures:hover .splide__arrows {
   opacity: 1;
-  transition: opacity 0.5s;
+  transition: opacity 0.2s;
 }
 .slidePictures #splidePictures .splide__track {
   padding-bottom: 7rem;

@@ -1,4 +1,6 @@
 <?php
+$page="Les prix de nos services";
+session_start();
 include("../templates/header.php")
 ?>
 

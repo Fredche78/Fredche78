@@ -1,4 +1,6 @@
 <?php
+session_start();
+$page="Page Administrateur";
 include("../templates/header.php");
 require_once '../system/config.php';
 

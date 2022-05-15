@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ session_start();
     <!-- Link to the file hosted on your server, -->
     <link rel="stylesheet" href="../node_modules/@splidejs/splide/dist/css/splide.min.css">
     <link rel="icon" href="assets/icons/favicon.ico">
-    <title>SB Polish</title>
+    <title><?= $page ?></title>
 </head>
 
 <body>
@@ -48,6 +48,7 @@ session_start();
                                 -
                                 <li>
                                     <a href="logout.php">Déconnexion
+                                        
                                     </a>
                                 </li>
                             <?php

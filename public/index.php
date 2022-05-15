@@ -1,4 +1,6 @@
 <?php
+session_start();
+$page="Bienvenue sur le site SB Polish";
 include("../templates/header.php");
 require_once '../system/config.php';
 //Connexion à la base d'avis

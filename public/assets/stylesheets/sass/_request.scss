@@ -1,86 +1,100 @@
 @use "variables" as v;
+@use "mixins" as m;
 
-.requests {
-    h1 {
-        text-align: center;
-        text-transform: uppercase;
+.adminLink {
+    display: flex;
+    justify-content: center;
+    a {
+        @include m.btn-submit2;
+        text-decoration: none;
     }
+}
+.requests {
+    display: flex;
+    justify-content: center;
+    font-size: 60%;
 
-    .listRequests {
+    .requestsTable {
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
 
-        table {
-            width: 100%;
+        .listRequests {
+            display: flex;
 
-            @media screen and (max-width: v.$lg-breakpoint) {
-                display: flex;
-                // flex-direction: column;
-            }
+            table {
 
-            thead {
+                @media screen and (max-width: v.$lg-breakpoint) {
+                    display: flex;
+                    // flex-direction: column;
+                }
 
-                tr {
+                thead {
 
-                    th {
-                        background-color: v.$color-table-column;
-                        text-transform: uppercase;
-                        padding: 1.5rem 0;
+                    tr {
+                        th {
+                            background-color: v.$color-table-column;
+                            text-transform: uppercase;
+                            padding: 1.5rem 0;
+
+                            @media screen and (max-width: v.$lg-breakpoint) {
+                                display: flex;
+                                padding: 1rem 0;
+                                // flex-basis: 50%;
+                            }
+                        }
+                    }
+                }
+
+                tbody {
+                    @media screen and (max-width: v.$lg-breakpoint) {
+                        display: flex;
+                        flex-wrap: wrap;
+                        max-width: 100%;
+                    }
+
+                    tr {
+                        &:nth-child(odd) {
+                            background-color: v.$color-table-even;
+                        }
+
+                        &:nth-child(even) {
+                            background-color: v.$color-table-odd;
+                        }
+
+                        @media screen and (max-width: v.$lg-breakpoint) {
+                            max-width: 100%;
+                        }
+                    }
+
+                    td {
+                        padding: 1rem 0;
 
                         @media screen and (max-width: v.$lg-breakpoint) {
                             display: flex;
-                            padding: 1rem 0;
                             // flex-basis: 50%;
+                            // flex-direction: column;
                         }
                     }
                 }
             }
 
-            tbody {
-
-                @media screen and (max-width: v.$lg-breakpoint) {
-                    display: flex;
-                    width: 100%;
-                }
-
-                tr {
-                    &:nth-child(odd) {
-                        background-color: v.$color-table-even;
-                    }
-
-                    &:nth-child(even) {
-                        background-color: v.$color-table-odd;
-                    }
-
-                    @media screen and (max-width: v.$lg-breakpoint) {
-                        width: 100%;
-                    }
-                }
-
-                td {
-                    padding: 1rem 0;
-
-                    @media screen and (max-width: v.$lg-breakpoint) {
-                        display: flex;
-                        // flex-basis: 50%;
-                        // flex-direction: column;
-                    }
-                }
-            }
-        }
-
-        table,
-        th,
-        td {
-            // display: flex;
-            text-align: center;
-            color: #fff;
-            text-shadow: 2px 2px 2px #000;
-            border: 1px solid #fff;
-            border-collapse: collapse;
-
-            a {
-                color: v.$color-btn-green;
+            table,
+            th,
+            td {
+                // display: flex;
+                text-align: center;
+                color: #fff;
                 text-shadow: 2px 2px 2px #000;
-                text-transform: uppercase;
+                border: 1px solid #fff;
+                border-collapse: collapse;
+
+                a {
+                    color: v.$color-btn-green;
+                    text-shadow: 2px 2px 2px #000;
+                    text-transform: uppercase;
+                }
             }
         }
     }

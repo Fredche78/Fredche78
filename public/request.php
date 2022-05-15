@@ -1,4 +1,6 @@
 <?php
+$page="Toutes les demandes";
+session_start();
 require_once '../system/config.php';
 
 // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
@@ -10,10 +12,13 @@ include("../templates/header.php")
 ?>
 
 <div class="requests">
-    <h1>Demandes</h1>
 
-    <div class="Requests">
+    <div class="requestsTable">
+
+        <h1>Demandes</h1>
+
         <div class="listRequests">
+
             <table>
 
                 <thead>
@@ -45,14 +50,30 @@ include("../templates/header.php")
                             <td><?= $request["lastname"] ?></td>
                             <td><?= $request["phone"] ?></td>
                             <td><?= $request["email"] ?></td>
-                            <td><?= $request["city"] ?></td>
-                            <td><?= $request["vehicule"] ?></td>
+                            <td>
+                                <?php
+                                if (!empty($request['city'])) {
+                                    echo $request['city'];
+                                } else {
+                                    echo " - ";
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if (!empty($request['vehicule'])) {
+                                    echo $request['vehicule'];
+                                } else {
+                                    echo " - ";
+                                }
+                                ?>
+                            </td>
                             <td>
                                 <?php
                                 if (!empty($request['message'])) {
-                                    echo "Un message";
+                                    echo "Oui";
                                 } else {
-                                    echo "Pas de message";
+                                    echo " - ";
                                 }
                                 ?>
                             </td>
@@ -61,7 +82,7 @@ include("../templates/header.php")
                                 if (!empty($request['photo'])) {
                                     echo "Oui";
                                 } else {
-                                    echo "-";
+                                    echo " - ";
                                 }
                                 ?>
                             </td>
@@ -70,7 +91,7 @@ include("../templates/header.php")
                                 if (!empty($request['photo2'])) {
                                     echo "Oui";
                                 } else {
-                                    echo "-";
+                                    echo " - ";
                                 }
                                 ?>
                             </td>
@@ -79,7 +100,7 @@ include("../templates/header.php")
                                 if (!empty($request['photo3'])) {
                                     echo "Oui";
                                 } else {
-                                    echo "-";
+                                    echo " - ";
                                 }
                                 ?>
                             </td>
@@ -88,18 +109,20 @@ include("../templates/header.php")
                                 </a>
                             </td>
                         </tr>
-                        
-                    </div>
                     <?php
                     }
                     ?>
                 </tbody>
-
             </table>
         </div>
     </div>
-</div>
 
+    
+
+</div>
+<div class="adminLink">
+        <a href="home_admin.php">Page d'administration</a>
+</div>
 
 
 <?php

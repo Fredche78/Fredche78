@@ -1,4 +1,5 @@
 <?php
+$page="Nouveau mot de passe";
 require_once '../system/config.php';
 
 $errors = [];
@@ -14,7 +15,7 @@ if (isset($_GET["token"])) {
     $query->execute();
     $result = $query->fetch();
 
-    // Validdité du lien avec temps de validation
+    // Validité du lien avec temps de validation
 
     if (!$result || $result["validity"] < time()) {
 

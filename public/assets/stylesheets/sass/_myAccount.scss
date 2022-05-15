@@ -56,7 +56,6 @@
                         @include m.btn-submit2;
                         background-color: rgb(113, 13, 13);
                     }
-                    
                 }
             }
 
@@ -101,6 +100,37 @@
                 input[type="submit"] {
                     @include m.btn-submit2;
                 }
+            }
+        }
+    }
+}
+
+.confirmeDeleteAccount {
+    display: flex;
+    justify-content: center;
+
+    .deleteAccount {
+        
+        h1 {
+            font-size: v.$font-size-l;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0;
+            padding: 5rem 0;
+        }
+
+        h2 {
+            margin: 0 0 2rem 0;
+            text-align: center;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+
+            a {
+                @include m.btn-submit2;
+                text-decoration: none;
             }
         }
     }

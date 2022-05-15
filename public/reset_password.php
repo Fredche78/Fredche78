@@ -1,4 +1,6 @@
 <?php
+// session_start();
+$page="Mot de passe oublié";
 //Chargement des dépendances Composer
 require("../vendor/autoload.php");
 
@@ -7,7 +9,8 @@ require_once '../system/config.php';
 use PHPMailer\PHPMailer\PHPMailer;
 
 // Création d'une constante pour générer le lien de réinitialisation du mot de passe
-define("HOST", "http://localhost/sbpolish/public/");
+
+// define("HOST", "http://localhost/sbpolish/public/");
 
 if (isset($_POST["email"])) {
     $email = trim(strip_tags($_POST["email"]));

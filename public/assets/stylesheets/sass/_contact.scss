@@ -3,7 +3,7 @@
 
 .contact {
     h1 {
-        font-size: xx-large;
+        font-size: v.$font-size-l;
         text-transform: uppercase;
         text-align: center;
         margin: 0;
@@ -67,13 +67,27 @@
                 input,
                 select,
                 textarea {
-                    // background-color: rgba($color: v.$color-primary, $alpha: 0.5);
-                    background-color: rgba($color: #000, $alpha: 1);
-                    // background-color: #000;
+                    background-color: #000;
                     color: v.$color-primary;
+                    font-size: v.$font-size-xs;
                     border-radius: 0.4rem;
                     padding: 1rem;
                     border: 0.2rem solid rgb(176, 174, 174);
+                }
+
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus,
+                textarea:-webkit-autofill,
+                textarea:-webkit-autofill:hover,
+                textarea:-webkit-autofill:focus,
+                select:-webkit-autofill,
+                select:-webkit-autofill:hover,
+                select:-webkit-autofill:focus {
+                    // border: 1px solid green;
+                    -webkit-text-fill-color: v.$color-primary;
+                    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+                    transition: background-color 5000s ease-in-out 0s;
                 }
 
                 .form-item-group {
@@ -89,8 +103,9 @@
                     .form-photo {
                         display: flex;
                         justify-content: space-around;
+                        font-size: v.$font-size-xs;
                         // padding: 0 50%;
-                        background-color: rgba($color: #000, $alpha: 1);
+                        background-color:#000;
                         // background-color: #000;
                         color: v.$color-primary;
                         border-radius: 0.4rem;
@@ -110,11 +125,14 @@
 
                     .warningFiles {
                         display: flex;
+                        margin: 0;
                         justify-content: space-around;
 
                         p {
-                            margin: 0.6rem 0;
-                            text-align: center;
+                            margin: 0.2rem 0;
+                            text-align: left;
+                            // justify-content: space-between;
+                            font-size: v.$font-size-xs;
                         }
                     }
                 }
@@ -139,7 +157,6 @@
     margin: 0;
 
     a {
-        // text-decoration: none;
         color: #fff;
         text-transform: uppercase;
 
@@ -150,7 +167,6 @@
 }
 
 .btn {
-    // @include m.btn-submit2;
     display: flex;
     justify-content: center;
 

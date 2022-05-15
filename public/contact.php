@@ -1,4 +1,6 @@
 <?php
+session_start();
+$page = "Contact";
 include("../templates/header.php");
 require_once '../system/config.php';
 
@@ -116,7 +118,7 @@ if (!empty($_POST)) {
 
             $confirme = "Votre demande a bien été enregistrée";
         } else {
-            $errors["db"] = "Erreur de bdd";
+            $errors["db"] = "Une erreur est survenue. Veuillez réessayer.";
         }
     }
 }
@@ -314,7 +316,7 @@ if (!empty($_POST)) {
                                         <?php
                                         }
                                         ?>
-                                        
+
                                     </div>
                                 <?php
                                 }
@@ -339,24 +341,21 @@ if (!empty($_POST)) {
                 </div>
             </form>
         </div>
-</div>
-
-<?php
+    <?php
     } else {
-?>
-    <h1><?= $confirme ?></h1>
+    ?>
+        <h1><?= $confirme ?></h1>
 
-    <h2>Nous vous répondrons dans les meilleurs délais</h2>
+        <h2>Nous vous répondrons dans les meilleurs délais</h2>
 
-    <div class="btn">
-        <a href="./">Retour à l'accueil
-        </a>
-    </div>
-<?php
+        <div class="btn">
+            <a href="./">Retour à l'accueil
+            </a>
+        </div>
+    <?php
     }
-?>
-
-
+    ?>
+</div>
 
 <?php
 include("../templates/footer.php")

@@ -196,3 +196,10 @@ ADD validity int(11);
 ALTER TABLE services 
 ADD FOREIGN KEY (services)
 REFERENCES type_services (type);
+
+CREATE TABLE user_reset (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    email VARCHAR(320) NOT NULL,
+    token VARCHAR(100) NOT NULL,
+    validity int(11)
+);

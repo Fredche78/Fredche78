@@ -1,4 +1,6 @@
 <?php
+$page="Détail des demandes";
+session_start();
 require_once '../system/config.php';
 ////////////////////////GET//////////////////////////
 
