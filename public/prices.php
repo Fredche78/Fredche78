@@ -15,7 +15,7 @@ include("../templates/header.php")
                     <th></th>
                     <th rowspan="2">
                         <p>Catégorie A</p>
-                        <p>Citadide / Compact</p>
+                        <p>Citadine / Compact</p>
                     </th>
                     <th rowspan="2">
                         <p>Catégorie B</p>

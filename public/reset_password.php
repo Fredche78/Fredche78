@@ -4,7 +4,7 @@ $page="Mot de passe oublié";
 //Chargement des dépendances Composer
 require("../vendor/autoload.php");
 
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -102,7 +102,7 @@ include("../templates/header.php")
 <div class="contact">
 
     <h1>Mot de passe oublié</h1>
-    <h2>Un lien va vous être envoyé par Email</h2>
+    <h2>Renseignez votre email pour recevoir le lien de réinitialisation</h2>
 
     <div class="form">
         <form action="" method="post">

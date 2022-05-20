@@ -102,8 +102,7 @@
                             "mandatoryCta": true /* Show the disabled accept button when mandatory on */
                         });
                     </script>
-                    <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
-                    <script src="js/carousel.js"></script>
+                    
                     </body>
 
                     </html>

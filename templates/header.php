@@ -1,7 +1,3 @@
-<?php
-// session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -45,7 +41,9 @@
                                     <a href="my_account.php">Mon compte
                                     </a>
                                 </li>
-                                -
+                                <li>
+                                    -
+                                </li>
                                 <li>
                                     <a href="logout.php">Déconnexion
                                         

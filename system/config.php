@@ -1,5 +1,5 @@
 <?php
-require_once "db.php";
+require_once("db.php");
 
 define("HOST", "http://localhost/sbpolish/public/");
 

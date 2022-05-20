@@ -2,10 +2,11 @@
 session_start();
 $page = "Contact";
 include("../templates/header.php");
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 //Initialisation d'un tableau d'erreur
 $errors = [];
+
 $confirme = "";
 
 /* Récupération des informations de l'utilisateur connecté pour les afficher dans les placeholders */
@@ -98,7 +99,6 @@ if (!empty($_POST)) {
 
     // Si pas d'erreur -> insertion de l'utilisateur en BDD
     if (empty($errors) && empty($errorsFiles)) {
-        // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
         $query = $db->prepare("INSERT INTO contacts (firstname, lastname, email, phone, vehicule, city, question, photo, photo2, photo3, message) VALUES (:firstname, :lastname, :email, :phone, :vehicule, :city, :question, :photo1, :photo2, :photo3, :message)");
 

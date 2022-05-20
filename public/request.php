@@ -1,13 +1,13 @@
 <?php
 $page="Toutes les demandes";
 session_start();
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
-$queryRequests = $db->query("SELECT * FROM contacts
-                            ORDER BY id DESC");
+
+$queryRequests = $db->query("SELECT * FROM contacts ORDER BY id DESC");
 $requests = $queryRequests->fetchAll();
-// var_dump($requests);
+
 include("../templates/header.php")
 ?>
 

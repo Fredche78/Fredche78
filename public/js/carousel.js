@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         perPage: 1,
         autoplay: true,
         keyboard: true,
+        // drag: false,
     }).mount();
     
 });

@@ -2,7 +2,7 @@
 session_start();
 $page = "Mon compte";
 include("../templates/header.php");
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 // $errors=[];
 $confirme = "";
@@ -25,15 +25,13 @@ if (!isset($_SESSION["token"])) {
 
         session_destroy();
         header("Location: login.php");
-        // echo "token";
-
     } else {
 
         if (isset($_SESSION['email'])) {
+
             $email = trim(strip_tags($_SESSION['email']));
 
-            // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
-
+            // $db : vient de système
             $query = $db->prepare("SELECT * FROM users WHERE email =  :email");
             $query->BindParam(":email", $email);
             $query->execute();
@@ -90,7 +88,6 @@ if (!isset($_SESSION["token"])) {
 
             session_destroy();
             $confirme = "Votre compte a été supprimé";
-
         } else {
             $message = "Erreur de bdd";
         }
@@ -128,12 +125,25 @@ if (empty($confirme)) {
                         <?= $user["vehicule"] ?>
                     </div>
 
-                    <div class="deleteAccount">
+                    <?php
+                    if ($user["role"] === "administrateur") {
+                    ?>
+                        <div class="adminAccess">
+                            <a href="home_admin.php">Gestion du site</a>
+                        </div>
+                    <?php
+                    } else {
+                    ?>
+                        <div class="deleteAccount">
 
-                        <form action="" method="post">
-                            <button class="btn-account" name="deleteAccount" type="submit" value="<?= $user['id'] ?>">Supprimer le compte</button>
-                        </form>
-                    </div>
+                            <form action="" method="post">
+                                <button class="btn-account" name="deleteAccount" type="submit" value="<?= $user['id'] ?>">Supprimer le compte</button>
+                            </form>
+                        </div>
+                    <?php
+                    }
+                    ?>
+
 
                 </div>
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
-$page="Bienvenue sur le site SB Polish";
+$page = "Bienvenue sur le site SB Polish";
 include("../templates/header.php");
-require_once '../system/config.php';
+require_once("../system/config.php");
 //Connexion à la base d'avis
 
 // $dsn = "mysql:host=localhost;dbname=sbpolish;
@@ -14,17 +14,6 @@ $reviews = $queryReviews->fetchAll();
 
 $queryPhotos = $db->query("SELECT * FROM photos_cars ORDER BY id DESC");
 $photos = $queryPhotos->fetchAll();
-
-// $queryServices = $db->query("SELECT 
-// type_services.type AS 'colonnes', 
-// GROUP_CONCAT(services.name SEPARATOR '<br>') AS 'services' 
-// FROM type_services
-// INNER JOIN type_services_link
-// ON type_services.id = type_services_link.type_services_id
-// INNER JOIN services
-// ON type_services_link.services_id = services.id
-// GROUP BY type_services.type;");
-// $services = $queryServices->fetchAll();
 
 $queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.name ORDER BY services.id SEPARATOR '<BR>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
 $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
@@ -88,7 +77,7 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="txtCeo">
 
-        <p>Professionnel du nettoyage et passionné par l'automobile, contactez-moi et nous établirons ensemble un devis gratuit pour votre véhicule.</p>
+        <p>Professionnel du nettoyage et passionné par l'automobile, j'ai créé S.B Polish en 2014. Contactez-moi et nous établirons ensemble un devis gratuit pour votre véhicule.</p>
 
     </div>
 
@@ -98,13 +87,12 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
-<a href="contact.php" Class="contacts">
-    <div class="contact">
-        <p>
-            Votre tarif sur mesure : <span>Cliquez ici</span>
-        </p>
-    </div>
-</a>
+<!-- JavaScript pour le lien -->
+<div class="contacts" id="contactsLink">
+    <p>
+        Votre tarif sur mesure : <br> <span>Cliquez ici</span>
+    </p>
+</div>
 
 <!-- Affichage des avis -->
 
@@ -129,6 +117,9 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
+    <div class="controlReviews">
+        <a href="legal.php?page=reviews">En savoir plus</a>
+    </div>
 </div>
 
 <div class="services">
@@ -152,11 +143,10 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 
-<a href="prices.php" Class="prices">
-    <div class="price">
-        <p>Détails de nos tarifs et de nos prestations</p>
-    </div>
-</a>
+<!-- JavaScript pour le lien -->
+<div class="price" id="pricesLink">
+    <p>Détails de nos tarifs et de nos prestations</p>
+</div>
 
 <div class="pictures">
 
@@ -254,6 +244,9 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
 </div>
+<script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
+<script src="js/carousel.js"></script>
+<script src="js/link.js"></script>
 
 <?php
 include("../templates/footer.php")

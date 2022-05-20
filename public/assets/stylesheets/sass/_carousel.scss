@@ -62,11 +62,21 @@
         .splide__track {
             padding-bottom: 7rem;
 
+            @media screen and (max-width: v.$md-breakpoint) {
+                padding-bottom: 4rem;
+            }
+
             h2 {
                 text-align: center;
                 text-transform: uppercase;
+
+                @media screen and (max-width: v.$md-breakpoint) {
+                    font-size: v.$font-size-s;
+                }
             }
+
             // .splide__list {
+                
             //     .splide__slide {
             //     }
             // }
@@ -75,6 +85,10 @@
         .splide__arrows {
             opacity: 0;
             transition: opacity 0.5s;
+
+            // @media screen and (max-width: v.$sm-breakpoint) {
+            //     display: none;
+            // }
 
             .splide__arrow {
                 background-color: v.$color-primary;

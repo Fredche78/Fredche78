@@ -1,6 +1,6 @@
 <?php
 $page="Nouveau mot de passe";
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 $errors = [];
 
@@ -48,16 +48,17 @@ if (isset($_GET["token"])) {
             $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
             $lowercase = preg_match("/[a-z]/", $password);
             $number = preg_match("/[0-9]/", $password);
+            $specialChar = preg_match("/[^a-zA-Z0-9]/", $password);
             $haveSpace = preg_match("/ /", $password);
 
-            if (strlen($password) < 6 || !$uppercase || !$lowercase || !$number || $haveSpace) {
-                $errors["password"] = "Le mot de passe doit contenir 6 caractères minimum, une majuscule, une minuscule et un chiffre";
+            if (strlen($password) < 12 || !$uppercase || !$lowercase || !$number || !$specialChar || $haveSpace) {
+                $errors["password"] = "Le mot de passe doit contenir au minimum 12 caractères, une majuscule, une minuscule, un caractère spécial et un chiffre";
             }
 
-            // Cryptage du mot de passe
-            $password = password_hash($password, PASSWORD_DEFAULT);
-
             if (empty($errors)) {
+
+                // Cryptage du mot de passe
+            $password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Requète SQL de mise à jour du mot de passe
                 $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");

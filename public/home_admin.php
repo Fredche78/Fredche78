@@ -2,9 +2,10 @@
 session_start();
 $page="Page Administrateur";
 include("../templates/header.php");
-require_once '../system/config.php';
+require_once("../system/config.php");
 
-// $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+
+// $db : vient de la classe "private" dans la config
 
 /////////////////////////Select////////////////////////////////////
 

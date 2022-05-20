@@ -62,11 +62,12 @@ if (!empty($_POST)) {
      *  - Contient un caractère spécial : [^A-Za-z-9] // ^ ici veut dire différent de
      */
 
-    $uppercase = preg_match("/[A-Z]/", $password); // début et fin d'expression régulère fait par /
+    $uppercase = preg_match("/[A-Z]/", $password);                     // début et fin d'expression régulère fait par /
     $lowercase = preg_match("/[a-z]/", $password);
     $number = preg_match("/[0-9]/", $password);
-    $haveSpace = preg_match("/ /", $password);
     $specialChar = preg_match("/[^a-zA-Z0-9]/", $password);
+    $haveSpace = preg_match("/ /", $password);
+    
 
     if (strlen($password) < 12 || !$uppercase || !$lowercase || !$number || !$specialChar || $haveSpace) {
         $errors["password"] = "Le mot de passe doit contenir au minimum 12 caractères, une majuscule, une minuscule, un caractère spécial et un chiffre";

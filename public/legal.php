@@ -52,6 +52,24 @@ include("../templates/header.php")
 
     <?php
     }
+
+    if ($page === "reviews") {
+    ?>
+
+        <div class="rulesReviews">
+            <h1>Le recueil des avis</h1>
+            <p>
+                Tous le avis proviennent de notre page Facebook et sont consultables sur 
+                <a href="https://www.facebook.com/SbPolish/">notre page.</a>
+            </p>
+            <p>
+                Seul les dix derniers avis maximum sont affichés, ils ne font l'objet d'aucune sélection et ils sont classés par ordre chronologique. 
+            </p>
+            <p>La date des avis, leur durée dans le temps et la possibilité de signaler un abus peut se faire directement sur Facebook.</p>
+        </div>
+
+    <?php
+    }
     ?>
 
 </div>

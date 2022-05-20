@@ -3,7 +3,7 @@
 session_start();
 
 $page="Connexion";
-require_once '../system/config.php';
+require_once("../system/config.php");
 
 $token = trim(strip_tags($_SESSION["token"]));
 

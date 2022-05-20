@@ -12,8 +12,8 @@
 @use "carousel";
 @use "mixins" as m;
 @use "variables" as v;
-
 @import url("https://fonts.googleapis.com/css2?family=Jura:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap");
 
 html {
     background-color: v.$color-background;
@@ -25,320 +25,362 @@ body {
         url("../../img/background-carbone.webp");
     background-size: cover;
     background-attachment: fixed;
-    min-height: 85vh;
-    // height: 100%;
+
     font-family: "Jura", sans-serif;
     margin: 0 6rem;
 
     @media screen and (max-width: v.$xl-breakpoint) {
         margin: 0;
     }
+}
 
-    main {
+main {
+    min-height: 71vh;
+    color: #fff;
+    font-size: v.$font-size-l;
+
+    @media screen and (max-width: v.$xl-breakpoint) {
+        font-size: v.$font-size-m;
+    }
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        font-size: v.$font-size-s;
+    }
+
+    .view {
+        // position: absolute;
+        // top: 3.6%;
+        // right: 0;
+        // left: 0;
+        background: url("../../img/Lamborghini.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
         color: #fff;
-        font-size: v.$font-size-l;
 
-        @media screen and (max-width: v.$xl-breakpoint) {
-            font-size: v.$font-size-m;
+        .txtView {
+            width: 100%;
+            text-align: center;
+            padding: 2% 0;
+            font-weight: bolder;
+            text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
+
+            .txtHome {
+                padding: 2% 0;
+                margin: 2% 10%;
+                background-color: rgba($color: #000000, $alpha: 0.5);
+                box-shadow: 10px -10px 10px rgba(255, 255, 255, 0.2), -10px 10px 10px rgba(255, 255, 255, 0.2);
+                border-radius: 2rem;
+
+                @media screen and (max-width: v.$md-breakpoint) {
+                    font-size: v.$font-size-m;
+                    border-radius: 1rem;
+                }
+
+                &:hover {
+                    background-color: rgba($color: #000000, $alpha: 0.6);
+                }
+            }
         }
+    }
+}
+
+.ceo {
+    display: flex;
+    justify-content: center;
+    margin: 10%;
+
+    .txtCeo {
+        flex-basis: 80%;
+        color: #fff;
+        font-family: "Dancing Script", cursive;
+        font-size: v.$font-size-l;
+        font-weight: 600;
+        // text-align: justify;
+
+        @media screen and (max-width: v.$md-breakpoint) {
+            font-size: v.$font-size-m;
+            border-radius: 1rem;
+        }
+    }
+
+    .pictCeo {
+        flex-basis: 20%;
+        background: no-repeat url("../../img/image.svg");
+        background-size: contain;
+        background-position: right;
+        filter: v.$color-svg;
+
+        img {
+            width: 100px;
+        }
+    }
+}
+
+.reviews {
+    text-align: center;
+    padding: 2% 5%;
+    margin: 5% 10%;
+    border-radius: 5rem;
+    background-color: v.$color-background-label;
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        margin: 2%;
+        border-radius: 2rem;
+        font-size: v.$font-size-reviews;
+    }
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        font-size: v.$font-size-xs;
+    }
+
+    h2 {
+        text-transform: uppercase;
 
         @media screen and (max-width: v.$md-breakpoint) {
             font-size: v.$font-size-s;
         }
-
-        .view {
-            // position: absolute;
-            // top: 3.6%;
-            // right: 0;
-            // left: 0;
-            background: url("../../img/Lamborghini.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            color: #fff;
-
-            .txtView {
-                width: 100%;
-                text-align: center;
-                padding: 2% 0;
-                font-weight: bolder;
-                text-shadow: 5px -5px 10px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
-
-                .txtHome {
-                    padding: 2% 0;
-                    margin: 2% 10%;
-                    background-color: rgba($color: #000000, $alpha: 0.5);
-                    box-shadow: 10px -10px 10px rgba(255, 255, 255, 0.2), -10px 10px 10px rgba(255, 255, 255, 0.2);
-                    border-radius: 2rem;
-
-                    &:hover {
-                        background-color: rgba($color: #000000, $alpha: 0.6);
-                    }
-                }
-            }
-        }
     }
 
-    .ceo {
-        display: flex;
-        justify-content: center;
-        margin: 10%;
+    // .reviewsView {
+    //     text-align: center;
+    // }
 
-        .txtCeo {
-            flex-basis: 80%;
+    .controlReviews {
+        a {
             color: #fff;
         }
+    }
+}
 
-        .pictCeo {
-            flex-basis: 20%;
-            background: no-repeat url("../../img/image.svg");
-            background-size: contain;
-            background-position: right;
-            filter: v.$color-svg;
+.services {
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    color: #fff;
+    margin: 0;
 
-            img {
-                width: 100px;
-            }
-        }
+    @media screen and (max-width: v.$md-breakpoint) {
+        display: block;
+        margin-top: 2rem;
     }
 
-    .reviews {
-        text-align: center;
-        padding: 2% 5%;
-        margin: 5% 10%;
-        border-radius: 5rem;
-        background-color: v.$color-background-label;
+    .servicesView {
+        flex-basis: 25%;
+        @include m.box;
+        margin: 1rem 0;
+        text-shadow: v.$color-text-shadow-box;
+
+        @media screen and (max-width: v.$xl-breakpoint) {
+            flex-basis: 30%;
+        }
 
         @media screen and (max-width: v.$md-breakpoint) {
-           margin: 2%;
-           border-radius: 2rem;
+            margin: 2rem;
         }
 
-        h2 {
+        h3 {
             text-transform: uppercase;
         }
 
-        .reviewsView {
-            text-align: center;
-        }
-    }
-
-    .services {
-        display: flex;
-        justify-content: space-evenly;
-        text-align: center;
-        color: #fff;
-        margin: 0;
-
-        @media screen and (max-width: v.$md-breakpoint) {
-            display: block;
-            margin-top: 2rem;
+        hr {
+            height: 0.3rem;
+            border: none;
+            background-color: v.$color-primary;
         }
 
-        .servicesView {
-            flex-basis: 25%;
-            @include m.box;
-            margin: 1rem 0;
-            text-shadow: v.$color-text-shadow-box;
-
-            @media screen and (max-width: v.$xl-breakpoint) {
-                flex-basis: 30%;
-            }
+        .listServices {
+            margin: 4rem 0;
 
             @media screen and (max-width: v.$md-breakpoint) {
                 margin: 2rem;
             }
-
-            h3 {
-                text-transform: uppercase;
-            }
-
-            hr {
-                height: 0.3rem;
-                border: none;
-                background-color: v.$color-primary;
-            }
-
-            .listServices {
-                margin: 4rem 0;
-
-                @media screen and (max-width: v.$md-breakpoint) {
-                    margin: 2rem;
-                }
-            }
         }
     }
+}
 
-    .prices,
-    .contacts {
-        text-decoration: none;
-        text-shadow: v.$color-text-shadow-box;
-        color: #fff;
+// .prices,
+// .contact {
+//     text-decoration: none;
+//     text-shadow: v.$color-text-shadow-box;
+//     color: #fff;
+// }
 
-        .price,
-        .contact {
-            @include m.box;
-            margin: 10rem;
-            padding: 3rem 0;
-            font-size: 2.5rem;
-            text-align: center;
-            text-transform: uppercase;
+.price,
+.contacts {
+    @include m.box;
+    cursor: pointer;
+    margin: 10rem;
+    padding: 3rem 0;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
 
-            @media screen and (max-width: v.$md-breakpoint) {
-                margin: 6rem;
-                padding: 1.5rem 0;
-            }
-
-            &:hover {
-                color: v.$color-primary;
-                background-color: v.$color-back-box;
-            }
-
-            span {
-                font-weight: bold;
-                text-decoration: underline;
-            }
-        }
+    @media screen and (max-width: v.$md-breakpoint) {
+        margin: 2rem;
+        padding: 1.5rem 0;
+        font-size: v.$font-size-m;
     }
 
-    .pictures {
-        margin: 0 7% 7% 5%;
-
-        @media screen and (max-width: v.$md-breakpoint) {
-            margin: 0 2% 2% 2%;
-        }
-
-        .picturesView {
-            display: flex;
-            text-align: center;
-            justify-content: space-evenly;
-
-            @media screen and (max-width: v.$md-breakpoint) {
-                display: block;
-                margin: 5%;
-            }
-
-            @media screen and (max-width: v.$sm-breakpoint) {
-                display: block;
-                margin: 3%;
-            }
-
-            .before {
-                flex-basis: 45%;
-
-                .imgBefore {
-                    position: relative;
-
-                    img {
-                        max-width: 100%;
-                        max-height: 50rem;
-                        border-radius: 2rem;
-                    }
-
-                    .txtBefore {
-                        position: absolute;
-                        top: 90%;
-                        right: 0;
-                        bottom: 0.5%;
-                        left: 0;
-                        text-shadow: v.$color-text-shadow;
-                        border-radius: 0 0 2rem 2rem;
-
-                        p {
-                            font-size: 2rem;
-                        }
-                    }
-                }
-            }
-
-            .after {
-                flex-basis: 45%;
-
-                .imgAfter {
-                    position: relative;
-
-                    img {
-                        max-width: 100%;
-                        max-height: 50rem;
-                        border-radius: 2rem;
-                    }
-
-                    .txtAfter {
-                        position: absolute;
-                        top: 90%;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
-                        text-shadow: v.$color-text-shadow;
-                        // color: v.$color-primary;
-                        // background-color: rgba($color: #000000, $alpha: 0.5);
-                        border-radius: 0 0 2rem 2rem;
-
-                        p {
-                            // margin: 0.5rem;
-                            font-size: 2rem;
-                        }
-                    }
-                }
-            }
-        }
+    &:hover {
+        color: v.$color-primary;
+        background-color: v.$color-back-box;
     }
 
-    .infosSociety {
+    span {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
+.pictures {
+    margin: 0 7% 7% 5%;
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        margin: 0 2% 2% 2%;
+    }
+
+    .picturesView {
         display: flex;
+        text-align: center;
         justify-content: space-evenly;
-        @include m.box;
-        margin: 0 5rem;
-        padding: 5rem;
 
         @media screen and (max-width: v.$md-breakpoint) {
             display: block;
-            margin: 2rem;
-            padding: 1.5rem;
+            margin: 5%;
         }
 
-        .society {
+        @media screen and (max-width: v.$sm-breakpoint) {
+            display: block;
+            margin: 3%;
+        }
+
+        .before {
             flex-basis: 45%;
 
-            p {
-                text-shadow: v.$color-text-shadow-box;
-                margin: 1.5rem 0;
+            .imgBefore {
+                position: relative;
 
-                @media screen and (max-width: v.$md-breakpoint) {
-                    text-align: center;
+                @media screen and (max-width: v.$sm-breakpoint) {
+                    margin: 3%;
                 }
-            }
 
-            #nameSociety {
-                // font-size: 4rem;
-                font-size: v.$font-size-l;
-                text-transform: uppercase;
-            }
+                img {
+                    max-width: 100%;
+                    max-height: 50rem;
+                    border-radius: 2rem;
+                }
 
-            #openingQuestion {
-                // text-decoration: underline;
-                text-transform: uppercase;
+                .txtBefore {
+                    position: absolute;
+                    top: 90%;
+                    right: 0;
+                    bottom: 0.5%;
+                    left: 0;
+                    text-shadow: v.$color-text-shadow;
+                    border-radius: 0 0 2rem 2rem;
 
-                a {
-                    color: #fff;
-
-                    &:hover {
-                        color: v.$color-primary;
+                    p {
+                        font-size: 2rem;
                     }
                 }
             }
         }
 
-        .map {
+        .after {
             flex-basis: 45%;
-            box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
 
-            iframe {
-                display: flex;
-                width: 100%;
-                height: 100%;
+            @media screen and (max-width: v.$sm-breakpoint) {
+                padding-top: 2rem;
             }
+
+            .imgAfter {
+                position: relative;
+
+                img {
+                    max-width: 100%;
+                    max-height: 50rem;
+                    border-radius: 2rem;
+                }
+
+                @media screen and (max-width: v.$sm-breakpoint) {
+                    margin: 3%;
+                }
+
+                .txtAfter {
+                    position: absolute;
+                    top: 90%;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    text-shadow: v.$color-text-shadow;
+                    // color: v.$color-primary;
+                    // background-color: rgba($color: #000000, $alpha: 0.5);
+                    border-radius: 0 0 2rem 2rem;
+
+                    p {
+                        // margin: 0.5rem;
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.infosSociety {
+    display: flex;
+    justify-content: space-evenly;
+    @include m.box;
+    margin: 5rem;
+    padding: 5rem;
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        display: block;
+        margin: 2rem;
+        padding: 1.5rem;
+    }
+
+    .society {
+        flex-basis: 45%;
+
+        p {
+            text-shadow: v.$color-text-shadow-box;
+            margin: 1.5rem 0;
+
+            @media screen and (max-width: v.$md-breakpoint) {
+                text-align: center;
+            }
+        }
+
+        #nameSociety {
+            font-size: v.$font-size-l;
+            text-transform: uppercase;
+        }
+
+        #openingQuestion {
+            // text-decoration: underline;
+            text-transform: uppercase;
+
+            a {
+                color: #fff;
+
+                &:hover {
+                    color: v.$color-primary;
+                }
+            }
+        }
+    }
+
+    .map {
+        flex-basis: 45%;
+        box-shadow: 3px 6px 20px #2d2d2e, -2px -4px 25px #2d2d2e;
+
+        iframe {
+            display: flex;
+            width: 100%;
+            height: 100%;
         }
     }
 }

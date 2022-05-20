@@ -51,6 +51,19 @@
                     }
                 }
 
+                .adminAccess {
+                    
+                    margin-top: 13.5%;
+
+                    a {
+                        @include m.btn-submit2;
+                        color: #fff;
+                        text-decoration: none;
+                        text-transform: uppercase;
+                        padding: 3% 7%;
+                    }
+                }
+
                 .deleteAccount {
                     .btn-account {
                         @include m.btn-submit2;
@@ -110,7 +123,6 @@
     justify-content: center;
 
     .deleteAccount {
-        
         h1 {
             font-size: v.$font-size-l;
             text-transform: uppercase;
