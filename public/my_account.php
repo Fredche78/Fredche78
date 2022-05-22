@@ -1,6 +1,8 @@
 <?php
-session_start();
+// session_start();
 $page = "Mon compte";
+$sessioncheck = "true";
+
 include("../templates/header.php");
 require_once("../system/config.php");
 
@@ -15,13 +17,13 @@ if (!isset($_SESSION["token"])) {
 
     $token = trim(strip_tags($_SESSION["token"]));
 
-    $queryToken = $db->prepare("SELECT email, token FROM user_reset WHERE token LIKE :token");
+    $queryToken = $db->prepare("SELECT * FROM user_reset WHERE token LIKE :token");
     $queryToken->bindParam(":token", $token);
     $queryToken->execute();
     $result = $queryToken->fetch();
 
     // On vérifie l'adresse IP de l'utilisateur et le token
-    if ($_SESSION["token"] != $result["token"] || !isset($_SESSION["user"]) || $_SESSION["user_ip"] != $_SERVER["REMOTE_ADDR"]) {
+    if ($_SESSION["token"] != $result["token"] || !isset($_SESSION["user"]) || $_SESSION["user_ip"] != $_SERVER["REMOTE_ADDR"] || $_SESSION["validity"] != $result["validity"] || $result["validity"] < time()) {
 
         session_destroy();
         header("Location: login.php");
@@ -70,7 +72,7 @@ if (!isset($_SESSION["token"])) {
 
         if ($queryUpdate->execute()) {
             // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
-            header("Location: ./my_account.php");
+            header("Location: ./my_account.php#viewAccount");
         } else {
             $message = "Erreur de bdd";
         }
@@ -105,7 +107,7 @@ if (empty($confirme)) {
             <h1>Compte de <?= $user["firstname"] . " " . $user["lastname"] ?></h1>
             <h2><?= $user["email"] ?></h2>
 
-            <div class="viewAccount">
+            <div class="viewAccount" id="viewAccount">
 
                 <div class="items-account">
                     <h2>Votre compte</h2>

@@ -1,5 +1,6 @@
 <?php
 $page="Création de compte";
+$sessioncheck = "false";
 
 if (!empty($_POST)) {
     // Le formulaire a été soumis

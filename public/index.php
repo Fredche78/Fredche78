@@ -1,13 +1,11 @@
 <?php
-session_start();
+// session_start();
 $page = "Bienvenue sur le site SB Polish";
+$sessioncheck = "true";
+
 include("../templates/header.php");
 require_once("../system/config.php");
 //Connexion à la base d'avis
-
-// $dsn = "mysql:host=localhost;dbname=sbpolish;
-// charset=utf8mb4";
-// $db = new PDO($dsn, "root", "");
 
 $queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC");
 $reviews = $queryReviews->fetchAll();
@@ -17,45 +15,6 @@ $photos = $queryPhotos->fetchAll();
 
 $queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.name ORDER BY services.id SEPARATOR '<BR>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
 $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
-
-// var_dump($services);
-
-// $serviceList = 0;
-// var_dump($services);
-// $i=0;
-// foreach ($services as $service) {
-//     $i++;
-//     $servicesList = $servicesList ."". $i;
-//     $servicesList = explode(",", $services["services"]);
-// }
-
-// $servicesList1 = $services[0];
-// $servicesList2 = $services[1];
-// $servicesList3 = $services[2];
-// var_dump($services[0]);
-// $servicesList1 = $services[0];
-// $servicesList1 = explode(",", $servicesList1);
-// $servicesList2 = explode(",", $services[1]);
-// $servicesList3 = explode(",", $services[2]);
-// foreach ($services as $services) {
-//     // foreach ($services as $service) {
-//     //     $servicesList = explode(",", $service);
-//     // }
-
-//     // $i++;
-//     $servicesList[$i] = explode(",", $services["services"]);
-// }
-// var_dump($servicesList);
-// var_dump($servicesList1);
-
-// var_dump($servicesList[1]);
-// var_dump($servicesList[2]);
-// var_dump($servicesList[3]);
-// var_dump($servicesList);
-// var_dump($services);
-// $servicesList2 = explode(",", $services["services"][0]);
-// var_dump($servicesList2);
-// var_dump($services[0]);
 
 ?>
 
@@ -239,15 +198,13 @@ $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10184.254916045364!2d3.4853949946899414!3d50.34671671927941!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2ec4549a81cdd%3A0x37c41f301b0a3967!2s91%20Rue%20Henri%20Durre%2C%2059174%20La%20Sentinelle!5e0!3m2!1sfr!2sfr!4v1650474732181!5m2!1sfr!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        <iframe title="Google Map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2545.990311753979!2d3.485738815694014!3d50.34808607946137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2ec4549a81cdd%3A0x37c41f301b0a3967!2s91%20Rue%20Henri%20Durre%2C%2059174%20La%20Sentinelle!5e0!3m2!1sfr!2sfr!4v1653122774063!5m2!1sfr!2sfr" style="border:3;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
 </div>
 <script src="../node_modules/@splidejs/splide/dist/js/splide.min.js"></script>
 <script src="js/carousel.js"></script>
 <script src="js/link.js"></script>
-
 <?php
 include("../templates/footer.php")
 ?>

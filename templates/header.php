@@ -1,3 +1,29 @@
+<?php
+
+if ($sessioncheck === "true") {
+
+    session_start();
+
+    if (isset($_SESSION["email"])) {
+
+        
+        require_once("../system/config.php");
+
+        $token = trim(strip_tags($_SESSION["token"]));
+
+        $queryToken = $db->prepare("SELECT * FROM user_reset WHERE token LIKE :token");
+        $queryToken->bindParam(":token", $token);
+        $queryToken->execute();
+        $result = $queryToken->fetch();
+
+        if ($_SESSION["token"] != $result["token"] || !isset($_SESSION["user"]) || $_SESSION["user_ip"] != $_SERVER["REMOTE_ADDR"] || $_SESSION["validity"] != $result["validity"] || $result["validity"] < time()) {
+
+            header("Location: logout.php");
+        }
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,6 +31,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bienvenue sur le site de S.B POLISH spécialiste depuis 2014 du nettoyage automobile. Vous rentrez de vacances, célébrez un mariage, vendez ou achetez un véhicule ? Pensez à S.B POLISH !">
     <link rel="stylesheet" href="assets/stylesheets/css/main.css">
     <!-- Link to the file hosted on your server, -->
     <link rel="stylesheet" href="../node_modules/@splidejs/splide/dist/css/splide.min.css">
@@ -46,7 +73,7 @@
                                 </li>
                                 <li>
                                     <a href="logout.php">Déconnexion
-                                        
+
                                     </a>
                                 </li>
                             <?php

@@ -1,14 +1,20 @@
 <?php
 $page="Toutes les demandes";
-session_start();
+$sessioncheck = "true";
+// session_start();
+include("../templates/header.php");
 require_once("../system/config.php");
+
+if ($_SESSION["role"] != "administrateur") {
+    session_destroy();
+    header("Location: login.php");
+}
 
 // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
 
 $queryRequests = $db->query("SELECT * FROM contacts ORDER BY id DESC");
 $requests = $queryRequests->fetchAll();
 
-include("../templates/header.php")
 ?>
 
 <div class="requests">
@@ -104,7 +110,7 @@ include("../templates/header.php")
                                 }
                                 ?>
                             </td>
-                            <td>
+                            <td  id="view">
                                 <a href="request_view.php?id=<?= $request['id']  ?> ">Voir
                                 </a>
                             </td>

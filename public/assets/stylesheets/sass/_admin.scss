@@ -91,21 +91,24 @@
             }
 
             .reviewsContainer {
-                // display: flex;
 
                 .reviewsGrid {
                     display: flex;
-                    // width: 100%;
-                    // flex-direction: row;
+
                     flex-wrap: wrap;
                     justify-content: space-between;
                     background-color: v.$color-background-label;
                     margin: 1% 5%;
 
+                    @media screen and (max-width: v.$md-breakpoint) {
+                        display: block;
+
+                    }
+
                     .reviewSelect {
                         display: flex;
                         flex-basis: 49%;
-                        justify-content: space-between;
+                        justify-content: left;
                         align-items: center;
                         // margin: 0 1%;
                         border: 1px solid #fff;
@@ -115,12 +118,23 @@
 
                         .deleteReview {
                             form {
+
                                 .btn-delete {
                                     display: flex;
                                     justify-content: right;
                                     text-align: right;
+                                    
+                                    @media screen and (max-width: v.$md-breakpoint) {
+                                        margin: 1rem;
+                                        padding: 1rem;
+                                        
+                                    }
                                 }
                             }
+                        }
+
+                        .reviewClient {
+                            font-size: v.$font-size-l/2;
                         }
                     }
                 }
@@ -142,9 +156,18 @@
             display: flex;
             align-items: bottom;
 
-            button {
+            .btn-delete {
                 display: flex;
-                padding: 20rem, 20rem, 0, 0;
+                align-items: center;
+                padding: 2rem;
+                // padding: 20rem, 20rem, 0, 0;
+
+                @media screen and (max-width: v.$md-breakpoint) {
+                    padding: 1rem;
+                    // margin: 1rem;
+                    // padding: 5rem, 5rem, 0, 0;
+                    
+                }
             }
         }
     }
@@ -165,8 +188,8 @@
         .form-group {
             .form-admin-group {
                 display: flex;
-
                 padding: 2% 5%;
+
                 @media screen and (max-width: v.$md-breakpoint) {
                     display: block;
                     padding: 1% 4%;

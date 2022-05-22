@@ -1,9 +1,14 @@
 <?php
-session_start();
-$page="Page Administrateur";
+$page = "Page Administrateur";
+$sessioncheck = "true";
+
 include("../templates/header.php");
 require_once("../system/config.php");
 
+if ($_SESSION["role"] != "administrateur") {
+    session_destroy();
+    header("Location: login.php");
+}
 
 // $db : vient de la classe "private" dans la config
 
@@ -322,7 +327,6 @@ if (isset($_POST["deleteWork"])) {
 
                     unlink("assets/img/photos/travaux/" . $photo["img_before"]);
                     unlink("assets/img/photos/travaux/" . $photo["img_after"]);
-
                 }
             }
         }
@@ -389,21 +393,21 @@ if (isset($_POST["updateServices"])) {
                             <?=
                             $service["listes"]
 
-                                // for ($i=0; $i<count($liste); $i++) {
-                                //     $liste = explode(" ", (($service[$i])["listes"]));
-                                // }
-                                // $i=0;
-                                // $liste = $service["listes"];
-                                // ( explode( ',', $liste1 ) );
+                            // for ($i=0; $i<count($liste); $i++) {
+                            //     $liste = explode(" ", (($service[$i])["listes"]));
+                            // }
+                            // $i=0;
+                            // $liste = $service["listes"];
+                            // ( explode( ',', $liste1 ) );
 
-                                // $liste[$i] = ($service[$i]["listes"]);
-                                // var_dump($liste[$i]);
+                            // $liste[$i] = ($service[$i]["listes"]);
+                            // var_dump($liste[$i]);
 
-                                // for ($i=0; $i<count($liste); $i++) {
-                                //     $liste[$i]=$service[$i]["listes"];
-                                //     var_dump($liste[$i]);
+                            // for ($i=0; $i<count($liste); $i++) {
+                            //     $liste[$i]=$service[$i]["listes"];
+                            //     var_dump($liste[$i]);
 
-                                // }
+                            // }
                             ?>
                         </div>
                     </div>
@@ -527,16 +531,16 @@ if (isset($_POST["updateServices"])) {
                     ?>
                         <div class="reviewSelect">
 
-                            <div class="reviewClient">
-                                <?= $review["id"] . " - " . $review["client"] . " - " . $review["review"] ?>
-                            </div>
-
                             <div class="deleteReview">
 
                                 <form action="" method="post">
                                     <button class="btn-delete" name="deleteReview" type="submit" value="<?= $review['id'] ?>">X</button>
                                 </form>
 
+                            </div>
+
+                            <div class="reviewClient">
+                                <?= $review["id"] . " - " . $review["client"] . " - " . $review["review"] ?>
                             </div>
 
                         </div>

@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 $page = ($_GET["page"]);
+$sessioncheck = "true";
 
 include("../templates/header.php")
 ?>
@@ -60,7 +61,7 @@ include("../templates/header.php")
             <h1>Le recueil des avis</h1>
             <p>
                 Tous le avis proviennent de notre page Facebook et sont consultables sur 
-                <a href="https://www.facebook.com/SbPolish/">notre page.</a>
+                <a href="https://www.facebook.com/SbPolish/">celle-ci.</a>
             </p>
             <p>
                 Seul les dix derniers avis maximum sont affichés, ils ne font l'objet d'aucune sélection et ils sont classés par ordre chronologique. 

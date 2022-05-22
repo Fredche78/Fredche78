@@ -1,5 +1,7 @@
 <?php
 $page="Nouveau mot de passe";
+$sessioncheck = "false";
+
 require_once("../system/config.php");
 
 $errors = [];

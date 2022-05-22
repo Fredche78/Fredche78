@@ -1,5 +1,5 @@
 <?php
-// session_start();
+$sessioncheck = "false";
 require_once("../system/config.php");
 
 $error = "";
@@ -26,10 +26,11 @@ if (!empty($_POST)) {
         //////////////////////////////////////////////////////
 
     
-        //On stocke le prénom, le nom et l'email dans des variables de session
+        //On stocke le prénom, le nomn, l'email et le role dans des variables de session
         $_SESSION["user"] = $result["firstname"];
         $_SESSION["userName"] = $result["lastname"];
         $_SESSION["email"] = $result["email"];
+        $_SESSION["role"] = $result["role"];
         
         // On stocke l'adresse IP de l'utilisateur pour palier à une possible attaque "session hijacking"
         $_SESSION["user_ip"] = $_SERVER["REMOTE_ADDR"];
@@ -43,10 +44,11 @@ if (!empty($_POST)) {
         $query->bindParam(":email", $email);
         $query->bindParam(":token", $token);
         //On lie la durée de validity
-        $query->bindParam(":validity", $validity, PDO::PARAM_INT);
+        $query->bindParam(":validity", $validity);
 
         if ($query->execute()) {
             $_SESSION["token"] = $token;
+            $_SESSION["validity"] = $validity;
         }
 
         header("Location: index.php");

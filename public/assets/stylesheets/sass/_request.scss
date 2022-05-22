@@ -1,20 +1,12 @@
 @use "variables" as v;
 @use "mixins" as m;
 
-.adminLink {
-    display: flex;
-    justify-content: center;
-    a {
-        @include m.btn-submit2;
-        text-decoration: none;
-    }
-}
 .requests {
-    display: flex;
-    justify-content: center;
-    font-size: 60%;
+    // font-size: v.$font-size-m/1.5;
+    font-size: v.$font-size-xs;
 
     .requestsTable {
+        
         h1 {
             text-align: center;
             text-transform: uppercase;
@@ -22,37 +14,27 @@
 
         .listRequests {
             display: flex;
+            justify-content: center;
+            overflow: auto;
+            margin: 0 2rem;
 
             table {
-
-                @media screen and (max-width: v.$lg-breakpoint) {
-                    display: flex;
-                    // flex-direction: column;
-                }
+                // width: 95%;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
 
                 thead {
-
                     tr {
                         th {
                             background-color: v.$color-table-column;
                             text-transform: uppercase;
-                            padding: 1.5rem 0;
-
-                            @media screen and (max-width: v.$lg-breakpoint) {
-                                display: flex;
-                                padding: 1rem 0;
-                                // flex-basis: 50%;
-                            }
+                            padding: 1rem;
                         }
                     }
                 }
 
                 tbody {
-                    @media screen and (max-width: v.$lg-breakpoint) {
-                        display: flex;
-                        flex-wrap: wrap;
-                        max-width: 100%;
-                    }
 
                     tr {
                         &:nth-child(odd) {
@@ -62,20 +44,10 @@
                         &:nth-child(even) {
                             background-color: v.$color-table-odd;
                         }
-
-                        @media screen and (max-width: v.$lg-breakpoint) {
-                            max-width: 100%;
-                        }
                     }
 
                     td {
-                        padding: 1rem 0;
-
-                        @media screen and (max-width: v.$lg-breakpoint) {
-                            display: flex;
-                            // flex-basis: 50%;
-                            // flex-direction: column;
-                        }
+                        padding: 2rem 1rem;
                     }
                 }
             }
@@ -83,7 +55,6 @@
             table,
             th,
             td {
-                // display: flex;
                 text-align: center;
                 color: #fff;
                 text-shadow: 2px 2px 2px #000;
@@ -92,10 +63,27 @@
 
                 a {
                     color: v.$color-btn-green;
-                    text-shadow: 2px 2px 2px #000;
+                    font-weight: bolder;
+                    text-shadow: 2px 2px 2px rgb(224, 253, 6);
+                    text-decoration: none;
                     text-transform: uppercase;
+                }
+
+                #view {
+                    background-color: rgba($color: #000, $alpha: 0.3);
                 }
             }
         }
+    }
+}
+
+.adminLink {
+    display: flex;
+    justify-content: center;
+    
+    a {
+        @include m.btn-submit2;
+        text-decoration: none;
+        padding: 3rem 6rem;
     }
 }

@@ -2,6 +2,10 @@
 
                     <footer>
 
+                        <!-- <div class="hrDiv">
+                            <hr>
+                        </div> -->
+
                         <div class="footerView">
 
                             <div class="copyright">
@@ -65,7 +69,9 @@
 
                             "showIcon": true,
                             /* Show cookie icon to manage cookies */
-                            //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
+                            "iconSrc": "../public/assets/icons/cookies.svg",
+                            /* Optionnal: URL or base64 encoded image */
+
                             "iconPosition": "BottomRight",
                             /* BottomRight, BottomLeft, TopRight and TopLeft */
 
@@ -82,7 +88,7 @@
                             "handleBrowserDNTRequest": false,
                             /* If Do Not Track == 1, disallow all */
 
-                            "removeCredit": false,
+                            "removeCredit": true,
                             /* Remove credit link */
                             "moreInfoLink": true,
                             /* Show more info link */
@@ -102,7 +108,7 @@
                             "mandatoryCta": true /* Show the disabled accept button when mandatory on */
                         });
                     </script>
-                    
+
                     </body>
 
                     </html>

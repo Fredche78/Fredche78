@@ -1,6 +1,6 @@
 <?php
-// session_start();
 $page="Mot de passe oublié";
+$sessioncheck = "false";
 //Chargement des dépendances Composer
 require("../vendor/autoload.php");
 

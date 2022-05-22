@@ -1,8 +1,11 @@
 <?php
 // Ne pas oublier de démarrer le système de session sinon la fonction session_destroy() ne fonctionne pas
+$sessioncheck = "true";
 session_start();
 
 $page="Connexion";
+
+
 require_once("../system/config.php");
 
 $token = trim(strip_tags($_SESSION["token"]));

@@ -1,6 +1,8 @@
 <?php
+// session_start();
 $page="Les prix de nos services";
-session_start();
+$sessioncheck = "true";
+
 include("../templates/header.php")
 ?>
 
@@ -48,10 +50,10 @@ include("../templates/header.php")
                     </td>
                 </tr>
                 <tr>
-                    <td>Extérieur</td>
-                    <td>+30€*</td>
-                    <td>+30€*</td>
-                    <td>+30€*</td>
+                    <td>Intérieur / Extérieur</td>
+                    <td>80€</td>
+                    <td>90€</td>
+                    <td>100€</td>
                 </tr>
                 <tr>
                     <td>Polissage</td>
@@ -60,12 +62,6 @@ include("../templates/header.php")
                     <td>500€</td>
                     <!-- <td>X</td> -->
                 </tr>
-                <tr>
-                    <td colspan="5">
-                        <p>* Plus 30€ sur le tarif appliqué sur l'intérieur</p>
-                    </td>
-                </tr>
-
             </tbody>
 
         </table>

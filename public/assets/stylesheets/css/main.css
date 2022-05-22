@@ -544,10 +544,15 @@ footer .footerView .copyright {
   background-color: rgba(0, 0, 0, 0.5);
   margin: 1% 5%;
 }
+@media screen and (max-width: 768px) {
+  .backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid {
+    display: block;
+  }
+}
 .backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect {
   display: flex;
   flex-basis: 49%;
-  justify-content: space-between;
+  justify-content: left;
   align-items: center;
   border: 1px solid #fff;
 }
@@ -555,6 +560,15 @@ footer .footerView .copyright {
   display: flex;
   justify-content: right;
   text-align: right;
+}
+@media screen and (max-width: 768px) {
+  .backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect .deleteReview form .btn-delete {
+    margin: 1rem;
+    padding: 1rem;
+  }
+}
+.backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect .reviewClient {
+  font-size: 75%;
 }
 
 .deleteWork {
@@ -566,9 +580,15 @@ footer .footerView .copyright {
   display: flex;
   align-items: bottom;
 }
-.deleteWork form button {
+.deleteWork form .btn-delete {
   display: flex;
-  padding: 20rem, 20rem, 0, 0;
+  align-items: center;
+  padding: 2rem;
+}
+@media screen and (max-width: 768px) {
+  .deleteWork form .btn-delete {
+    padding: 1rem;
+  }
 }
 
 .addWorks {
@@ -665,6 +685,62 @@ footer .footerView .copyright {
   background-color: #790303;
 }
 
+.requests {
+  font-size: 65%;
+}
+.requests .requestsTable h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+.requests .requestsTable .listRequests {
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+  margin: 0 2rem;
+}
+.requests .requestsTable .listRequests table {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.requests .requestsTable .listRequests table thead tr th {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-transform: uppercase;
+  padding: 1rem;
+}
+.requests .requestsTable .listRequests table tbody tr:nth-child(odd) {
+  background-color: rgba(160, 100, 2, 0.6);
+}
+.requests .requestsTable .listRequests table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.requests .requestsTable .listRequests table tbody td {
+  padding: 2rem 1rem;
+}
+.requests .requestsTable .listRequests table,
+.requests .requestsTable .listRequests th,
+.requests .requestsTable .listRequests td {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 2px #000;
+  border: 1px solid #fff;
+  border-collapse: collapse;
+}
+.requests .requestsTable .listRequests table a,
+.requests .requestsTable .listRequests th a,
+.requests .requestsTable .listRequests td a {
+  color: #276d10;
+  font-weight: bolder;
+  text-shadow: 2px 2px 2px #e0fd06;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.requests .requestsTable .listRequests table #view,
+.requests .requestsTable .listRequests th #view,
+.requests .requestsTable .listRequests td #view {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
 .adminLink {
   display: flex;
   justify-content: center;
@@ -681,6 +757,7 @@ footer .footerView .copyright {
   cursor: pointer;
   font-size: x-large;
   text-decoration: none;
+  padding: 3rem 6rem;
 }
 @media screen and (max-width: 576px) {
   .adminLink a {
@@ -692,77 +769,6 @@ footer .footerView .copyright {
   border: 0.4rem solid #828481;
 }
 
-.requests {
-  display: flex;
-  justify-content: center;
-  font-size: 60%;
-}
-.requests .requestsTable h1 {
-  text-align: center;
-  text-transform: uppercase;
-}
-.requests .requestsTable .listRequests {
-  display: flex;
-}
-@media screen and (max-width: 992px) {
-  .requests .requestsTable .listRequests table {
-    display: flex;
-  }
-}
-.requests .requestsTable .listRequests table thead tr th {
-  background-color: rgba(0, 0, 0, 0.8);
-  text-transform: uppercase;
-  padding: 1.5rem 0;
-}
-@media screen and (max-width: 992px) {
-  .requests .requestsTable .listRequests table thead tr th {
-    display: flex;
-    padding: 1rem 0;
-  }
-}
-@media screen and (max-width: 992px) {
-  .requests .requestsTable .listRequests table tbody {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 100%;
-  }
-}
-.requests .requestsTable .listRequests table tbody tr:nth-child(odd) {
-  background-color: rgba(160, 100, 2, 0.6);
-}
-.requests .requestsTable .listRequests table tbody tr:nth-child(even) {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-@media screen and (max-width: 992px) {
-  .requests .requestsTable .listRequests table tbody tr {
-    max-width: 100%;
-  }
-}
-.requests .requestsTable .listRequests table tbody td {
-  padding: 1rem 0;
-}
-@media screen and (max-width: 992px) {
-  .requests .requestsTable .listRequests table tbody td {
-    display: flex;
-  }
-}
-.requests .requestsTable .listRequests table,
-.requests .requestsTable .listRequests th,
-.requests .requestsTable .listRequests td {
-  text-align: center;
-  color: #fff;
-  text-shadow: 2px 2px 2px #000;
-  border: 1px solid #fff;
-  border-collapse: collapse;
-}
-.requests .requestsTable .listRequests table a,
-.requests .requestsTable .listRequests th a,
-.requests .requestsTable .listRequests td a {
-  color: #276d10;
-  text-shadow: 2px 2px 2px #000;
-  text-transform: uppercase;
-}
-
 .quote h1 {
   text-transform: uppercase;
   text-align: center;
@@ -772,48 +778,133 @@ footer .footerView .copyright {
 .quote .viewQuote {
   display: flex;
 }
+@media screen and (max-width: 768px) {
+  .quote .viewQuote {
+    display: block;
+  }
+}
 .quote .viewQuote .contact {
   display: flex;
   flex-basis: 30%;
   border: 2px solid #fff;
-  padding: 3rem;
+  padding: 3rem 2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 90%;
+}
+@media screen and (max-width: 1200px) {
+  .quote .viewQuote .contact {
+    font-size: 80%;
+  }
+}
+@media screen and (max-width: 992px) {
+  .quote .viewQuote .contact {
+    font-size: 65%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .quote .viewQuote .contact {
+    font-size: 90%;
+  }
 }
 .quote .viewQuote .contact .rows .row {
-  padding: 0.3rem 0;
+  padding: 0.5rem 0;
 }
 .quote .viewQuote .contact .rows .row span {
   text-transform: uppercase;
 }
 .quote .viewQuote .contact .rows .delete {
   display: flex;
-  width: 100%;
   justify-content: right;
 }
-.quote .viewQuote .message {
+.quote .viewQuote .messageBox {
   flex-basis: 70%;
 }
-.quote .viewQuote .message h2 {
-  text-align: center;
+.quote .viewQuote .messageBox .message {
   border: 2px solid #fff;
-  margin: 0 1rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 1rem;
 }
-.quote .viewQuote .message .viewMessage {
-  border: 2px solid #fff;
-  margin: 1rem;
+@media screen and (max-width: 768px) {
+  .quote .viewQuote .messageBox .message {
+    margin: 0.5rem 0;
+  }
+}
+.quote .viewQuote .messageBox .message h2 {
+  text-align: center;
+}
+.quote .viewQuote .messageBox .message .viewMessage {
   padding: 2%;
+  margin-bottom: 1%;
+}
+.quote .viewQuote .messageBox form {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  margin-left: 1rem;
+}
+@media screen and (max-width: 768px) {
+  .quote .viewQuote .messageBox form {
+    margin: 0.5rem 0;
+    border-top: 2px solid #fff;
+  }
+}
+.quote .viewQuote .messageBox form .btn-delete-request {
+  text-align: center;
+  background-color: #40423f;
+  border: 0.4rem solid #f6ab36;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 3% 8%;
+  margin: 3rem 0;
+  cursor: pointer;
+  font-size: x-large;
+  padding: 2rem;
+}
+@media screen and (max-width: 576px) {
+  .quote .viewQuote .messageBox form .btn-delete-request {
+    font-size: medium;
+  }
+}
+.quote .viewQuote .messageBox form .btn-delete-request:hover {
+  background-color: #315122;
+  border: 0.4rem solid #828481;
+}
+@media screen and (max-width: 768px) {
+  .quote .viewQuote .messageBox form .btn-delete-request {
+    font-size: 80%;
+    padding: 1.5rem;
+  }
 }
 .quote .photos {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0;
+  padding: 2%;
+  border: 2px solid #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+@media screen and (max-width: 768px) {
+  .quote .photos {
+    display: block;
+  }
 }
 .quote .photos .photo {
   align-items: top;
   flex-basis: 30%;
 }
+@media screen and (max-width: 768px) {
+  .quote .photos .photo {
+    margin-bottom: 2%;
+  }
+}
 .quote .photos .photo img {
   width: 100%;
+  border: 2px solid #fff;
 }
 .quote .photos .photo .download {
   display: flex;
@@ -1274,12 +1365,12 @@ html {
 }
 
 body {
-  position: relative;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 15, 15, 0.7) 51%, rgba(0, 0, 0, 0.7) 100%), url("../../img/background-carbone.webp");
   background-size: cover;
   background-attachment: fixed;
   font-family: "Jura", sans-serif;
   margin: 0 6rem;
+  min-height: 100vh;
 }
 @media screen and (max-width: 1200px) {
   body {
@@ -1337,7 +1428,17 @@ main .view .txtView .txtHome:hover {
 .ceo {
   display: flex;
   justify-content: center;
-  margin: 10%;
+  margin: 5% 10%;
+}
+@media screen and (max-width: 768px) {
+  .ceo {
+    margin: 7%;
+  }
+}
+@media screen and (max-width: 576px) {
+  .ceo {
+    margin: 4%;
+  }
 }
 .ceo .txtCeo {
   flex-basis: 80%;
@@ -1350,6 +1451,11 @@ main .view .txtView .txtHome:hover {
   .ceo .txtCeo {
     font-size: 125%;
     border-radius: 1rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .ceo .txtCeo {
+    font-size: 100%;
   }
 }
 .ceo .pictCeo {
@@ -1366,9 +1472,10 @@ main .view .txtView .txtHome:hover {
 .reviews {
   text-align: center;
   padding: 2% 5%;
-  margin: 5% 10%;
+  margin: 5% 7%;
   border-radius: 5rem;
   background-color: rgba(0, 0, 0, 0.5);
+  font-size: 100%;
 }
 @media screen and (max-width: 768px) {
   .reviews {
@@ -1474,7 +1581,7 @@ main .view .txtView .txtHome:hover {
 }
 
 .pictures {
-  margin: 0 7% 7% 5%;
+  margin: 0 7% 7% 7%;
 }
 @media screen and (max-width: 768px) {
   .pictures {
@@ -1511,20 +1618,23 @@ main .view .txtView .txtHome:hover {
 }
 .pictures .picturesView .before .imgBefore img {
   max-width: 100%;
-  max-height: 50rem;
   border-radius: 2rem;
 }
 .pictures .picturesView .before .imgBefore .txtBefore {
   position: absolute;
-  top: 90%;
+  top: auto;
   right: 0;
-  bottom: 0.5%;
+  bottom: 0;
   left: 0;
-  text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
+  font-weight: bolder;
+  text-shadow: 3px 3px 10px #000;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 2rem 2rem;
 }
 .pictures .picturesView .before .imgBefore .txtBefore p {
+  line-height: 45px;
   font-size: 2rem;
+  margin: 0;
 }
 .pictures .picturesView .after {
   flex-basis: 45%;
@@ -1539,7 +1649,6 @@ main .view .txtView .txtHome:hover {
 }
 .pictures .picturesView .after .imgAfter img {
   max-width: 100%;
-  max-height: 50rem;
   border-radius: 2rem;
 }
 @media screen and (max-width: 576px) {
@@ -1549,15 +1658,19 @@ main .view .txtView .txtHome:hover {
 }
 .pictures .picturesView .after .imgAfter .txtAfter {
   position: absolute;
-  top: 90%;
+  top: auto;
   right: 0;
   bottom: 0;
   left: 0;
-  text-shadow: 3px 3px 4px #000, -3px -3px 4px #000;
+  font-weight: bolder;
+  text-shadow: 3px 3px 10px #000;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0 0 2rem 2rem;
 }
 .pictures .picturesView .after .imgAfter .txtAfter p {
+  line-height: 45px;
   font-size: 2rem;
+  margin: 0;
 }
 
 .infosSociety {

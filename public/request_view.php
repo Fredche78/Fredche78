@@ -1,14 +1,20 @@
 <?php
-$page="Détail des demandes";
-session_start();
+$page = "Détail des demandes";
+$sessioncheck = "true";
+// session_start();
+include("../templates/header.php");
 require_once("../system/config.php");
+
+if ($_SESSION["role"] != "administrateur") {
+    session_destroy();
+    header("Location: login.php");
+}
 ////////////////////////GET//////////////////////////
 
 if (isset($_GET["id"])) {
 
     $queryRequests = $db->query("SELECT * FROM contacts WHERE id = {$_GET['id']}");
     $request = $queryRequests->fetch(PDO::FETCH_ASSOC);
-
 }
 
 ////////////////////DELETE/////////////////////////
@@ -31,7 +37,6 @@ if (isset($_POST["deleteRequest"])) {
     }
 }
 
-include("../templates/header.php")
 ?>
 
 <div class="quote">
@@ -65,25 +70,32 @@ include("../templates/header.php")
 
             </div>
 
+        </div>
+
+        <div class="messageBox">
+
+            <div class="message">
+
+                <h2>Message</h2>
+
+                <div class="viewMessage">
+                    <?= $request["message"] ?>
+                </div>
+
+            </div>
+
             <div class="delete">
 
                 <form action="" method="post">
-                    <button class="btn-delete" name="deleteRequest" type="submit" value="<?= $request['id'] ?>">Effacer la demande</button>
+                    <button class="btn-delete-request" name="deleteRequest" type="submit" value="<?= $request['id'] ?>">Effacer la demande</button>
                 </form>
 
             </div>
 
         </div>
 
-        <div class="message">
 
-            <h2>Message</h2>
 
-            <div class="viewMessage">
-                <?= $request["message"] ?>
-            </div>
-
-        </div>
     </div>
 
     <div class="photos">

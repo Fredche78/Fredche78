@@ -1,6 +1,7 @@
 <?php
-session_start();
+// session_start();
 $page = "Contact";
+$sessioncheck = "true";
 include("../templates/header.php");
 require_once("../system/config.php");
 
@@ -244,7 +245,7 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputVehicule" name="vehicule" value="<?= isset($userLog["vehicule"]) ? $userLog["vehicule"] : "" ?>" required>
+                                <input type="text" id="inputVehicule" name="vehicule" value="<?= isset($userLog["vehicule"]) ? $userLog["vehicule"] : "" ?>">
                             <?php
                             } else {
                             ?>
@@ -259,7 +260,7 @@ if (!empty($_POST)) {
                             <?php
                             if (isset($_SESSION["email"])) {
                             ?>
-                                <input type="text" id="inputCity" name="city" value="<?= isset($userLog["city"]) ? $userLog["city"] : "" ?>" required>
+                                <input type="text" id="inputCity" name="city" value="<?= isset($userLog["city"]) ? $userLog["city"] : "" ?>">
                             <?php
                             } else {
                             ?>

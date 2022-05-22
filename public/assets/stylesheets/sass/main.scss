@@ -20,7 +20,6 @@ html {
 }
 
 body {
-    position: relative;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(15, 15, 15, 0.7) 51%, rgba(0, 0, 0, 0.7) 100%),
         url("../../img/background-carbone.webp");
     background-size: cover;
@@ -32,6 +31,7 @@ body {
     @media screen and (max-width: v.$xl-breakpoint) {
         margin: 0;
     }
+    min-height: 100vh;
 }
 
 main {
@@ -48,10 +48,6 @@ main {
     }
 
     .view {
-        // position: absolute;
-        // top: 3.6%;
-        // right: 0;
-        // left: 0;
         background: url("../../img/Lamborghini.jpg");
         background-size: cover;
         background-position: center;
@@ -89,7 +85,15 @@ main {
 .ceo {
     display: flex;
     justify-content: center;
-    margin: 10%;
+    margin: 5% 10%;
+
+    @media screen and (max-width: v.$md-breakpoint) {
+        margin: 7%;
+    }
+
+    @media screen and (max-width: v.$sm-breakpoint) {
+        margin: 4%;
+    }
 
     .txtCeo {
         flex-basis: 80%;
@@ -103,6 +107,11 @@ main {
             font-size: v.$font-size-m;
             border-radius: 1rem;
         }
+
+        @media screen and (max-width: v.$sm-breakpoint) {
+            font-size: v.$font-size-s;
+        }
+
     }
 
     .pictCeo {
@@ -121,9 +130,10 @@ main {
 .reviews {
     text-align: center;
     padding: 2% 5%;
-    margin: 5% 10%;
+    margin: 5% 7%;
     border-radius: 5rem;
     background-color: v.$color-background-label;
+    font-size: v.$font-size-s;
 
     @media screen and (max-width: v.$md-breakpoint) {
         margin: 2%;
@@ -235,7 +245,8 @@ main {
 }
 
 .pictures {
-    margin: 0 7% 7% 5%;
+    margin: 0 7% 7% 7%;
+    // max-height: 50rem;
 
     @media screen and (max-width: v.$md-breakpoint) {
         margin: 0 2% 2% 2%;
@@ -268,21 +279,25 @@ main {
 
                 img {
                     max-width: 100%;
-                    max-height: 50rem;
+                    // max-height: 50rem;
                     border-radius: 2rem;
                 }
 
                 .txtBefore {
                     position: absolute;
-                    top: 90%;
+                    top: auto;
                     right: 0;
-                    bottom: 0.5%;
+                    bottom: 0;
                     left: 0;
-                    text-shadow: v.$color-text-shadow;
+                    font-weight: bolder;
+                    text-shadow: v.$color-text-shadow-box;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
                     border-radius: 0 0 2rem 2rem;
 
                     p {
+                        line-height: 45px;
                         font-size: 2rem;
+                        margin: 0;
                     }
                 }
             }
@@ -300,7 +315,7 @@ main {
 
                 img {
                     max-width: 100%;
-                    max-height: 50rem;
+                    // max-height: 50rem;
                     border-radius: 2rem;
                 }
 
@@ -310,18 +325,19 @@ main {
 
                 .txtAfter {
                     position: absolute;
-                    top: 90%;
+                    top: auto;
                     right: 0;
                     bottom: 0;
                     left: 0;
-                    text-shadow: v.$color-text-shadow;
-                    // color: v.$color-primary;
-                    // background-color: rgba($color: #000000, $alpha: 0.5);
+                    font-weight: bolder;
+                    text-shadow: v.$color-text-shadow-box;
+                    background-color: rgba($color: #000000, $alpha: 0.5);
                     border-radius: 0 0 2rem 2rem;
 
                     p {
-                        // margin: 0.5rem;
+                        line-height: 45px;
                         font-size: 2rem;
+                        margin: 0;
                     }
                 }
             }
