@@ -24,14 +24,13 @@ body {
         url("../../img/background-carbone.webp");
     background-size: cover;
     background-attachment: fixed;
-
     font-family: "Jura", sans-serif;
     margin: 0 6rem;
+    min-height: 100vh;
 
     @media screen and (max-width: v.$xl-breakpoint) {
         margin: 0;
     }
-    min-height: 100vh;
 }
 
 main {
@@ -101,7 +100,6 @@ main {
         font-family: "Dancing Script", cursive;
         font-size: v.$font-size-l;
         font-weight: 600;
-        // text-align: justify;
 
         @media screen and (max-width: v.$md-breakpoint) {
             font-size: v.$font-size-m;
@@ -152,10 +150,6 @@ main {
             font-size: v.$font-size-s;
         }
     }
-
-    // .reviewsView {
-    //     text-align: center;
-    // }
 
     .controlReviews {
         a {
@@ -210,13 +204,6 @@ main {
     }
 }
 
-// .prices,
-// .contact {
-//     text-decoration: none;
-//     text-shadow: v.$color-text-shadow-box;
-//     color: #fff;
-// }
-
 .price,
 .contacts {
     @include m.box;
@@ -246,7 +233,6 @@ main {
 
 .pictures {
     margin: 0 7% 7% 7%;
-    // max-height: 50rem;
 
     @media screen and (max-width: v.$md-breakpoint) {
         margin: 0 2% 2% 2%;
@@ -279,7 +265,6 @@ main {
 
                 img {
                     max-width: 100%;
-                    // max-height: 50rem;
                     border-radius: 2rem;
                 }
 
@@ -298,6 +283,10 @@ main {
                         line-height: 45px;
                         font-size: 2rem;
                         margin: 0;
+
+                        @media screen and (max-width: v.$lg-breakpoint) {
+                            font-size: v.$font-size-reviews;
+                        }
                     }
                 }
             }
@@ -315,7 +304,6 @@ main {
 
                 img {
                     max-width: 100%;
-                    // max-height: 50rem;
                     border-radius: 2rem;
                 }
 
@@ -338,6 +326,10 @@ main {
                         line-height: 45px;
                         font-size: 2rem;
                         margin: 0;
+
+                        @media screen and (max-width: v.$lg-breakpoint) {
+                            font-size: v.$font-size-reviews;
+                        }
                     }
                 }
             }
@@ -376,7 +368,6 @@ main {
         }
 
         #openingQuestion {
-            // text-decoration: underline;
             text-transform: uppercase;
 
             a {

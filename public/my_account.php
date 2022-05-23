@@ -1,18 +1,18 @@
 <?php
-// session_start();
+
 $page = "Mon compte";
 $sessioncheck = "true";
 
 include("../templates/header.php");
 require_once("../system/config.php");
 
-// $errors=[];
 $confirme = "";
 
 if (!isset($_SESSION["token"])) {
     // Pas de token dans les variables de session
     session_destroy();
     header("Location: ./");
+
 } else {
 
     $token = trim(strip_tags($_SESSION["token"]));
@@ -71,7 +71,7 @@ if (!isset($_SESSION["token"])) {
         $queryUpdate->bindParam(":email", $user["email"]);
 
         if ($queryUpdate->execute()) {
-            // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+// Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
             header("Location: ./my_account.php#viewAccount");
         } else {
             $message = "Erreur de bdd";

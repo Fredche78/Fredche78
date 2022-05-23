@@ -1,6 +1,6 @@
 <?php
-// session_start();
-$page="Les prix de nos services";
+
+$page = "Les prix de nos services";
 $sessioncheck = "true";
 
 include("../templates/header.php")
@@ -32,8 +32,6 @@ include("../templates/header.php")
                         <p>Utilitaire / Camion</p>
                     </th>
                 </tr>
-                <tr>
-                </tr>
             </thead>
 
             <tbody>
@@ -60,7 +58,6 @@ include("../templates/header.php")
                     <td>400€</td>
                     <td>450€</td>
                     <td>500€</td>
-                    <!-- <td>X</td> -->
                 </tr>
             </tbody>
 
@@ -199,35 +196,8 @@ include("../templates/header.php")
         </table>
 
     </div>
-    
-</div>
-
-<!-- <div class="options">
-
-        <div class="option">
-            <div class="nameOption">
-                <p>
-                    Cire de protection hydrophobe
-                </p>
-            </div>
-            <div class="txtoption">
-                <p>
-                    protège votre véhicule pendant 3 mois et plus
-                </p>
-            </div>
-        </div>
-        <div class="priceOption">
-            <p>
-                10€
-            </p>
-        </div>
-
-    </div> -->
 
 </div>
-
-
-
 
 <?php
 include("../templates/footer.php")

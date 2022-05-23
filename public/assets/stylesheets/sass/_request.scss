@@ -2,7 +2,6 @@
 @use "mixins" as m;
 
 .requests {
-    // font-size: v.$font-size-m/1.5;
     font-size: v.$font-size-xs;
 
     .requestsTable {
@@ -19,7 +18,6 @@
             margin: 0 2rem;
 
             table {
-                // width: 95%;
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;

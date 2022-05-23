@@ -4,8 +4,7 @@ $sessioncheck = "false";
 
 if (!empty($_POST)) {
     // Le formulaire a été soumis
-    $firstname = trim(strip_tags($_POST["firstname"])); // Ici firstname = au name dans le formulaire
-    $lastname = trim(strip_tags($_POST["lastname"]));
+    $firstname = trim(strip_tags($_POST["firstname"]));
     $email = trim(strip_tags($_POST["email"]));
     $retypeEmail = trim(strip_tags($_POST["retypeEmail"]));
     $password = trim(strip_tags($_POST["password"]));
@@ -19,9 +18,7 @@ if (!empty($_POST)) {
 
     //Initialisation d'un tableau d'erreur
     $errors = [];
-
-    //////////////////////////////////Voir comment/s'il faut mettre un prépare///////////////////////
-    $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
+;
     $queryUsersMail = $db->query("SELECT email FROM users");
     $usersMail = $queryUsersMail->fetchAll();
 

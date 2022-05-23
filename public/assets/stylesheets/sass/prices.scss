@@ -5,36 +5,29 @@
     margin: 4rem;
 
     .categoriesPrices {
-        display: flex;
+        // La propriété table-layout définit l'algorithme utilisé pour disposer les cellules, lignes et colonnes d'un tableau.
         table-layout: auto;
         width: 100%;
-        flex-direction: column;
         justify-content: center;
-        margin-bottom: 8%;
-        // font-size: v.$font-size-l;
+        margin-bottom: 2%;
         font-weight: bolder;
-
-        @media screen and (max-width: v.$xl-breakpoint) {
-            margin-bottom: 10%;
-        }
 
         @media screen and (max-width: v.$lg-breakpoint) {
             font-size: 80%;
-            margin-bottom: 15%;
         }
 
         @media screen and (max-width: v.$md-breakpoint) {
             font-size: 65%;
-            margin-bottom: 15%;
         }
 
         @media screen and (max-width: v.$md-breakpoint) {
             font-size: 50%;
-            margin-bottom: 15%;
         }
 
         .standardPrices,
         .optionsPrices {
+            display: table;
+            width: 100%;
             border-collapse: collapse;
             text-align: center;
             align-items: center;

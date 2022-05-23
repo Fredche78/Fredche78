@@ -23,29 +23,6 @@ $photos = $queryPhotos->fetchAll();
 $queryServices = $db->query("SELECT type_services.type AS 'type', GROUP_CONCAT(services.id, ' - ', services.name ORDER BY services.id SEPARATOR '<br>') AS 'listes' FROM type_services INNER JOIN services ON type_services.id = services.service_type GROUP BY type_services.type ORDER BY type_services.id ASC");
 $services = $queryServices->fetchAll(PDO::FETCH_ASSOC);
 
-///////////////////////////////////////TEST/////////////////////////////////////////
-
-
-
-// $liste1 = ($services[1]["listes"]);
-// $liste2 = ($services[2]["listes"]);
-// $liste3 = ($services[2]["listes"]);
-
-// var_dump( explode( ',', $liste1 ) );
-// var_dump($liste2);
-// var_dump($liste3);
-// $liste=$services[""];
-// $i=0;
-// for ($i=0; $i<count($liste); $i++) {
-//     $liste[$i] = ($service["listes"])[$i];
-// }
-
-// var_dump($liste[$i]);
-
-
-// $queryServicesNames = $db->query("SELECT type FROM type_services");
-// $servicesName = $queryServices->fetchAll(PDO::FETCH_ASSOC);
-
 ////////////////////////////////TABLEAU D'ERREUR////////////////////////////////////
 
 $errors = [];
@@ -103,105 +80,6 @@ if (!empty($_POST["submitReview"])) {
     }
 }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-// if (!empty($_POST["submitPhotosCars"])) {
-
-//     // $errorsWorks = [];
-
-//     $photoOld = trim(strip_tags($_FILES["imgBefore"]["name"]));
-//     $photoOld2 = trim(strip_tags($_FILES["imgAfter"]["name"]));
-//     $txtBefore = trim(strip_tags($_POST["txtBefore"]));
-//     $txtAfter = trim(strip_tags($_POST["txtAfter"]));
-
-//     $tmpName = $_FILES["imgBefore"]["tmp_name"];
-//     $tmpName2 = $_FILES["imgAfter"]["tmp_name"];
-//     $name = $_FILES["imgBefore"]["name"];
-//     $name2 = $_FILES["imgAfter"]["name"];
-//     $size = $_FILES["imgBefore"]["size"];
-//     $size2 = $_FILES["imgAfter"]["size"];
-
-//     $uploadPath = "assets/img/photos/travaux/" . $name; // . $photo fonctionne aussi
-//     $uploadPath2 = "assets/img/photos/travaux/" . $name2; // . $photo fonctionne aussi
-
-//     $errorsWorks = [];
-//     $errorsFiles[1] = $_FILES["imgBefore"]["error"];
-//     $errorsFiles[2] = $_FILES["imgAfter"]["error"];
-
-//     $tabExtension1 = explode(".", $name);
-//     $tabExtension2 = explode(".", $name2);
-//     $extension1 = strtolower(end($tabExtension1));
-//     $extension2 = strtolower(end($tabExtension2));
-//     $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-//     $maxSize = 2000000;
-
-//     // if (empty($imgBefore)) {
-//     //     $errorsWorks["photoOld"] = " La photo avant travaux est obligatoire ";
-//     //     // var_dump($errorsReviews);
-//     // }
-
-//     // if (empty($imgAfter)) {
-//     //     $errorsWorks["imgAfter"] = " La photo après travaux est obligatoire ";
-//     //     // var_dump($errorsReviews);
-//     // }
-
-//     // $errorsFiles[$i] = $_FILES["imgAfter"]["error"];
-//     // $errorsFiles[$i] = $_FILES["imgBefore"]["error"];
-//     $errorsFiles[1] = $_FILES["imgAfter"]["error"];
-//     $errorsFiles[2] = $_FILES["imgBefore"]["error"];
-
-//     $photoOld1 = trim(strip_tags($_FILES["imgBefore"]["name"]));
-//     $photoOld2 = trim(strip_tags($_FILES["imgAfter"]["name"]));
-//     $txtBefore = trim(strip_tags($_POST["txtBefore"]));
-//     $txtAfter = trim(strip_tags($_POST["txtAfter"]));
-
-//     $name1 = $_FILES["imgBefore"]["name"];
-//     $name2 = $_FILES["imgAfter"]["name"];
-//     $tmpName1 = $_FILES["imgBefore"]["tmp_name"];
-//     $tmpName2 = $_FILES["imgAfter"]["tmp_name"];
-//     $size1 = $_FILES["imgBefore"]["size"];
-//     $size2 = $_FILES["imgAfter"]["size"];
-
-//     $uploadPath1 = "assets/img/photos/travaux/" . $name1; // . $photo fonctionne aussi
-//     $uploadPath2 = "assets/img/photos/travaux/" . $name2; // . $photo fonctionne aussi
-
-//     $tabExtension1 = explode(".", $name1);
-//     $tabExtension2 = explode(".", $name2);
-//     $extension1 = strtolower(end($tabExtension1));
-//     $extension2 = strtolower(end($tabExtension2));
-//     $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-//     $maxSize = 2000000;
-
-//     if (in_array($extension1, $allowedTypes) && $size1 <= $maxSize && $errorsFiles == 0) {
-
-//         $uniqueName1 = md5(time() . $name1);
-//         $uniqueName2 = md5(time() . $name2);
-//         // $uniqueName2 = md5($name2);
-
-//         $imgBefore = $uniqueName1 . "." . $extension1;
-//         $imgAfter = $uniqueName2 . "." . $extension2;
-
-//         // move_uploaded_file($tmpName[$i], $uploadPath[$i]);
-//         move_uploaded_file($tmpName1, $uploadPath1);
-//         move_uploaded_file($tmpName2, $uploadPath2);
-
-//         rename("assets/img/photos/travaux/$photoOld1", "assets/img/photos/travaux/$imgBefore");
-//         rename("assets/img/photos/travaux/$photoOld2", "assets/img/photos/travaux/$imgAfter");
-
-//         // var_dump($imgBefore);
-
-//         echo "Image enregistrée";
-//     } else {
-
-//         // if ($maxSize <= $size[$i]) {
-//         //     $errors["weight"][$i] = "Maximum 2Mo";
-//         // } else {
-//         //     $errors["files"][$i] = "Une erreur est survenue";
-//         // }
-//     }
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 if (!empty($_POST['submitPhotosCars'])) {
 
     $photoOld = trim(strip_tags($_FILES["imgBefore"]["name"]));
@@ -217,8 +95,8 @@ if (!empty($_POST['submitPhotosCars'])) {
     $name2 = $_FILES["imgAfter"]["name"];
     $size2 = $_FILES["imgAfter"]["size"];
 
-    $uploadPath = "assets/img/photos/travaux/" . $name; // . $photo fonctionne aussi
-    $uploadPath2 = "assets/img/photos/travaux/" . $name2; // . $photo fonctionne aussi
+    $uploadPath = "assets/img/photos/travaux/" . $name;
+    $uploadPath2 = "assets/img/photos/travaux/" . $name2;
 
     $errorsWorks = [];
     $errorsFiles = $_FILES["imgAfter"]["error"];
@@ -227,16 +105,6 @@ if (!empty($_POST['submitPhotosCars'])) {
     $extension = strtolower(end($tabExtension));
     $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
     $maxSize = 2000000;
-
-    // if (empty($imgBefore)) {
-    //     $errorsWorks["photoOld"] = " La photo avant travaux est obligatoire ";
-    //     // var_dump($errorsReviews);
-    // }
-
-    // if (empty($imgAfter)) {
-    //     $errorsWorks["imgAfter"] = " La photo après travaux est obligatoire ";
-    //     // var_dump($errorsReviews);
-    // }
 
     if (in_array($extension, $allowedTypes) && $size <= $maxSize && $errorsFiles == 0) {
 
@@ -272,12 +140,10 @@ if (!empty($_POST['submitPhotosCars'])) {
         if ($addWork->execute()) {
 
             //////////////////* Se positionne sur l'ID */
-
             header("Location: home_admin.php#photosView");
-            // var_dump($imgBefore);
         } else {
+
             $errors["message"] = "Erreur de bdd";
-            // $message = "Erreur de bdd";
         }
     }
 }
@@ -355,9 +221,10 @@ if (isset($_POST["updateServices"])) {
     $queryUpdate->bindParam(":idUpdateService", $idUpdateService, PDO::PARAM_INT);
 
     if ($queryUpdate->execute()) {
-        // Possibilité de compléter avec une requête DELETE sur la table password_reset pour pruger la ligne en question.
+
         header("Location: home_admin.php#administration");
     } else {
+
         $message = "Erreur de bdd";
     }
 }
@@ -390,25 +257,7 @@ if (isset($_POST["updateServices"])) {
                         <h3><?= $service["type"] ?></h3>
                         <hr>
                         <div class="listServices">
-                            <?=
-                            $service["listes"]
-
-                            // for ($i=0; $i<count($liste); $i++) {
-                            //     $liste = explode(" ", (($service[$i])["listes"]));
-                            // }
-                            // $i=0;
-                            // $liste = $service["listes"];
-                            // ( explode( ',', $liste1 ) );
-
-                            // $liste[$i] = ($service[$i]["listes"]);
-                            // var_dump($liste[$i]);
-
-                            // for ($i=0; $i<count($liste); $i++) {
-                            //     $liste[$i]=$service[$i]["listes"];
-                            //     var_dump($liste[$i]);
-
-                            // }
-                            ?>
+                            <?= $service["listes"] ?>
                         </div>
                     </div>
                 <?php
@@ -434,8 +283,6 @@ if (isset($_POST["updateServices"])) {
                                 <option value="3" <?= (isset($columnService) && $columnService === "Options") ? "selected" : "" ?>>Options et services annexes</option>
                             </select>
 
-                            <!-- //////////////////////////////////////////Code à vérifier///////////////////////////////////////// -->
-
                             <div class="errors">
                                 <?php
                                 if (isset($errorsReviews["clientReview"])) {
@@ -448,7 +295,6 @@ if (isset($_POST["updateServices"])) {
                                 }
                                 ?>
                             </div>
-                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
                         </div>
 
                         <div class="form-admin-item">
@@ -457,8 +303,6 @@ if (isset($_POST["updateServices"])) {
                             </label>
 
                             <input type="text" id="inputService" name="nameService" value="<?= isset($nameService) ? $nameService : "" ?>" />
-
-                            <!-- //////////////////////////////////////////Code à vérifier///////////////////////////////////////// -->
 
                             <div class="errors">
                                 <?php
@@ -472,7 +316,6 @@ if (isset($_POST["updateServices"])) {
                                 }
                                 ?>
                             </div>
-                            <!-- /////////////////////////////////////////////////////////////////////////////////////////////////////// -->
                         </div>
 
                         <input class="btn-submit" type="submit" name="submitService" value="Ajouter le service" />
@@ -499,7 +342,6 @@ if (isset($_POST["updateServices"])) {
                             </select>
                         </div>
                         <input class="btn-submit" name="updateServices" type="submit" value="Mettre à jour le service" />
-                        <!-- <button class="btn-submit" name="updateServices" type="submit">Mettre à jour le service</button> -->
                     </div>
                 </form>
             </div>
@@ -713,57 +555,6 @@ if (isset($_POST["updateServices"])) {
         </div>
     </div>
 </div>
-
-<!-- if (!empty($_POST["submitPhotosCars"])) {
-
-// $errorsWorks = [];
-
-for ($i = 1; $i < 3; $i++) {
-
-    // $errorsFiles[$i] = $_FILES["imgAfter"]["error"];
-    // $errorsFiles[$i] = $_FILES["imgBefore"]["error"];
-    $errorsFiles[$i] = $_FILES["imgAfter"]["error"];
-    $errorsFiles[$i] = $_FILES["imgBefore"]["error"];
-
-    $photoOldBefore = trim(strip_tags($_FILES["imgBefore"]["name"]));
-    $photoOldAfter = trim(strip_tags($_FILES["imgAfter"]["name"]));
-    $txtBefore = trim(strip_tags($_POST["txtBefore"]));
-    $txtAfter = trim(strip_tags($_POST["txtAfter"]));
-
-    $name[$i] = $_FILES["imgBefore"]["name"];
-    $tmpName[$i] = $_FILES["imgBefore"]["tmp_name"];
-    $size[$i] = $_FILES["imgBefore"]["size"];
-
-    $uploadPath[$i] = "assets/img/photos/travaux/" . $name[$i]; // . $photo fonctionne aussi
-
-    $tabExtension[$i] = explode(".", $name[$i]);
-    $extension[$i] = strtolower(end($tabExtension[$i]));
-    $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-    $maxSize = 2000000;
-
-    if (in_array($extension[$i], $allowedTypes) && $size[$i] <= $maxSize && $errorsFiles == 0) {
-
-        $uniqueName[$i] = md5(time() . $name[$i]);
-        // $uniqueName2 = md5($name2);
-
-        $imgBefore = $uniqueName[$i] . "." . $extension[$i];
-        $imgAfter = $uniqueName[$i] . "." . $extension[$i];
-
-        move_uploaded_file($tmpName[$i], $uploadPath[$i]);
-        // move_uploaded_file($tmpName2, $uploadPath2);
-
-        rename("assets/img/photos/travaux/$photoOldBefore", "assets/img/photos/travaux/$imgBefore");
-        rename("assets/img/photos/travaux/$photoOldAfter", "assets/img/photos/travaux/$imgAfter");
-
-        // var_dump($imgBefore);
-
-        echo "Image enregistrée";
-    } else {
-
-        if ($maxSize <= $size[$i]) {
-            $errors["weight"][$i] = "Maximum 2Mo";
-        } else {
-            $errors["files"][$i] = "Une erreur est survenue"; -->
 
 <?php
 include("../templates/footer.php")

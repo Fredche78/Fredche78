@@ -568,7 +568,7 @@ footer .footerView .copyright {
   }
 }
 .backoffice .administration .reviewsAdmin .reviewsContainer .reviewsGrid .reviewSelect .reviewClient {
-  font-size: 75%;
+  font-size: 80%;
 }
 
 .deleteWork {
@@ -928,6 +928,7 @@ footer .footerView .copyright {
   display: flex;
   justify-content: right;
   padding: 2rem;
+  border: 2px solid #fff;
   background-color: rgba(0, 0, 0, 0.5);
 }
 .back a {
@@ -1155,39 +1156,31 @@ footer .footerView .copyright {
   margin: 4rem;
 }
 .pricesPage .categoriesPrices {
-  display: flex;
   table-layout: auto;
   width: 100%;
-  flex-direction: column;
   justify-content: center;
-  margin-bottom: 8%;
+  margin-bottom: 2%;
   font-weight: bolder;
-}
-@media screen and (max-width: 1200px) {
-  .pricesPage .categoriesPrices {
-    margin-bottom: 10%;
-  }
 }
 @media screen and (max-width: 992px) {
   .pricesPage .categoriesPrices {
     font-size: 80%;
-    margin-bottom: 15%;
   }
 }
 @media screen and (max-width: 768px) {
   .pricesPage .categoriesPrices {
     font-size: 65%;
-    margin-bottom: 15%;
   }
 }
 @media screen and (max-width: 768px) {
   .pricesPage .categoriesPrices {
     font-size: 50%;
-    margin-bottom: 15%;
   }
 }
 .pricesPage .categoriesPrices .standardPrices,
 .pricesPage .categoriesPrices .optionsPrices {
+  display: table;
+  width: 100%;
   border-collapse: collapse;
   text-align: center;
   align-items: center;
@@ -1636,6 +1629,11 @@ main .view .txtView .txtHome:hover {
   font-size: 2rem;
   margin: 0;
 }
+@media screen and (max-width: 992px) {
+  .pictures .picturesView .before .imgBefore .txtBefore p {
+    font-size: 80%;
+  }
+}
 .pictures .picturesView .after {
   flex-basis: 45%;
 }
@@ -1671,6 +1669,11 @@ main .view .txtView .txtHome:hover {
   line-height: 45px;
   font-size: 2rem;
   margin: 0;
+}
+@media screen and (max-width: 992px) {
+  .pictures .picturesView .after .imgAfter .txtAfter p {
+    font-size: 80%;
+  }
 }
 
 .infosSociety {

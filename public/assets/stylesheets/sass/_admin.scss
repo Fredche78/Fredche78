@@ -2,17 +2,13 @@
 @use "mixins" as m;
 
 .backoffice {
-    // margin: 0 2%;
     
-
     .navAdmin {
         display: flex;
-        // width: 40%;
         background-color: v.$color-background-label;
         justify-content: space-around;
 
         a {
-            // width: 30%;
             @include m.btn-submit2;
         }
     }
@@ -24,10 +20,8 @@
     .deleteServices {
         background-color: #000;
         border: 1px solid #fff;
-        // padding: 2% 0;
 
         form {
-            // display: flex;
             width: 100%;
 
             .form-admin-group {
@@ -110,11 +104,7 @@
                         flex-basis: 49%;
                         justify-content: left;
                         align-items: center;
-                        // margin: 0 1%;
                         border: 1px solid #fff;
-
-                        // .reviewClient {
-                        // }
 
                         .deleteReview {
                             form {
@@ -134,7 +124,7 @@
                         }
 
                         .reviewClient {
-                            font-size: v.$font-size-l/2;
+                            font-size: v.$font-size-reviews;
                         }
                     }
                 }
@@ -144,8 +134,6 @@
 }
 
 /////Utilisée aussi dans main.scss/////
-// .picturesView {
-    // border: 2px solid #fff;
 
     .deleteWork {
         display: flex;
@@ -160,13 +148,9 @@
                 display: flex;
                 align-items: center;
                 padding: 2rem;
-                // padding: 20rem, 20rem, 0, 0;
 
                 @media screen and (max-width: v.$md-breakpoint) {
-                    padding: 1rem;
-                    // margin: 1rem;
-                    // padding: 5rem, 5rem, 0, 0;
-                    
+                    padding: 1rem;        
                 }
             }
         }
@@ -182,7 +166,6 @@
     justify-content: center;
 
     form {
-        // width: 100%;
         text-align: center;
 
         .form-group {

@@ -1,5 +1,5 @@
 <?php
-// session_start();
+
 $page = "Contact";
 $sessioncheck = "true";
 include("../templates/header.php");
@@ -36,7 +36,6 @@ if (!empty($_POST)) {
 
     for ($i = 1; $i < 4; $i++) {
 
-        /////////////////////////// Vérifier si ce if fonctionne/////////////////
         if (!empty($_FILES["photo" . $i]["name"])) {
 
             $photoOld[$i] = trim(strip_tags($_FILES["photo" . $i]["name"]));
@@ -58,7 +57,7 @@ if (!empty($_POST)) {
                 move_uploaded_file($tmpName[$i], $uploadPath[$i]);
                 rename("assets/img/photos/devis/$photoOld[$i]", "assets/img/photos/devis/$photo[$i]");
 
-                ////////////////////////////////La gestion des erreurs d'images/////////////////////////////
+////////////////////////////////La gestion des erreurs d'images/////////////////////////////
             } else {
 
                 if ($maxSize <= $size[$i]) {

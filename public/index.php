@@ -1,11 +1,9 @@
 <?php
-// session_start();
 $page = "Bienvenue sur le site SB Polish";
 $sessioncheck = "true";
 
 include("../templates/header.php");
 require_once("../system/config.php");
-//Connexion à la base d'avis
 
 $queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC");
 $reviews = $queryReviews->fetchAll();

@@ -1,5 +1,5 @@
 <?php
-$page="Nouveau mot de passe";
+$page = "Nouveau mot de passe";
 $sessioncheck = "false";
 
 require_once("../system/config.php");
@@ -10,8 +10,6 @@ if (isset($_GET["token"])) {
 
     $token = trim(strip_tags($_GET["token"]));
 
-    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
-
     $query = $db->prepare("SELECT email, validity FROM password_reset WHERE token LIKE :token");
     $query->bindParam(":token", $token);
     $query->execute();
@@ -21,8 +19,6 @@ if (isset($_GET["token"])) {
 
     if (!$result || $result["validity"] < time()) {
 
-        // array_push($errors, "Votre lien de récupération du mot de passe est invalide ou expiré");
-
         $errors["validity"] = "Votre lien de récupération du mot de passe est invalide ou expiré";
     } else {
 
@@ -30,12 +26,12 @@ if (isset($_GET["token"])) {
     }
 
     if (empty($result)) {
-        // Tchao bye bye -> Le token n'a pas été trouvé dans la base
+
         header("Location: ./");
+
     }
 
     if (isset($_POST["password"])) {
-        // if (!empty($_POST)) {
         // Le formulaire est envoyé et un mot de passe est disponible
         // N'oubliez pas de valider la consistance du mot de passe comme dans create_account.php
         $password = trim(strip_tags($_POST["password"]));
@@ -60,7 +56,7 @@ if (isset($_GET["token"])) {
             if (empty($errors)) {
 
                 // Cryptage du mot de passe
-            $password = password_hash($password, PASSWORD_DEFAULT);
+                $password = password_hash($password, PASSWORD_DEFAULT);
 
                 // Requète SQL de mise à jour du mot de passe
                 $query = $db->prepare("UPDATE users SET password = :password WHERE email LIKE :email");
