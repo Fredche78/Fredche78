@@ -12,7 +12,7 @@ if ($_SESSION["role"] != "administrateur") {
 
 // $db : vient de la classe "private" dans la config
 
-/////////////////////////Select////////////////////////////////////
+/////////////////////////////////////SELECT////////////////////////////////////
 
 $queryReviews = $db->query("SELECT * FROM reviews ORDER BY id DESC LIMIT 10");
 $reviews = $queryReviews->fetchAll();
@@ -103,16 +103,20 @@ if (!empty($_POST['submitPhotosCars'])) {
 
     $tabExtension = explode(".", $name);
     $extension = strtolower(end($tabExtension));
-    $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-    $maxSize = 2000000;
 
-    if (in_array($extension, $allowedTypes) && $size <= $maxSize && $errorsFiles == 0) {
+    $tabExtension2 = explode(".", $name2);
+    $extension2 = strtolower(end($tabExtension2));
+
+    $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
+    $maxSize = 5000000;
+
+    if (in_array($extension, $allowedTypes) && in_array($extension2, $allowedTypes) && $size <= $maxSize && $size2 <= $maxSize) {
 
         $uniqueName = md5(time() . $name);
         $uniqueName2 = md5(time() . $name2);
 
-        $imgBefore = $uniqueName . "." . $extension;
-        $imgAfter = $uniqueName2 . "." . $extension;
+        $imgBefore = $uniqueName . ".webp";
+        $imgAfter = $uniqueName2 . ".webp";
 
         move_uploaded_file($tmpName, $uploadPath);
         move_uploaded_file($tmpName2, $uploadPath2);
@@ -120,14 +124,64 @@ if (!empty($_POST['submitPhotosCars'])) {
         rename("assets/img/photos/travaux/$photoOld", "assets/img/photos/travaux/$imgBefore");
         rename("assets/img/photos/travaux/$photoOld2", "assets/img/photos/travaux/$imgAfter");
 
-        echo "Image enregistrée";
-    } else {
-        echo "Une erreur est survenue";
+        if ($extension === "jpg" || $extension === "jpeg") {
 
-        if ($maxSize <= $size) {
+            $img = imagecreatefromjpeg("assets/img/photos/travaux/$imgBefore");
+            imagepalettetotruecolor($img);
+            imagewebp($img, "assets/img/photos/travaux/$imgBefore", 80);
+
+        } else if ($extension === "png") {
+
+            $img = imagecreatefrompng("assets/img/photos/travaux/$imgBefore");
+            imagepalettetotruecolor($img);
+            imagealphablending($img, true);
+            imagesavealpha($img, true);
+            imagewebp($img, "assets/img/photos/travaux/$imgBefore", 80);
+
+        } else if ($extension === "bmp") {
+
+            $img = imagecreatefrombmp("assets/img/photos/travaux/$imgBefore");
+            imagepalettetotruecolor($img);
+            imagewebp($img, "assets/img/photos/travaux/$imgBefore", 80);
+        }
+
+        if ($extension2 === "jpg" || $extension2 === "jpeg") {
+
+            $img2 = imagecreatefromjpeg("assets/img/photos/travaux/$imgAfter");
+            imagepalettetotruecolor($img2);
+            imagewebp($img2, "assets/img/photos/travaux/$imgAfter", 80);
+
+        } else if ($extension2 === "png") {
+
+            $img2 = imagecreatefrompng("assets/img/photos/travaux/$imgAfter");
+            imagepalettetotruecolor($img2);
+            imagealphablending($img2, true);
+            imagesavealpha($img2, true);
+            imagewebp($img2, "assets/img/photos/travaux/$imgAfter", 80);
+
+        } else if ($extension2 === "bmp") {
+
+            $img2 = imagecreatefrombmp("assets/img/photos/travaux/$imgAfter");
+            imagepalettetotruecolor($img2);
+            imagewebp($img2, "assets/img/photos/travaux/$imgAfter", 80);
+        }
+
+        // echo "Image enregistrée";
+    } else {
+        // echo "Une erreur est survenue";
+
+        if ($maxSize <= $size || $maxSize <= $size2) {
+
             echo "Fichier trop volumineux";
+
+        } else {
+
+            $errors["imgBefore"] = "Une erreur est survenue";
+            $errors["imgAfter"] = "Une erreur est survenue";
+
         }
     }
+
 
     if (empty($errors) && empty($errorsFiles)) {
 

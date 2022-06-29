@@ -2,11 +2,11 @@
 $page="Mot de passe oublié";
 $sessioncheck = "false";
 //Chargement des dépendances Composer
-require("../vendor/autoload.php");
+// require("../vendor/autoload.php");
 
 require_once("../system/config.php");
 
-use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\PHPMailer;
 
 // Création d'une constante pour générer le lien de réinitialisation du mot de passe
 
@@ -40,54 +40,54 @@ if (isset($_POST["email"])) {
             /* ?><p>Email envoyé</p><?php */
 
 
-            //L'insertion en base est ok, on peut passer à l'envoie du mail
-            // On fait appel au constructeur de la classe PHPMailler
-            $phpmailer = new PHPMailer;
-            // On indique que l'on utilise le protocole SMTP
-            $phpmailer->isSMTP();
-            // Informations du compte Mailtrap
-            $phpmailer->Host = 'smtp.mailtrap.io';
-            $phpmailer->SMTPAuth = true;
-            $phpmailer->Port = 2525;
-            $phpmailer->Username = '14df232268ecb9';
-            $phpmailer->Password = '03cafa05c63ac5';
+            // //L'insertion en base est ok, on peut passer à l'envoie du mail
+            // // On fait appel au constructeur de la classe PHPMailler
+            // $phpmailer = new PHPMailer;
+            // // On indique que l'on utilise le protocole SMTP
+            // $phpmailer->isSMTP();
+            // // Informations du compte Mailtrap
+            // $phpmailer->Host = 'smtp.mailtrap.io';
+            // $phpmailer->SMTPAuth = true;
+            // $phpmailer->Port = 2525;
+            // $phpmailer->Username = '14df232268ecb9';
+            // $phpmailer->Password = '03cafa05c63ac5';
 
-            // Expéditeur
-            $phpmailer->From = "contact@sbpolish.fr";
-            // Nom à afficher à la place de l'adresse mail
-            $phpmailer->FromName = "S.B Polish";
+            // // Expéditeur
+            // $phpmailer->From = "contact@sbpolish.fr";
+            // // Nom à afficher à la place de l'adresse mail
+            // $phpmailer->FromName = "S.B Polish";
 
-            //Destinataire
-            $phpmailer->addAddress($email);
+            // //Destinataire
+            // $phpmailer->addAddress($email);
 
-            //On indique que le contenu du mail sera du code HTML
-            $phpmailer->isHTML();
+            // //On indique que le contenu du mail sera du code HTML
+            // $phpmailer->isHTML();
 
-            // Sujet (titre) du mail
-            $phpmailer->Subject = "Réinitialisation du mot de passe";
+            // // Sujet (titre) du mail
+            // $phpmailer->Subject = "Réinitialisation du mot de passe";
 
-            //Corps du mail
-            $phpmailer->Body = "
+            // //Corps du mail
+            // $phpmailer->Body = "
 
-            <div class=\"resetMail\">
+            // <div class=\"resetMail\">
             
-                <h1>Réinitilisation de votre mot de passe</h1>
+            //     <h1>Réinitilisation de votre mot de passe</h1>
 
-                <p>Madame, Monsieur,</p>
-                <p>Faisant suite à votre demande, veuillez trouver ci-dessous, le lien afin de réinitialiser votre mot de passe</p>
+            //     <p>Madame, Monsieur,</p>
+            //     <p>Faisant suite à votre demande, veuillez trouver ci-dessous, le lien afin de réinitialiser votre mot de passe</p>
 
-                <a href=\"" . HOST . "new_password.php?token={$token} \">
-                Suivez ce lien pour réinitialiser votre mot de passe
-                </a>
+            //     <a href=\"" . HOST . "new_password.php?token={$token} \">
+            //     Suivez ce lien pour réinitialiser votre mot de passe
+            //     </a>
 
-            </div>
+            // </div>
             
-            ";
+            // ";
 
-            // Encodage UTF-8
-            $phpmailer->CharSet  = "UTF-8";
-            //Envoi du mail
-            $phpmailer->send();
+            // // Encodage UTF-8
+            // $phpmailer->CharSet  = "UTF-8";
+            // //Envoi du mail
+            // $phpmailer->send();
 
             header("Location: login.php");
         }

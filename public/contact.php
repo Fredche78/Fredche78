@@ -15,8 +15,6 @@ $confirme = "";
 if (isset($_SESSION['email'])) {
     $emailLog = trim(strip_tags($_SESSION['email']));
 
-    // $db = new PDO("mysql:host=localhost;dbname=sbpolish", "root", "");
-
     $queryLog = $db->prepare("SELECT * FROM users WHERE email =  :email");
     $queryLog->BindParam(":email", $emailLog);
     $queryLog->execute();
@@ -47,21 +45,45 @@ if (!empty($_POST)) {
             $tabExtension[$i] = explode(".", $name[$i]);
             $extension[$i] = strtolower(end($tabExtension[$i]));
             $allowedTypes = ["jpg", "png", "jpeg", "bmp"];
-            $maxSize = 2000000;
+            $maxSize = 5000000;
 
             if (in_array($extension[$i], $allowedTypes) && $size[$i] < $maxSize && $errorsFiles == 0) {
 
                 $uniqueName[$i] = md5(time() . $name[$i]);
-                $photo[$i] = $uniqueName[$i] . "." . $extension[$i];
+                // $photo[$i] = $uniqueName[$i] . "." . $extension[$i];
+                $photo[$i] = $uniqueName[$i] . ".webp";
+
 
                 move_uploaded_file($tmpName[$i], $uploadPath[$i]);
                 rename("assets/img/photos/devis/$photoOld[$i]", "assets/img/photos/devis/$photo[$i]");
 
-////////////////////////////////La gestion des erreurs d'images/////////////////////////////
+                if ($extension[$i] === "jpg" || $extension[$i] === "jpeg") {
+
+                    $img = imagecreatefromjpeg("assets/img/photos/devis/" . $photo[$i]);
+                    imagepalettetotruecolor($img);
+                    imagewebp($img, "assets/img/photos/devis/" . $photo[$i], 80);
+
+                } else if ($extension[$i] === "png") {
+
+                    $img = imagecreatefrompng("assets/img/photos/devis/" . $photo[$i]);
+                    imagepalettetotruecolor($img);
+                    imagealphablending($img, true);
+                    imagesavealpha($img, true);
+                    imagewebp($img, "assets/img/photos/devis/" . $photo[$i], 80);
+                
+                } else if ($extension[$i] === "bmp") {
+
+                    $img = imagecreatefrombmp("assets/img/photos/devis/" . $photo[$i]);
+                    imagepalettetotruecolor($img);
+                    imagewebp($img, "assets/img/photos/devis/" . $photo[$i], 80);
+                }
+
+                ////////////////////////////////La gestion des erreurs d'images/////////////////////////////
+
             } else {
 
                 if ($maxSize <= $size[$i]) {
-                    $errors["weight"][$i] = "Maximum 2Mo";
+                    $errors["weight"][$i] = "Maximum 5Mo";
                 } else {
                     $errors["files"][$i] = "Une erreur est survenue";
                 }
@@ -83,7 +105,7 @@ if (!empty($_POST)) {
         $errors["firstname"] = "Prénom requis";
     }
 
-    // Validation du Nom
+    // Validation du nom
 
     if (empty($lastname)) {
         $errors["lastname"] = "Nom requis";

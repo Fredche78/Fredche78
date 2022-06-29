@@ -37,9 +37,9 @@ VALUES
 ("utilisateur"),
 ("utilisateur");
 
-UPDATE users
-SET role = "administrateur"
-WHERE id=5;
+-- UPDATE users
+-- SET role = "administrateur"
+-- WHERE id=5;
 
 CREATE TABLE reviews (
     id INT PRIMARY KEY AUTO_INCREMENT,
